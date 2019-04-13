@@ -1,0 +1,131 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <title>BVS</title>
+    <link rel="stylesheet" href="~/Content/YangWanJing/bvs.css" />
+</head>
+<body>
+    <div class="header">
+        <ul>
+            <li><a class="active" href="#home">正义黎明</a></li>
+            <li>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">剧情梗概</a>
+                    <div class="dropdown-content">
+                        <a href=#1>卢瑟——以人类的名义</a>
+                        <a href=#2>蝙蝠侠的重生</a>
+                        <a href=#3>希望之子</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">人物介绍</a>
+                    <div class="dropdown-content">
+                        <a href="#bat">蝙蝠侠 布鲁斯·韦恩</a>
+                        <a href="#superman">超人 克拉克·肯特</a>
+                        <a href="#louise">超人女友 路易斯·莱恩</a>
+                        <a href="#ww">神奇女侠 戴安娜·普林斯</a>
+                        <a href="#luther">超人死敌 莱克斯·卢瑟</a>
+                        <a href="#stewrad">蝙蝠侠的管家 阿尔弗雷德·德尼沃斯</a>
+                    </div>
+                </div>
+            </li>
+            <li style="margin-left:40em">
+                <a href="#" class="active">作者：官方</a>
+            </li>
+        </ul>
+    </div>
+    <img src='~/ALL_IMAGE/YangWanJing/superman1.jpg' id='superman1' alt="被仰视的'神'" width="1152" height="490">
+    <div class='right'>
+
+        <div id='r1'>
+            <h3>蝙蝠侠 布鲁斯·韦恩</h3>
+            <div id='bat'><a href='#'><img src='~/ALL_IMAGE/YangWanJing/bat1.jpg' width='200' alt=''></a></div>
+            <h3>超人 克拉克·肯特</h3>
+            <div id='superman'><a href='#'><img src='~/ALL_IMAGE/YangWanJing/superman2.jpg' width='200' alt=''></a></div>
+            <h3>超人女友 路易斯·莱恩</h3>
+            <div id='louise'><a href='#'><img src='~/ALL_IMAGE/YangWanJing/louise1.jpg' width='200' alt=''></a></div>
+        </div>
+        <div id='r2'>
+            <h3>神奇女侠 戴安娜·普林斯</h3>
+            <div id='ww'><a href='#'><img src='~/ALL_IMAGE/YangWanJing/ww1.jpg' width='200' alt=''></a></div>
+            <h3>超人死敌 莱克斯·卢瑟</h3>
+            <div id='luther'><a href='#'><img src='~/ALL_IMAGE/YangWanJing/luther1.jpg' width='200' alt=''></a></div>
+            <h3>蝙蝠侠的管家 阿尔弗雷德·德尼沃斯</h3>
+            <div id='stewrad'><a href='#'><img src='~/ALL_IMAGE/YangWanJing/stewrad1.jpg' width='200' alt=''></a></div>
+        </div>
+        <button id="btn1">1</button>
+        <button id="btn2">2</button>
+        <script>
+            document.getElementById("btn1").onclick = function () {
+                //获取两个div
+                var oDiv1 = document.getElementById("r1");
+                var oDiv2 = document.getElementById("r2");
+                //判断div1是显示或者隐藏(block---显示,none--隐藏)
+                if (oDiv1.style.display == "block") {
+                    oDiv2.style.display = "none";
+                }
+                else {
+                    oDiv2.style.display = "none";
+                    oDiv1.style.display = "block"
+                }
+
+            }
+            document.getElementById("btn2").onclick = function () {
+                //获取两个div
+                var oDiv1 = document.getElementById("r1");
+                var oDiv2 = document.getElementById("r2");
+                //判断div1是显示或者隐藏(block---显示,none--隐藏)
+                if (oDiv2.style.display == "block") {
+                    oDiv1.style.display = "none";
+
+                }
+                else {
+                    oDiv1.style.display = "none";
+                    oDiv2.style.display = "block"
+                }
+
+            }
+        </script>
+    </div>
+    <div class="main">
+        <h3 id="1">卢瑟——以人类的名义</h3>
+        <p>
+            可以说，bvs的故事是一个关于人类对抗神的故事。当然，这其中的人类不止蝙蝠侠，还有卢瑟。在dc漫画体系中，英雄中以蝙蝠侠编剧开挂为主智力，而反派中智力最高的有两个人物，小丑和卢瑟。不同小丑的完全邪恶，卢瑟却是亦正亦邪，甚至曾经，卢瑟一度加入正义联盟一起保卫地球，当然这都扯得有点远了，只是我们通过了解这些被改编的原人物特色可以更好的观察现在的卢瑟。<br>
+            为什么这个站在地球智力顶峰的男人要反超人呢？根据他自己所说，他讨厌能够凌驾于人类之上的能力，厌恶这种所谓的救世主。而没有力量空有知识，而导致的嫉恨。
+            <br>目标既定，具体要怎么做呢 面对如同神一样伟岸的超人，以区区肉身挑战钢铁之躯 是直接上去莽吗？ 连军队都打不过的男人，你用什么对抗？
+            <br>用另外的英雄，用等对的力量。亦即借刀杀人。
+            <br>那么卢瑟布局是怎么样的呢？
+            <br>第一步，利用路易斯的普利策记者身份，趁其前往战乱地时，制造混乱和危机，引来超人拯救并诬陷给超人。同时，安排一名“证人”来控诉超人的暴虐行迹。造成舆论上对超人立场的怀疑，分离超人群众基础，使得美国和超人离心离德，孤立超人。
+            <br>第二步，研究超人弱点，通过寻求政府合作来用自己的资源来换取佐德将军的尸体进行科学研究。藉由氪星飞船的利用和氪石的开采。
+            来制造一把刀。
+            <br>第三步，为这把刀找一个人。应该找一个什么样的人才能够对抗超人这样的神呢？什么样的人才能够有能力击败超人呢？关于蝙蝠侠的上套就好像送上来的。正好调查上卢瑟的布鲁斯韦恩已经沉寂了许久，蝙蝠侠重新复出带着怒火和愤怒，被小丑折磨而死去的罗宾曾经使得蝙蝠侠退隐不出，而超人的毁灭力量使得蝙蝠侠心中惶恐而表现愤怒。对于卢瑟，这样的黑暗骑士正是一个大好人选，此刻的蝙蝠侠易怒而脆弱，况且哥谭之神的名号就算失败对于卢瑟也是一大利好。两虎相斗必有一伤，无论是谁胜出，卢瑟都是渔翁，蝙蝠死，超人成为人类对立。超人陨，卢瑟的目的达成。
+            蝙蝠侠的重生
+            <br>等到一切准备就绪。计划正式开始。
+            <br>蝙蝠侠一步步自己走进圈套，有因落魄的员工的自责和“失去家人”挑衅的内疚而恼羞成怒，超人因为母亲绑架而挣扎前往对决。
+            <br>可以说如果没有玛莎，导致最后的失败，卢瑟便是笑到最后的男人。而卢瑟留下毁灭日的后手与呼叫荒原狼的行为，足以彰显他对力量的渴望。
+        </p>
+        <h3 id="2">蝙蝠侠的重生</h3>
+        <p>
+            <br>不论再重启多少次，蝙蝠侠之所以成为蝙蝠侠的最开始的地方永远是犯罪小巷，玛莎和托马斯的死亡也是弱小的布鲁斯成长的开始。蝙蝠，变成了布鲁斯的恐惧。一直到蝙蝠侠的出现，蝙蝠侠是利用恐惧战胜罪恶的英雄，而他之所以成为蝙蝠侠正源于他对蝙蝠的恐惧。蝙蝠侠的精神是凡人的意志的赞歌，是恪守底线和不论手段的混沌体。蝙蝠侠正如小丑所言，是另一个疯子。
+            <br>但这时候的蝙蝠侠两鬓生白，已经不再是当初听到名字就让人感到恐惧的蝙蝠侠了。他累了，至少在失去自己至亲的罗宾之后。于是他退隐了很久，久到甚至有新警察不知道他的故事。
+            <br>然而超人的出现，神与神之间的战斗，使得一切人类宛如蝼蚁的瞬间，蝙蝠侠感受到了愤怒。他再一次披上战袍，冲向黑夜，他要让神为他自己的傲慢付出代价。
+            <br>哥谭不平静，蝙蝠烙印出现。这次的蝙蝠侠开始吸血了，他甚至打破了自己的原则-他为自己的蝙蝠车装配上了机枪。
+            <br>蝙蝠？他怎么了？如此的脆弱和愤怒，他仿佛仍旧沉溺于失去亲人的伤痛之中。片中无数次闪回蝙蝠侠对母亲的思念，对亲情的渴望，这时候的蝙蝠侠好像已经死了，他愤怒地冲向超人好像是在自杀，为自己的悲壮画上句点。但，身死魂灭之前，也要让那虚伪的神，付出代价。
+        </p>
+        <h3 id="3">希望之子</h3>
+        <p>
+            <br>我甚至一度认为，bvs的电影名只是一个噱头，因为电影中的蝙蝠侠从各个方面都不是超人的对手，身体上的对抗是尘埃与巨山的对比，就连蝙蝠侠的智力都在这次电影当中大打折扣。兴许，过于沉痛的过往导致的悲伤使得蝙蝠侠变得颓丧，酒精和消沉没有轻易的放过蝙蝠。才最终导致了蝙蝠侠更像跑来跑去串联剧情的配角。
+            <br>可是，不得不说，这时候的克拉克才是真正的希望之子，他不是神。他是超人，是人。他并非天生的救世主，他只是忽然变得强大的人类一般，他的内心柔软。他在寻求爱人的怀抱，是妈妈永远不能长大的孩子，思念亡故的父亲，其次，他才是一位记者，一位伟大能力的救世主。
+            <br>bvs的思想高度就在于将伟大的超人拉下神坛，他与我们同样，即使身如钢铁，内心仍非无懈可击。他在出世和避世之间纠结，人类在考察他的同时他也在观察我们。人性罪恶自私，卑鄙无耻。他一眼看到清清楚楚。
+            <br>我们都陷入了一个陷入为主的误区，我们提起超级英雄就会想到超人，蝙蝠侠。但什么才是英雄？何为英雄？只是因为我们称他为英雄，于是他就被我绑架上，必须去做英雄应该做的所有事。他是英雄，所以他背上的担子和生命的牺牲才应该如此？如果最后英雄要选择抛弃我们呢？
+            <br>我们的英雄又在哪里呢？
+        </p>
+
+    </div>
+    <div class="footer">
+        <p class="legal"><small>&copy; 2018 DC'movies by 杨枝梢.</small></p>
+    </div>
+</body>
+</html>

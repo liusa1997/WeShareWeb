@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="剧享网ModelStoreContainer" CdmEntityContainer="剧享网Entities">
+    <EntitySetMapping Name="T_Permission">
+      <EntityTypeMapping TypeName="剧享网Model.T_Permission">
+        <MappingFragment StoreEntitySet="T_Permission">
+          <ScalarProperty Name="P_Id" ColumnName="P_Id" />
+          <ScalarProperty Name="R_Id" ColumnName="R_Id" />
+          <ScalarProperty Name="F_SubId" ColumnName="F_SubId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Role">
+      <EntityTypeMapping TypeName="剧享网Model.T_Role">
+        <MappingFragment StoreEntitySet="T_Role">
+          <ScalarProperty Name="R_Id" ColumnName="R_Id" />
+          <ScalarProperty Name="R_role" ColumnName="R_role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Function">
+      <EntityTypeMapping TypeName="剧享网Model.T_Function">
+        <MappingFragment StoreEntitySet="T_Function">
+          <ScalarProperty Name="F_IsOpen" ColumnName="F_IsOpen" />
+          <ScalarProperty Name="F_FatherId" ColumnName="F_FatherId" />
+          <ScalarProperty Name="F_Function" ColumnName="F_Function" />
+          <ScalarProperty Name="F_SubId" ColumnName="F_SubId" />
+          <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_ManOperLog">
+      <EntityTypeMapping TypeName="剧享网Model.T_ManOperLog">
+        <MappingFragment StoreEntitySet="T_ManOperLog">
+          <ScalarProperty Name="M_QuitTime" ColumnName="M_QuitTime" />
+          <ScalarProperty Name="M_EnterTime" ColumnName="M_EnterTime" />
+          <ScalarProperty Name="M_OperContent" ColumnName="M_OperContent" />
+          <ScalarProperty Name="M_OperObject" ColumnName="M_OperObject" />
+          <ScalarProperty Name="M_OperFunc" ColumnName="M_OperFunc" />
+          <ScalarProperty Name="U_UserName" ColumnName="U_UserName" />
+          <ScalarProperty Name="M_Id" ColumnName="M_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_NotifyInfoRecord">
+      <EntityTypeMapping TypeName="剧享网Model.T_NotifyInfoRecord">
+        <MappingFragment StoreEntitySet="T_NotifyInfoRecord">
+          <ScalarProperty Name="N_Time" ColumnName="N_Time" />
+          <ScalarProperty Name="N_Content" ColumnName="N_Content" />
+          <ScalarProperty Name="U_UserName" ColumnName="U_UserName" />
+          <ScalarProperty Name="N_Id" ColumnName="N_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_AgreeDisagree">
+      <EntityTypeMapping TypeName="剧享网Model.T_AgreeDisagree">
+        <MappingFragment StoreEntitySet="T_AgreeDisagree">
+          <ScalarProperty Name="A_DisAgreeCount" ColumnName="A_DisAgreeCount" />
+          <ScalarProperty Name="A_AgreeCount" ColumnName="A_AgreeCount" />
+          <ScalarProperty Name="A_InfoId" ColumnName="A_InfoId" />
+          <ScalarProperty Name="W_Id" ColumnName="W_Id" />
+          <ScalarProperty Name="U_Id" ColumnName="U_Id" />
+          <ScalarProperty Name="A_Id" ColumnName="A_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_IpReport">
+      <EntityTypeMapping TypeName="剧享网Model.T_IpReport">
+        <MappingFragment StoreEntitySet="T_IpReport">
+          <ScalarProperty Name="I_QuitTime" ColumnName="I_QuitTime" />
+          <ScalarProperty Name="I_EnTime" ColumnName="I_EnTime" />
+          <ScalarProperty Name="C_TypeId" ColumnName="C_TypeId" />
+          <ScalarProperty Name="I_Ipv4" ColumnName="I_Ipv4" />
+          <ScalarProperty Name="I_Id" ColumnName="I_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_Statistical">
+      <EntityTypeMapping TypeName="剧享网Model.V_Statistical">
+        <MappingFragment StoreEntitySet="V_Statistical">
+          <ScalarProperty Name="AccessRate" ColumnName="AccessRate" />
+          <ScalarProperty Name="IndexCount" ColumnName="IndexCount" />
+          <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+          <ScalarProperty Name="V_Id" ColumnName="V_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Comment">
+      <EntityTypeMapping TypeName="剧享网Model.T_Comment">
+        <MappingFragment StoreEntitySet="T_Comment">
+          <ScalarProperty Name="C_CommentTime" ColumnName="C_CommentTime" />
+          <ScalarProperty Name="C_Response" ColumnName="C_Response" />
+          <ScalarProperty Name="C_Info" ColumnName="C_Info" />
+          <ScalarProperty Name="C_InfoId" ColumnName="C_InfoId" />
+          <ScalarProperty Name="C_WorkTime" ColumnName="C_WorkTime" />
+          <ScalarProperty Name="C_WorkName" ColumnName="C_WorkName" />
+          <ScalarProperty Name="W_Id" ColumnName="W_Id" />
+          <ScalarProperty Name="C_UserName" ColumnName="C_UserName" />
+          <ScalarProperty Name="C_Id" ColumnName="C_Id" />
+          <ScalarProperty Name="U_Id" ColumnName="U_Id" />
+          <ScalarProperty Name="U_UserName" ColumnName="U_UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_User">
+      <EntityTypeMapping TypeName="剧享网Model.T_User">
+        <MappingFragment StoreEntitySet="T_User">
+          <ScalarProperty Name="U_RegisterTime" ColumnName="U_RegisterTime" />
+          <ScalarProperty Name="U_SendSpace" ColumnName="U_SendSpace" />
+          <ScalarProperty Name="U_RoleIsOpen" ColumnName="U_RoleIsOpen" />
+          <ScalarProperty Name="U_UserTelNum" ColumnName="U_UserTelNum" />
+          <ScalarProperty Name="U_Email" ColumnName="U_Email" />
+          <ScalarProperty Name="U_UserPassWord" ColumnName="U_UserPassWord" />
+          <ScalarProperty Name="U_UserName" ColumnName="U_UserName" />
+          <ScalarProperty Name="U_HeadImgPath" ColumnName="U_HeadImgPath" />
+          <ScalarProperty Name="R_Id" ColumnName="R_Id" />
+          <ScalarProperty Name="U_Id" ColumnName="U_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_SendWork">
+      <EntityTypeMapping TypeName="剧享网Model.T_SendWork">
+        <MappingFragment StoreEntitySet="T_SendWork">
+          <ScalarProperty Name="S_SendTime" ColumnName="S_SendTime" />
+          <ScalarProperty Name="S_WorkSize" ColumnName="S_WorkSize" />
+          <ScalarProperty Name="S_WorkPath" ColumnName="S_WorkPath" />
+          <ScalarProperty Name="S_WorkName" ColumnName="S_WorkName" />
+          <ScalarProperty Name="S_InfoId" ColumnName="S_InfoId" />
+          <ScalarProperty Name="W_Id" ColumnName="W_Id" />
+          <ScalarProperty Name="U_Id" ColumnName="U_Id" />
+          <ScalarProperty Name="U_UserName" ColumnName="U_UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_FollowUsers">
+      <EntityTypeMapping TypeName="剧享网Model.T_FollowUsers">
+        <MappingFragment StoreEntitySet="T_FollowUsers">
+          <ScalarProperty Name="F_FollowTime" ColumnName="F_FollowTime" />
+          <ScalarProperty Name="F_BeFollowerId" ColumnName="F_BeFollowerId" />
+          <ScalarProperty Name="F_FollowerId" ColumnName="F_FollowerId" />
+          <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_NotifyInfo">
+      <EntityTypeMapping TypeName="剧享网Model.T_NotifyInfo">
+        <MappingFragment StoreEntitySet="T_NotifyInfo">
+          <ScalarProperty Name="N_ReadStatus" ColumnName="N_ReadStatus" />
+          <ScalarProperty Name="N_SystemContent" ColumnName="N_SystemContent" />
+          <ScalarProperty Name="N_Time" ColumnName="N_Time" />
+          <ScalarProperty Name="N_WorkName" ColumnName="N_WorkName" />
+          <ScalarProperty Name="W_Id" ColumnName="W_Id" />
+          <ScalarProperty Name="N_ReplyObject" ColumnName="N_ReplyObject" />
+          <ScalarProperty Name="N_ReplyUserName" ColumnName="N_ReplyUserName" />
+          <ScalarProperty Name="N_Id" ColumnName="N_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

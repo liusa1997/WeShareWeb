@@ -1,0 +1,130 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <title>ricky and morty</title>
+    <link rel="stylesheet" href="~/Content/YangWanJing/ricky and morty.css" />
+</head>
+<body>
+    <div class="header">
+        <ul>
+            <li><a class="active" href="#home">ricky and morty</a></li>
+            <li>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">剧情梗概</a>
+                    <div class="dropdown-content"> </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">人物介绍</a>
+                    <div class="dropdown-content"> <a href="#bat">Rick Sanchez/瑞克</a> <a href="#superman">Morty Smith/莫蒂</a> <a href="#louise">Jerry Smith/杰瑞</a> <a href="#ww">Beth Smith/贝丝</a> <a href="#luther">Summer Smith/夏末</a> </div>
+                </div>
+            </li>
+            <li style="margin-left:40em">
+                <a href="#" class="active">作者：官方</a>
+            </li>
+        </ul>
+    </div>
+    <img src='~/ALL_IMAGE/YangWanJing/瑞克和莫蒂2.jpg' id='superman1' width="1152" height="490">
+    <div class='right'>
+        <div id='r1'>
+            <h3>Rick Sanchez/瑞克</h3>
+            <div id='bat'><a href='#'><img src='~/ALL_IMAGE/YangWanJing/人物介绍-瑞克.jpg' width='200' alt=''></a></div>
+            <h3>Morty Smith/莫蒂</h3>
+            <div id='superman'><a href='#'><img src='~/ALL_IMAGE/YangWanJing/人物介绍-莫蒂.jpg' width='200' alt=''></a></div>
+            <h3>Jerry Smith/杰瑞</h3>
+            <div id='louise'><a href='#'><img src="~/ALL_IMAGE/YangWanJing/人物介绍-jerry.png" width='200' alt=''></a></div>
+        </div>
+        <div id='r2'>
+            <h3>Beth Smith/贝丝</h3>
+            <div id='ww'><a href='#'><img src='~/ALL_IMAGE/YangWanJing/人物介绍-beth.jpg' width='200' alt=''></a></div>
+            <h3>Summer Smith/夏末</h3>
+            <div id='luther'><a href='#'><img src='~/ALL_IMAGE/YangWanJing/人物介绍-summer.jpg' width='200' alt=''></a></div>
+        </div>
+        <button id="btn1">1</button>
+        <button id="btn2">2</button>
+        <script>
+            document.getElementById("btn1").onclick = function () {
+                //获取两个div
+                var oDiv1 = document.getElementById("r1");
+                var oDiv2 = document.getElementById("r2");
+                //判断div1是显示或者隐藏(block---显示,none--隐藏)
+                if (oDiv1.style.display == "block") {
+                    oDiv2.style.display = "none";
+                }
+                else {
+                    oDiv2.style.display = "none";
+                    oDiv1.style.display = "block"
+                }
+
+            }
+            document.getElementById("btn2").onclick = function () {
+                //获取两个div
+                var oDiv1 = document.getElementById("r1");
+                var oDiv2 = document.getElementById("r2");
+                //判断div1是显示或者隐藏(block---显示,none--隐藏)
+                if (oDiv2.style.display == "block") {
+                    oDiv1.style.display = "none";
+
+                }
+                else {
+                    oDiv1.style.display = "none";
+                    oDiv2.style.display = "block"
+                }
+
+            }
+        </script>
+    </div>
+    <div class="main">
+        <p>
+            <h3>1. 宠物问题</h3>
+
+            </br>Jerry希望养一只更聪明的狗，小狗Snuffle变聪明之后Summer可以拍照发朋友圈了。Rick一阵见血，养狗的目的本来就是为了让人有优越感。
+            </br>终于，Snuffle变得过于聪明了，它说Snuffle想要被理解，它发现自己曾经是高贵的物种只是经过人工选择和基因改变才被驯化成今天的模样，它变身为Snowball，它质问Summer自己的睾丸去了哪里，质问如果一个人天生就短腿，人类会不会让他和另外一个畸形配种，然后把他们的后代拿来像腊肠狗那样展览。
+            </br>分明是拍给极端爱狗人士看的。
+            </br>之后剧情演变成了狗狗占领世界，开始了对人类的种族压迫和复仇，任我行推翻了东方不败又变成另一个东方不败，这是另一个故事了，格局又高一筹。当然终于Snowball因为对Morty的感情而顿悟，走出压迫和复仇的死循环，这大概是故事里才会有的理想结局。
+
+            <h3>2. 传统家庭观念</h3>
+
+            </br>中年危机的Jerry同时是一个信奉传统家庭观念的男人，为了迎接自己的父母他在圣诞节这天做了精心准备。他坚信圣诞是属于家庭的时间，要有人情味，不能看电视，不能玩手机，不能碰电脑，电子设备根本就不应该出现在一个有人情味的节日里。
+            </br>于是，Jerry的爸妈出现了，同时出现的还有和Jerry父母组建了新式三人家庭的Jacob。母亲找了个情人，有绿帽情节的父亲安之若素，Jerry的下巴大概掉到了地上。
+            </br>比起来，可能还是大家都捧着iPad的圣诞节更符合Jerry的口味。所谓坚守传统同时对新事物嗤之以鼻的人，大概就是这么一回事。
+            </br>《真探》里有一段，Marty警探的岳父认为他们那一辈曾经的时代才是最好的，如今的年代则道德沦丧，Marty不客气地回复他”Well, if things were so great, they never would have changed. You know, throughout history, I bet every old man probably said the same thing. And old man die and the world keeps spinning“。深得吾心。
+
+            <h3>3. 死者为大，为尊者讳</h3>
+
+            </br>第五集里，Morty按照他自己想要的方式来了一次探险，探险开始不尽如人意但总是峰回路转，正当一切向Morty希望的方向发展时，他却险些在公厕里被变态猥亵，可是就是这个变态软豆，居然是山下小人国的国王，还要亲自接见成功探险归来，解救了小人国民众的英雄Morty，Rick临走前补刀干掉了他。
+            </br>国王死后，侍卫在保险柜里发现了国王猥亵他人的照片，拿给大臣看希望将其公之于众，大臣指示将照片烧掉。“对人民而言，更有意义的是他所代表的价值和理念，而不是他的真实面貌”。
+            </br>让人联想到孔子的春秋笔法，婉而成章，为尊者讳。也让人联想起已退休的BBC前主播Stuart Hall卸任后因猥亵儿童而被起诉，引起轩然大波。
+
+            <h3>4. 家庭教育</h3>
+
+            </br>通过外星球的性爱机器人，Morty生出了一个小Morty，他发誓绝对不会像父母对待自己一样对待小Morty，但他最终还是像自己的父母对自己一样，对孩子撒谎，大喊大叫。Morty感慨父母也不过是有了小孩的孩子罢了。
+            </br>无论我们如何下决心，发誓要和过去不一样，但其实，很大程度上，父母是怎样的人，我们就会是怎样的人。
+
+            <h3>5. 真理的主观性及其背后的利益</h3>
+
+            </br>冥王星不是行星，这是地球上科学界公认的事实，不过和Rick赌气的Jerry不这么认为，冥王星人当然也不这么认为。
+            </br>于是，Jerry一跃成为了冥王星上最受欢迎的天体科学家。
+            </br>而实际呢，冥王星因为大公司的开采确实在不断萎缩，但谎言让Jerry的自卑情结得到满足，让大公司的利益得到满足，让冥王星人民的虚荣心得到满足。真理？又有什么重要。
+            </br>想起本科时一个老教授说的，哪有什么客观呢，都是主观。
+            </br>当然，又一次，故事向理想结局倾斜，这次是Jerry良心发现。
+
+            <h3>6. 反迫害团体向独裁的转变</h3>
+
+            </br>Rick实在过于天才，树敌无数，于是来自各个平行世界的Rick成立了一个Rick委员会， 用于对抗各种威胁。
+            </br>一次，由于许多Rick在各自的平行世界里被杀，来自地球C-137的Rick未经任何程序，仅仅由于曾经有不合作的前科，直接被委员会逮捕，面对这样的有罪推论，他嘲讽道，”You wanted to be safe from the government, so you became a stupid government“。
+            </br>政治寓言&amp;司法寓言。
+
+
+            </br>结语：
+            </br>Rick and Morty本身是一部科幻向的作品，这样解读起来自然怕是喧宾夺主了，故事里本身比如仿盗梦空间的创意，人体公园，身处仿佛《楚门的世界》的模拟器中想办法让模拟器死机，穿越到另一个平行世界取代在那个世界被炸死的自己，隐藏得最深的终极杀手Rick等等都让人脑洞大开。但这部作品同样吸引我的一点，还在于编剧借这些科幻创意，所表达出来对很多问题的看法，让我喜欢得不行。这样一部神作，你永远不嫌过度解读。
+
+            </br> ps: 第十集里那个终极杀手Morty摘下面罩、踩碎发射器的一段实在太赞，总觉得似曾相识但就是想不出来，有哪位朋友知道具体是在向哪一部作品致敬吗？
+        </p>
+    </div>
+    <div class="footer">
+        <p class="legal"><small>&copy; https://movie.douban.com/review/6934273/</small></p>
+    </div>
+</body>
+</html>

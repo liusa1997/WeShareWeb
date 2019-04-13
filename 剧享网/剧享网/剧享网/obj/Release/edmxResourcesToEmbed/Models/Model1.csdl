@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="剧享网Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="T_Permission">
+    <Key>
+      <PropertyRef Name="P_Id" />
+    </Key>
+    <Property Name="P_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="R_Id" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="F_SubId" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_Role">
+    <Key>
+      <PropertyRef Name="R_Id" />
+    </Key>
+    <Property Name="R_Id" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="R_role" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="剧享网Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="T_Permission" EntityType="Self.T_Permission" />
+    <EntitySet Name="T_Role" EntityType="Self.T_Role" />
+    <FunctionImport Name="P_FindUserRole" ReturnType="Collection(String)">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="P_GetUserName">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="T_Function" EntityType="剧享网Model.T_Function" />
+    <EntitySet Name="T_ManOperLog" EntityType="剧享网Model.T_ManOperLog" />
+    <EntitySet Name="T_NotifyInfoRecord" EntityType="剧享网Model.T_NotifyInfoRecord" />
+    <EntitySet Name="T_NotifyInfo" EntityType="剧享网Model.T_NotifyInfo" />
+    <EntitySet Name="T_AgreeDisagree" EntityType="剧享网Model.T_AgreeDisagree" />
+    <EntitySet Name="T_IpReport" EntityType="剧享网Model.T_IpReport" />
+    <EntitySet Name="V_Statistical" EntityType="剧享网Model.V_Statistical" />
+    <EntitySet Name="T_Comment" EntityType="剧享网Model.T_Comment" />
+    <EntitySet Name="T_User" EntityType="剧享网Model.T_User" />
+    <EntitySet Name="T_SendWork" EntityType="剧享网Model.T_SendWork" />
+    <EntitySet Name="T_FollowUsers" EntityType="剧享网Model.T_FollowUsers" />
+  </EntityContainer>
+  <EntityType Name="T_Function">
+    <Key>
+      <PropertyRef Name="F_Id" />
+    </Key>
+    <Property Name="F_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="F_SubId" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="F_Function" Type="String" MaxLength="19" FixedLength="true" Unicode="false" />
+    <Property Name="F_FatherId" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="F_IsOpen" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_ManOperLog">
+    <Key>
+      <PropertyRef Name="M_Id" />
+    </Key>
+    <Property Name="M_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="U_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="M_OperFunc" Type="String" MaxLength="19" FixedLength="true" Unicode="false" />
+    <Property Name="M_OperObject" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="M_OperContent" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="M_EnterTime" Type="DateTime" Precision="3" />
+    <Property Name="M_QuitTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="T_NotifyInfoRecord">
+    <Key>
+      <PropertyRef Name="N_Id" />
+    </Key>
+    <Property Name="N_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="U_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="N_Content" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="N_Time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="T_NotifyInfo">
+    <Key>
+      <PropertyRef Name="N_Id" />
+    </Key>
+    <Property Name="N_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="N_ReplyUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="N_ReplyObject" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="W_Id" Type="Int32" Nullable="false" />
+    <Property Name="N_WorkName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="N_Time" Type="DateTime" Precision="3" />
+    <Property Name="N_SystemContent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="N_ReadStatus" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_AgreeDisagree">
+    <Key>
+      <PropertyRef Name="A_Id" />
+    </Key>
+    <Property Name="A_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="U_Id" Type="Int32" Nullable="false" />
+    <Property Name="W_Id" Type="Int32" Nullable="false" />
+    <Property Name="A_InfoId" Type="Int32" Nullable="false" />
+    <Property Name="A_AgreeCount" Type="Int32" Nullable="false" />
+    <Property Name="A_DisAgreeCount" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_IpReport">
+    <Key>
+      <PropertyRef Name="I_Id" />
+    </Key>
+    <Property Name="I_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="I_Ipv4" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="C_TypeId" Type="Int32" Nullable="false" />
+    <Property Name="I_EnTime" Type="DateTime" Precision="3" />
+    <Property Name="I_QuitTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="V_Statistical">
+    <Key>
+      <PropertyRef Name="V_Id" />
+    </Key>
+    <Property Name="V_Id" Type="Guid" Nullable="false" />
+    <Property Name="UserCount" Type="Int32" />
+    <Property Name="IndexCount" Type="Int32" />
+    <Property Name="AccessRate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_Comment">
+    <Key>
+      <PropertyRef Name="C_InfoId" />
+    </Key>
+    <Property Name="U_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="U_Id" Type="Int32" Nullable="false" />
+    <Property Name="C_Id" Type="Int32" Nullable="false" />
+    <Property Name="C_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="W_Id" Type="Int32" Nullable="false" />
+    <Property Name="C_WorkName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="C_WorkTime" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="C_InfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C_Info" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="C_Response" Type="Int32" Nullable="false" />
+    <Property Name="C_CommentTime" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_User">
+    <Key>
+      <PropertyRef Name="U_Id" />
+    </Key>
+    <Property Name="U_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="R_Id" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="U_HeadImgPath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="U_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="U_UserPassWord" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="U_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="U_UserTelNum" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Name="U_RoleIsOpen" Type="Int32" Nullable="false" />
+    <Property Name="U_SendSpace" Type="Int32" Nullable="false" />
+    <Property Name="U_RegisterTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="T_SendWork">
+    <Key>
+      <PropertyRef Name="S_InfoId" />
+    </Key>
+    <Property Name="U_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="U_Id" Type="Int32" Nullable="false" />
+    <Property Name="W_Id" Type="Int32" Nullable="false" />
+    <Property Name="S_InfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="S_WorkName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="S_WorkPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="S_WorkSize" Type="Int32" Nullable="false" />
+    <Property Name="S_SendTime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_FollowUsers">
+    <Key>
+      <PropertyRef Name="F_Id" />
+    </Key>
+    <Property Name="F_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="F_FollowerId" Type="Int32" Nullable="false" />
+    <Property Name="F_BeFollowerId" Type="Int32" Nullable="false" />
+    <Property Name="F_FollowTime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

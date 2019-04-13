@@ -1,0 +1,219 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body {
+    margin: 0 auto;
+    text-align: center;
+    width: 1100px;
+    font-family: 微软雅黑;
+    color: black;
+    font-size: 18px;
+}
+
+#动漫 {
+    display: block;
+}
+
+#电影 {
+    display: none;
+}
+
+li {
+    list-style: none;
+    margin: 0 auto;
+}
+
+    li img {
+        vertical-align: middle;
+    }
+
+div {
+   /* position: relative;*/
+}
+
+a {
+    text-decoration: none;
+}
+
+.header {
+    height: 66px;
+    width: 1100px;
+    border-bottom: solid #D0CDCD;
+}
+
+.header-left {
+    float: left;
+    text-align: center;
+    line-height: 42px;
+    height: 42px;
+    position: relative;
+}
+
+    .header-left ul li {
+        margin-left: 10px;
+        float: left;
+        text-align: center;
+        line-height: 42px;
+    }
+
+.header-right {
+    margin-right: 60px;
+    float: right;
+    text-align: center;
+    line-height: 42px;
+    height: 42px;
+    position: relative;
+    list-style: none;
+    font-size: 14px;
+}
+
+    .header-right ul li {
+        padding: 0;
+        margin-top: 0;
+        margin-left: 10px;
+        float: left;
+    }
+
+.main {
+}
+
+.catalogue {
+}
+
+.catalogue-list {
+    padding-right: 40px;
+    position: fixed;
+    float: left;
+}
+
+    .catalogue-list li, .main-article-recommend li {
+        margin-top: 20px;
+    }
+
+.main-article {
+    margin-left: 80px;
+    width: 850px;
+    padding: 0;
+}
+
+.main-article-recommend {
+    margin-left: 850px;
+    width: 200px;
+    text-align: left;
+    margin-top: -220px;
+}
+
+.article-recommend-1 {
+    width: 100px;
+    border-bottom: solid #9A9A9A;
+}
+
+.article-recommend-2 ul li {
+    margin: auto;
+}
+
+.main-article-list {
+    margin-left: 50px;
+    margin-top: 5px;
+    height: 10px;
+    border: #3D1516;
+}
+
+    .main-article-list li {
+        margin-left: 10px;
+    }
+
+.main-article .main-article-list #li li {
+    float: left;
+    text-align: center;
+}
+
+.article {
+    height: 200px;
+    margin-top: 10px;
+    margin-left: 35px;
+    padding-top: 15px;
+}
+
+    .article img {
+        margin-top: 10px;
+        height: 490px;
+        max-height: 100%;
+    }
+
+.article-list {
+    position: absolute;
+    margin-top: 450px;
+    margin-left: 35px;
+    width: 820px;
+}
+
+.article-list-1, .article-list-2, .article-list-3 {
+    border-top: solid;
+    width: 820px;
+    height: 110px;
+}
+
+.article-list-1-left {
+    float: left;
+    width: 500px;
+    margin-left: auto;
+    text-align: left;
+}
+
+.article-list-1-right {
+    float: right;
+    width: 200px;
+    height: auto;
+}
+
+    .article-list-1-right img {
+        margin: 5px;
+        float: right;
+        width: 100px;
+        height: 100px;
+    }
+
+.catalogue {
+    float: left;
+}
+
+.lunbo {
+    float: right;
+}
+
+    .lunbo li {
+        margin: 5px;
+        float: left;
+    }
+
+.footer {
+    margin-top: 1000px;
+}
+#Info {
+    display:inline-block;
+}
+#Info:hover #DropContent {
+    display:block;
+}
+#DropContent {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+    #DropContent a, input {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    #DropContent input {
+        border:0;
+        background-color:rgb(255, 255, 255);
+        margin: 0 0 0 50px;
+    }
+        #DropContent a:hover, input:hover {
+            color: red;
+            display: block;
+        }

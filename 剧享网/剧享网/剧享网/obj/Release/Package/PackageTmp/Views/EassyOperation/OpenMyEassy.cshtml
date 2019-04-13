@@ -1,0 +1,91 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Js/EssayAgreeDisagree.js"></script>
+    <script src="~/Js/SubmitComment.js"></script>
+    <script src="~/Js/CommentaryAgreeorDisagree.js"></script>
+    <script src="~/Js/SelfComment.js"></script>
+    <script src="~/Js/Response.js"></script>
+</head>
+<body>
+    <div id="WorkInfo">
+        <h1 id="Article">@ViewBag.EassyName</h1>
+        <small id="Author">@ViewBag.Author</small>
+        <small id="SendTime">@ViewBag.EassySendTime</small>
+        <input type="button" value="赞成" class="WorkAgree" name="agree" onclick="EssayAgreeDisagree(this)" />
+        @foreach (var list in (List<int>)ViewBag.List)
+        {
+            <label id="agreecount">[@list]</label>
+            break;
+        }
+        <input type="button" value="反对" class="WorkDisAgree" name="disagree" onclick="EssayAgreeDisagree(this)" />
+        @while (true)
+        {
+            int flag = 0;
+            foreach (var list in (List<int>)ViewBag.List)
+            {
+                if (list == -1)
+                {
+                    flag = 1;
+                }
+                if (flag == 1 && list != -1)
+                {
+                    <label id="disagreecount">[@list]</label>
+                }
+            }
+            break;
+        }
+    </div>
+    <div id="EassyContent"><textarea  style="width:500px;height:500px;" readonly="readonly">@ViewBag.EassyContent</textarea></div>
+    <div>
+        <h4>評論区</h4>
+        <div class="CommentBlock">
+            @foreach (var fatherinfo in (List<剧享网.Models.T_Comment>)ViewBag.FatherNode)
+            {
+                int U_Id = fatherinfo.U_Id;
+                int C_Id = fatherinfo.C_Id;
+                int C_InfoId = fatherinfo.C_InfoId;
+                <div class="father">
+                    <label>@fatherinfo.U_UserName</label>
+                    <label>：</label>
+                    <label>@fatherinfo.C_Info</label>
+                    <button onclick="Response(this)">回复</button>
+                    <div style="display:none">
+                        <input type="text" />
+                        <input type="button" value="提交" onclick="SubmitComment(this)" />
+                    </div>
+                    <label>@fatherinfo.C_CommentTime</label>
+
+                    @{
+                        List<剧享网.Models.T_AgreeDisagree> Count = new 剧享网.Comment_cs.AgreeDisCount().CountInfo(U_Id, C_Id, C_InfoId);
+                        foreach (var countinfo in Count)
+                        {
+                            <button name="agree" onclick="CommentaryAgreeorDisagree(this)">赞成</button>
+                            <label>[@countinfo.A_AgreeCount]</label>
+                            <button name="disagree" onclick="CommentaryAgreeorDisagree(this)">反对</button>
+                            <label>[@countinfo.A_DisAgreeCount]</label>
+                        }
+                    }
+                    @{
+                        List<剧享网.Models.T_Comment> children = new 剧享网.Comment_cs.ChildrenNode().ChildrenInfo(C_InfoId);
+                        foreach (var childreninfo in children)
+                        {
+                            <div class="sub">
+                                <label class="suninfo">@childreninfo.U_UserName：@childreninfo.C_Info</label>
+                            </div>
+                        }
+                    }
+                </div>
+
+            }
+            <div class="Comment" id="selfcomment">
+                <textarea class="SelfComment" name="SelfComment" placeholder="说出你的愿望!"></textarea>
+                <input id="Tijiao" type="submit" value="提交" onclick="SelfComment()" />
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

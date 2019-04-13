@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    @*<link href="~/Content/LiuBoWen/NotifyIndex.css" type="text/css" rel="stylesheet" />*@
+    <link href="~/Content/Gao_Fu/NotifyIndex.css" type="text/css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script>
+        window.onload = function () {
+            $.ajax({
+                url: "/NotifyInfo/UpdateStatus/",
+                method: "post",
+                success: function () {
+                    console.log("over...");
+                },
+                error: function () {
+                    alert("错误");
+                },
+            });
+        }
+    </script>
+</head>
+
+<body>
+    @*这个算法差点让我死掉...*@
+    @while (true)
+    {
+        //获取无数据时的异常处理
+        try
+        {
+            //计数有多少信息
+            var syscount = 0;
+            foreach (var item in (List<String>)ViewBag.SysList)
+            {
+                ++syscount;
+            }
+            //动态给出系统数组大小
+            string[] SysArray = new string[syscount];
+            int i = 0;
+            //将视图包里面的数据全部放入系统数组
+            foreach (var item in (List<String>)ViewBag.SysList)
+            {
+                SysArray[i] = item;
+                ++i;
+            }
+            for (i = 0; i < syscount; ++i)
+            {
+                //系统信息为4个一组，每4个则创建一个ul
+                if (i % 4 == 0)
+                {
+                    <ul class="SysInfo">
+                        @for (var j = i; j < i + 4; ++j)//标签判断，是系统内容的话就是一个a标签
+                        {
+                            if (j != (i + 2))
+                            {
+                                <li><div class="" style="display:inline-block">@SysArray[j]</div></li>
+                            }
+                            else
+                            {
+                                <li><a href="" class="Syscontent">@SysArray[j]</a></li>
+                            }
+                        }
+                    </ul>
+                }
+            }
+        }
+        catch { }
+        try
+        {
+            var rescount = 0;
+            foreach (var item in (List<String>)ViewBag.ResList)
+            {
+                ++rescount;
+            }
+            string[] ResArray = new string[rescount];
+            int i = 0;
+            foreach (var item in (List<String>)ViewBag.ResList)
+            {
+                ResArray[i] = item;
+                ++i;
+            }
+            for (i = 0; i < rescount; ++i)
+            {
+                if (i % 7 == 0)
+                {
+               <ul class="ResInfo">
+                    @for (var j = i; j < i + 7; ++j)
+                    {
+                        if (j != (i + 5))
+                        {
+                              <li><p class="" style="display:inline-block">@ResArray[j]</p></li>
+                        }
+                        else
+                        {
+                              <li><a href="" class="Rescontent">@ResArray[j]</a></li>
+                        }
+                    }
+               </ul>
+                }
+            }
+        }
+        catch
+        { }
+        break;
+    }
+    <script>
+        var d = document.getElementsByTagName("div");
+        console.log(d.length);//调试用
+        for (var i = 0; i < d.length; i = i + 3) {
+            d[i].className = "sys";
+        }
+        for (var i = 1; i < d.length; i = i + 3) {
+            d[i].className = "str1";
+        }
+        for (var i = 2; i < d.length; i = i + 3) {
+            d[i].className = "Time1";
+        }
+
+        var c = document.getElementsByTagName("p");
+        console.log(c.length);//调试用
+        for (var i = 0; i < c.length; i = i + 6) {
+            c[i].className = "ReplyUserName";
+        }
+        for (var i = 1; i < c.length; i = i + 6) {
+            c[i].className = "str2";
+        }
+        for (var i = 2; i < c.length; i = i + 6) {
+            c[i].className = "WorkType";
+        }
+        for (var i = 3; i < c.length; i = i + 6) {
+            c[i].className = "WorkName";
+        }
+        for (var i = 4; i < c.length; i = i + 6) {
+            c[i].className = "Quote";
+        }
+        for (var i = 5; i < c.length; i = i + 6) {
+            c[i].className = "Time2";
+        }
+    </script>
+</body>
+
+</html>

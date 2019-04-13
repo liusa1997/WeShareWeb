@@ -1,0 +1,525 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="剧享网Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="T_AgreeDisagree">
+          <Key>
+            <PropertyRef Name="A_Id" />
+          </Key>
+          <Property Name="A_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="U_Id" Type="int" Nullable="false" />
+          <Property Name="W_Id" Type="int" Nullable="false" />
+          <Property Name="A_InfoId" Type="int" Nullable="false" />
+          <Property Name="A_AgreeCount" Type="int" Nullable="false" />
+          <Property Name="A_DisAgreeCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Comment">
+          <Key>
+            <PropertyRef Name="C_InfoId" />
+          </Key>
+          <Property Name="U_UserName" Type="varchar" MaxLength="255" />
+          <Property Name="U_Id" Type="int" Nullable="false" />
+          <Property Name="C_Id" Type="int" Nullable="false" />
+          <Property Name="C_UserName" Type="varchar" MaxLength="255" />
+          <Property Name="W_Id" Type="int" Nullable="false" />
+          <Property Name="C_WorkName" Type="varchar" MaxLength="255" />
+          <Property Name="C_WorkTime" Type="char" MaxLength="30" />
+          <Property Name="C_InfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_Info" Type="varchar" MaxLength="255" />
+          <Property Name="C_Response" Type="int" Nullable="false" />
+          <Property Name="C_CommentTime" Type="char" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="T_FollowUsers">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="F_FollowerId" Type="int" Nullable="false" />
+          <Property Name="F_BeFollowerId" Type="int" Nullable="false" />
+          <Property Name="F_FollowTime" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="T_Function">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="F_SubId" Type="char" MaxLength="3" />
+          <Property Name="F_Function" Type="char" MaxLength="19" />
+          <Property Name="F_FatherId" Type="char" MaxLength="3" />
+          <Property Name="F_IsOpen" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_IpReport">
+          <Key>
+            <PropertyRef Name="I_Id" />
+          </Key>
+          <Property Name="I_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="I_Ipv4" Type="char" MaxLength="15" />
+          <Property Name="C_TypeId" Type="int" Nullable="false" />
+          <Property Name="I_EnTime" Type="datetime" />
+          <Property Name="I_QuitTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="T_ManOperLog">
+          <Key>
+            <PropertyRef Name="M_Id" />
+          </Key>
+          <Property Name="M_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="U_UserName" Type="varchar" MaxLength="255" />
+          <Property Name="M_OperFunc" Type="char" MaxLength="19" />
+          <Property Name="M_OperObject" Type="varchar" MaxLength="255" />
+          <Property Name="M_OperContent" Type="char" MaxLength="2" />
+          <Property Name="M_EnterTime" Type="datetime" />
+          <Property Name="M_QuitTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="T_NotifyInfo">
+          <Key>
+            <PropertyRef Name="N_Id" />
+          </Key>
+          <Property Name="N_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="N_ReplyUserName" Type="varchar" MaxLength="255" />
+          <Property Name="N_ReplyObject" Type="char" MaxLength="10" />
+          <Property Name="W_Id" Type="int" Nullable="false" />
+          <Property Name="N_WorkName" Type="varchar" MaxLength="255" />
+          <Property Name="N_Time" Type="varchar" MaxLength="30" />
+          <Property Name="N_SystemContent" Type="varchar" MaxLength="255" />
+          <Property Name="N_ReadStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_NotifyInfoRecord">
+          <Key>
+            <PropertyRef Name="N_Id" />
+          </Key>
+          <Property Name="N_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="U_UserName" Type="varchar" MaxLength="255" />
+          <Property Name="N_Content" Type="varchar" MaxLength="255" />
+          <Property Name="N_Time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="T_Permission">
+          <Key>
+            <PropertyRef Name="P_Id" />
+          </Key>
+          <Property Name="P_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="R_Id" Type="char" MaxLength="2" />
+          <Property Name="F_SubId" Type="char" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="T_Role">
+          <Key>
+            <PropertyRef Name="R_Id" />
+          </Key>
+          <Property Name="R_Id" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="R_role" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="T_SendWork">
+          <Key>
+            <PropertyRef Name="S_InfoId" />
+          </Key>
+          <Property Name="U_UserName" Type="varchar" MaxLength="255" />
+          <Property Name="U_Id" Type="int" Nullable="false" />
+          <Property Name="W_Id" Type="int" Nullable="false" />
+          <Property Name="S_InfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="S_WorkName" Type="varchar" MaxLength="255" />
+          <Property Name="S_WorkPath" Type="varchar" MaxLength="255" />
+          <Property Name="S_WorkSize" Type="int" Nullable="false" />
+          <Property Name="S_SendTime" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="T_User">
+          <Key>
+            <PropertyRef Name="U_Id" />
+          </Key>
+          <Property Name="U_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="R_Id" Type="char" MaxLength="2" />
+          <Property Name="U_HeadImgPath" Type="varchar" MaxLength="300" />
+          <Property Name="U_UserName" Type="varchar" MaxLength="255" />
+          <Property Name="U_UserPassWord" Type="varchar" MaxLength="255" />
+          <Property Name="U_Email" Type="varchar" MaxLength="255" />
+          <Property Name="U_UserTelNum" Type="char" MaxLength="11" />
+          <Property Name="U_RoleIsOpen" Type="int" Nullable="false" />
+          <Property Name="U_SendSpace" Type="int" Nullable="false" />
+          <Property Name="U_RegisterTime" Type="datetime" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“剧享网.dbo.V_Statistical”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="V_Statistical">
+          <Key>
+            <PropertyRef Name="V_Id" />
+          </Key>
+          <Property Name="V_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserCount" Type="int" />
+          <Property Name="IndexCount" Type="int" />
+          <Property Name="AccessRate" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityContainer Name="剧享网ModelStoreContainer">
+          <EntitySet Name="T_AgreeDisagree" EntityType="Self.T_AgreeDisagree" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Comment" EntityType="Self.T_Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_FollowUsers" EntityType="Self.T_FollowUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Function" EntityType="Self.T_Function" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_IpReport" EntityType="Self.T_IpReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_ManOperLog" EntityType="Self.T_ManOperLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_NotifyInfo" EntityType="Self.T_NotifyInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_NotifyInfoRecord" EntityType="Self.T_NotifyInfoRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Permission" EntityType="Self.T_Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Role" EntityType="Self.T_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_SendWork" EntityType="Self.T_SendWork" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_User" EntityType="Self.T_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_Statistical" EntityType="Self.V_Statistical" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_Statistical].[V_Id] AS [V_Id], 
+    [V_Statistical].[UserCount] AS [UserCount], 
+    [V_Statistical].[IndexCount] AS [IndexCount], 
+    [V_Statistical].[AccessRate] AS [AccessRate]
+    FROM [dbo].[V_Statistical] AS [V_Statistical]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="剧享网Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="T_Permission">
+          <Key>
+            <PropertyRef Name="P_Id" />
+          </Key>
+          <Property Name="P_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="R_Id" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="F_SubId" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_Role">
+          <Key>
+            <PropertyRef Name="R_Id" />
+          </Key>
+          <Property Name="R_Id" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="R_role" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="剧享网Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="T_Permission" EntityType="Self.T_Permission" />
+          <EntitySet Name="T_Role" EntityType="Self.T_Role" />
+          <FunctionImport Name="P_FindUserRole" ReturnType="Collection(String)">
+          <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="P_GetUserName">
+          <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="T_Function" EntityType="剧享网Model.T_Function" />
+          <EntitySet Name="T_ManOperLog" EntityType="剧享网Model.T_ManOperLog" />
+          <EntitySet Name="T_NotifyInfoRecord" EntityType="剧享网Model.T_NotifyInfoRecord" />
+          <EntitySet Name="T_AgreeDisagree" EntityType="剧享网Model.T_AgreeDisagree" />
+          <EntitySet Name="T_IpReport" EntityType="剧享网Model.T_IpReport" />
+          <EntitySet Name="V_Statistical" EntityType="剧享网Model.V_Statistical" />
+          <EntitySet Name="T_Comment" EntityType="剧享网Model.T_Comment" />
+          <EntitySet Name="T_User" EntityType="剧享网Model.T_User" />
+          <EntitySet Name="T_SendWork" EntityType="剧享网Model.T_SendWork" />
+          <EntitySet Name="T_FollowUsers" EntityType="剧享网Model.T_FollowUsers" />
+          <EntitySet Name="T_NotifyInfo" EntityType="剧享网Model.T_NotifyInfo" />
+        </EntityContainer>
+        <EntityType Name="T_Function">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="F_SubId" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="F_Function" Type="String" MaxLength="19" FixedLength="true" Unicode="false" />
+          <Property Name="F_FatherId" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="F_IsOpen" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_ManOperLog">
+          <Key>
+            <PropertyRef Name="M_Id" />
+          </Key>
+          <Property Name="M_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="U_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="M_OperFunc" Type="String" MaxLength="19" FixedLength="true" Unicode="false" />
+          <Property Name="M_OperObject" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="M_OperContent" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="M_EnterTime" Type="DateTime" Precision="3" />
+          <Property Name="M_QuitTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_NotifyInfoRecord">
+          <Key>
+            <PropertyRef Name="N_Id" />
+          </Key>
+          <Property Name="N_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="U_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="N_Content" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="N_Time" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_AgreeDisagree">
+          <Key>
+            <PropertyRef Name="A_Id" />
+          </Key>
+          <Property Name="A_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="U_Id" Type="Int32" Nullable="false" />
+          <Property Name="W_Id" Type="Int32" Nullable="false" />
+          <Property Name="A_InfoId" Type="Int32" Nullable="false" />
+          <Property Name="A_AgreeCount" Type="Int32" Nullable="false" />
+          <Property Name="A_DisAgreeCount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_IpReport">
+          <Key>
+            <PropertyRef Name="I_Id" />
+          </Key>
+          <Property Name="I_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="I_Ipv4" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="C_TypeId" Type="Int32" Nullable="false" />
+          <Property Name="I_EnTime" Type="DateTime" Precision="3" />
+          <Property Name="I_QuitTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="V_Statistical">
+          <Key>
+            <PropertyRef Name="V_Id" />
+          </Key>
+          <Property Name="V_Id" Type="Guid" Nullable="false" />
+          <Property Name="UserCount" Type="Int32" />
+          <Property Name="IndexCount" Type="Int32" />
+          <Property Name="AccessRate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_Comment">
+          <Key>
+            <PropertyRef Name="C_InfoId" />
+          </Key>
+          <Property Name="U_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="U_Id" Type="Int32" Nullable="false" />
+          <Property Name="C_Id" Type="Int32" Nullable="false" />
+          <Property Name="C_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="W_Id" Type="Int32" Nullable="false" />
+          <Property Name="C_WorkName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="C_WorkTime" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="C_InfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_Info" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="C_Response" Type="Int32" Nullable="false" />
+          <Property Name="C_CommentTime" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_User">
+          <Key>
+            <PropertyRef Name="U_Id" />
+          </Key>
+          <Property Name="U_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="R_Id" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="U_HeadImgPath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="U_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="U_UserPassWord" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="U_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="U_UserTelNum" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="U_RoleIsOpen" Type="Int32" Nullable="false" />
+          <Property Name="U_SendSpace" Type="Int32" Nullable="false" />
+          <Property Name="U_RegisterTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_SendWork">
+          <Key>
+            <PropertyRef Name="S_InfoId" />
+          </Key>
+          <Property Name="U_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="U_Id" Type="Int32" Nullable="false" />
+          <Property Name="W_Id" Type="Int32" Nullable="false" />
+          <Property Name="S_InfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="S_WorkName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="S_WorkPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="S_WorkSize" Type="Int32" Nullable="false" />
+          <Property Name="S_SendTime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_FollowUsers">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="F_FollowerId" Type="Int32" Nullable="false" />
+          <Property Name="F_BeFollowerId" Type="Int32" Nullable="false" />
+          <Property Name="F_FollowTime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_NotifyInfo">
+          <Key>
+            <PropertyRef Name="N_Id" />
+          </Key>
+          <Property Name="N_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="N_ReplyUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="N_ReplyObject" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="W_Id" Type="Int32" Nullable="false" />
+          <Property Name="N_WorkName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="N_Time" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="N_SystemContent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="N_ReadStatus" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="剧享网ModelStoreContainer" CdmEntityContainer="剧享网Entities">
+          <EntitySetMapping Name="T_Permission">
+            <EntityTypeMapping TypeName="剧享网Model.T_Permission">
+              <MappingFragment StoreEntitySet="T_Permission">
+                <ScalarProperty Name="P_Id" ColumnName="P_Id" />
+                <ScalarProperty Name="R_Id" ColumnName="R_Id" />
+                <ScalarProperty Name="F_SubId" ColumnName="F_SubId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Role">
+            <EntityTypeMapping TypeName="剧享网Model.T_Role">
+              <MappingFragment StoreEntitySet="T_Role">
+                <ScalarProperty Name="R_Id" ColumnName="R_Id" />
+                <ScalarProperty Name="R_role" ColumnName="R_role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Function">
+            <EntityTypeMapping TypeName="剧享网Model.T_Function">
+              <MappingFragment StoreEntitySet="T_Function">
+                <ScalarProperty Name="F_IsOpen" ColumnName="F_IsOpen" />
+                <ScalarProperty Name="F_FatherId" ColumnName="F_FatherId" />
+                <ScalarProperty Name="F_Function" ColumnName="F_Function" />
+                <ScalarProperty Name="F_SubId" ColumnName="F_SubId" />
+                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ManOperLog">
+            <EntityTypeMapping TypeName="剧享网Model.T_ManOperLog">
+              <MappingFragment StoreEntitySet="T_ManOperLog">
+                <ScalarProperty Name="M_QuitTime" ColumnName="M_QuitTime" />
+                <ScalarProperty Name="M_EnterTime" ColumnName="M_EnterTime" />
+                <ScalarProperty Name="M_OperContent" ColumnName="M_OperContent" />
+                <ScalarProperty Name="M_OperObject" ColumnName="M_OperObject" />
+                <ScalarProperty Name="M_OperFunc" ColumnName="M_OperFunc" />
+                <ScalarProperty Name="U_UserName" ColumnName="U_UserName" />
+                <ScalarProperty Name="M_Id" ColumnName="M_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_NotifyInfoRecord">
+            <EntityTypeMapping TypeName="剧享网Model.T_NotifyInfoRecord">
+              <MappingFragment StoreEntitySet="T_NotifyInfoRecord">
+                <ScalarProperty Name="N_Time" ColumnName="N_Time" />
+                <ScalarProperty Name="N_Content" ColumnName="N_Content" />
+                <ScalarProperty Name="U_UserName" ColumnName="U_UserName" />
+                <ScalarProperty Name="N_Id" ColumnName="N_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_AgreeDisagree">
+            <EntityTypeMapping TypeName="剧享网Model.T_AgreeDisagree">
+              <MappingFragment StoreEntitySet="T_AgreeDisagree">
+                <ScalarProperty Name="A_DisAgreeCount" ColumnName="A_DisAgreeCount" />
+                <ScalarProperty Name="A_AgreeCount" ColumnName="A_AgreeCount" />
+                <ScalarProperty Name="A_InfoId" ColumnName="A_InfoId" />
+                <ScalarProperty Name="W_Id" ColumnName="W_Id" />
+                <ScalarProperty Name="U_Id" ColumnName="U_Id" />
+                <ScalarProperty Name="A_Id" ColumnName="A_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_IpReport">
+            <EntityTypeMapping TypeName="剧享网Model.T_IpReport">
+              <MappingFragment StoreEntitySet="T_IpReport">
+                <ScalarProperty Name="I_QuitTime" ColumnName="I_QuitTime" />
+                <ScalarProperty Name="I_EnTime" ColumnName="I_EnTime" />
+                <ScalarProperty Name="C_TypeId" ColumnName="C_TypeId" />
+                <ScalarProperty Name="I_Ipv4" ColumnName="I_Ipv4" />
+                <ScalarProperty Name="I_Id" ColumnName="I_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_Statistical">
+            <EntityTypeMapping TypeName="剧享网Model.V_Statistical">
+              <MappingFragment StoreEntitySet="V_Statistical">
+                <ScalarProperty Name="AccessRate" ColumnName="AccessRate" />
+                <ScalarProperty Name="IndexCount" ColumnName="IndexCount" />
+                <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+                <ScalarProperty Name="V_Id" ColumnName="V_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Comment">
+            <EntityTypeMapping TypeName="剧享网Model.T_Comment">
+              <MappingFragment StoreEntitySet="T_Comment">
+                <ScalarProperty Name="C_CommentTime" ColumnName="C_CommentTime" />
+                <ScalarProperty Name="C_Response" ColumnName="C_Response" />
+                <ScalarProperty Name="C_Info" ColumnName="C_Info" />
+                <ScalarProperty Name="C_InfoId" ColumnName="C_InfoId" />
+                <ScalarProperty Name="C_WorkTime" ColumnName="C_WorkTime" />
+                <ScalarProperty Name="C_WorkName" ColumnName="C_WorkName" />
+                <ScalarProperty Name="W_Id" ColumnName="W_Id" />
+                <ScalarProperty Name="C_UserName" ColumnName="C_UserName" />
+                <ScalarProperty Name="C_Id" ColumnName="C_Id" />
+                <ScalarProperty Name="U_Id" ColumnName="U_Id" />
+                <ScalarProperty Name="U_UserName" ColumnName="U_UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_User">
+            <EntityTypeMapping TypeName="剧享网Model.T_User">
+              <MappingFragment StoreEntitySet="T_User">
+                <ScalarProperty Name="U_RegisterTime" ColumnName="U_RegisterTime" />
+                <ScalarProperty Name="U_SendSpace" ColumnName="U_SendSpace" />
+                <ScalarProperty Name="U_RoleIsOpen" ColumnName="U_RoleIsOpen" />
+                <ScalarProperty Name="U_UserTelNum" ColumnName="U_UserTelNum" />
+                <ScalarProperty Name="U_Email" ColumnName="U_Email" />
+                <ScalarProperty Name="U_UserPassWord" ColumnName="U_UserPassWord" />
+                <ScalarProperty Name="U_UserName" ColumnName="U_UserName" />
+                <ScalarProperty Name="U_HeadImgPath" ColumnName="U_HeadImgPath" />
+                <ScalarProperty Name="R_Id" ColumnName="R_Id" />
+                <ScalarProperty Name="U_Id" ColumnName="U_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_SendWork">
+            <EntityTypeMapping TypeName="剧享网Model.T_SendWork">
+              <MappingFragment StoreEntitySet="T_SendWork">
+                <ScalarProperty Name="S_SendTime" ColumnName="S_SendTime" />
+                <ScalarProperty Name="S_WorkSize" ColumnName="S_WorkSize" />
+                <ScalarProperty Name="S_WorkPath" ColumnName="S_WorkPath" />
+                <ScalarProperty Name="S_WorkName" ColumnName="S_WorkName" />
+                <ScalarProperty Name="S_InfoId" ColumnName="S_InfoId" />
+                <ScalarProperty Name="W_Id" ColumnName="W_Id" />
+                <ScalarProperty Name="U_Id" ColumnName="U_Id" />
+                <ScalarProperty Name="U_UserName" ColumnName="U_UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_FollowUsers">
+            <EntityTypeMapping TypeName="剧享网Model.T_FollowUsers">
+              <MappingFragment StoreEntitySet="T_FollowUsers">
+                <ScalarProperty Name="F_FollowTime" ColumnName="F_FollowTime" />
+                <ScalarProperty Name="F_BeFollowerId" ColumnName="F_BeFollowerId" />
+                <ScalarProperty Name="F_FollowerId" ColumnName="F_FollowerId" />
+                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_NotifyInfo">
+            <EntityTypeMapping TypeName="剧享网Model.T_NotifyInfo">
+              <MappingFragment StoreEntitySet="T_NotifyInfo">
+                <ScalarProperty Name="N_ReadStatus" ColumnName="N_ReadStatus" />
+                <ScalarProperty Name="N_SystemContent" ColumnName="N_SystemContent" />
+                <ScalarProperty Name="N_Time" ColumnName="N_Time" />
+                <ScalarProperty Name="N_WorkName" ColumnName="N_WorkName" />
+                <ScalarProperty Name="W_Id" ColumnName="W_Id" />
+                <ScalarProperty Name="N_ReplyObject" ColumnName="N_ReplyObject" />
+                <ScalarProperty Name="N_ReplyUserName" ColumnName="N_ReplyUserName" />
+                <ScalarProperty Name="N_Id" ColumnName="N_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

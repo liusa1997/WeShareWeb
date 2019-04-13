@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="index,follow" />
+    <meta name="keywords" content="Movie,Cartoon" />
+    <meta name="description" content="剧享网" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Gao_Fu/logincss.css" />
+    <script src="~/Js/login.js"></script>
+    <title>剧享网——登录</title>
+</head>
+<body>
+    <div class="back">
+        <form name="form" enctype="multipart/form-data" method="post" onsubmit="return Login()">
+            <br><br>
+            <div class="wrap_box">
+                <div>
+                    <div class="title">登录</div>
+                    <div class="form_text">
+                        <input name="U_UserName" id="U_UserName" type="text" placeholder="用户名" />
+                    </div>
+                    <div class="form_text">
+                        <input name="U_UserPassWord" id="U_UserPassWord" type="password" placeholder="密码" />
+                    </div>
+                    <div class="form_text">
+                        <input name="U_UserEmail" id="U_UserEmail" type="text" placeholder="qq邮箱" />
+                    </div>
+                    <div class="form_reg_btn">
+                        <span>忘记密码啦？</span>
+                        <a href="@Url.Action("FindPWD","T_User")">找回密码</a>
+                    </div>
+                    <div class="form_btn">
+                        <button type="submit">登录</button>
+                    </div>
+                    <div class="form_reg_btn">
+                        <span>还没有账号？</span>
+                        <a href="@Url.Action("Create","T_User")">马上注册</a>
+                    </div>
+                    <div style="height:50px;"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+

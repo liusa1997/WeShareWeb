@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="index,follow" />
+    <meta name="keywords" content="Movie,Cartoon" />
+    <meta name="description" content="剧享网——电影" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Gao_Fu/changecss.css" />
+    <script>
+        function changePwd() {
+            OldPassWord = document.getElementById('OldPassWord');
+            U_UserPassWord = document.getElementById('U_UserPassWord');
+            passWordAgain = document.getElementById('passWordAgain');
+            U_UserTelNum = document.getElementById('U_UserTelNum');
+            if (OldPassWord.value === "") {
+                alert("请输入旧密码");
+                return false;
+            }
+            else if (U_UserPassWord === "") {
+                alert("请输入新密码");
+                return false;
+            }
+            else if (U_UserPassWord.value.length < 6 || U_UserPassWord.value.length > 20) {
+                alert('密码为6-20位!');
+                return false;
+            }
+            else if (passWordAgain.value === "") {
+                alert("请输入确认密码");
+                return false;
+            }
+            else if (passWordAgain.value !== U_UserPassWord.value) {
+                alert("密码前后不一致，请重新输入");
+                return false;
+            }
+            else if (U_UserTelNum == null || U_UserTelNum=="") {
+                alert("电话号码不能为空");
+                return false;
+            }
+        }
+    </script>
+    <title>剧享网——修改密码</title>
+</head>
+<body>
+    <div class="back">
+        <div class="backimg">
+            <img src="~/ALL_IMAGE/Gao_Fu/changeBack.png" />
+        </div>
+        <form name="form" action="" enctype="multipart/form-data" method="post" onsubmit="return changePWD()">
+            <br><br>
+            <div class="wrap_box">
+                <div>
+                    <div class="title">修改密码</div>
+                    <div class="form_text">
+                        <input name="OldPassWord" id="OldPassWord" type="password" placeholder="输入旧密码">
+                    </div>
+                    <div class="form_text">
+                        <input name="U_UserPassWord" id="U_UserPassWord" type="password" placeholder="设置新密码（6-20位）">
+                    </div>
+                    <div class="form_text">
+                        <input name="passWordAgain" id="passWordAgain" type="password" placeholder="确认新密码">
+                    </div>
+                    <div class="form_text">
+                        <input name="U_UserTelNum" id="U_UserTelNum" type="text" placeholder="输入电话号码">
+                    </div>
+                    <div class="form_btn">
+                        <button type="submit">确认修改</button>
+                    </div>
+                    <div style="height:50px;"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

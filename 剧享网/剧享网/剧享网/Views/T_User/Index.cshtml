@@ -1,0 +1,277 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <title>剧享网</title>
+    <link rel="stylesheet" href="~/Content/YangWanJing/Index-css.css" />
+    <link href="~/Content/Gao_Fu/indexBootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link href="~/Content/Gao_Fu/indexStyle.css" type="text/css" rel="stylesheet" media="all">
+    <script src="~/Js/jquery.min.js"></script>
+    @*定时检查是否有信息通知*@
+    <script>
+        function UseInfoCount() {
+            $.ajax({
+                url: "/NotifyInfo/InfoCount/",
+                method: "post",
+                success: function (count) {
+                    if (count > 0) {
+                        if (document.getElementById("InfoCount") != null) {
+                            document.getElementById("InfoCount").innerHTML = "未读：" + count + "条";
+                        }
+                    }
+                    else {
+                        console.log(count);
+                        console.log("over..");
+                    }
+                },
+                error: function () {
+                    alert("错误");
+                }
+            });
+        }
+        setInterval("UseInfoCount()", 5000);//需要使用线程来！！！！！！
+    </script>
+    <script src="~/Js/WindowLoad.js"></script>
+</head>
+<body>
+
+    <!-- content -->
+    <div class="top-header">
+        <div class="container">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="logo">
+                            <a href="#"><img src="~/ALL_IMAGE/Gao_Fu/logo.png" alt="" /></a>
+                        </div>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            @*<li><a href="#">动漫<span class="sr-only">(current)</span></a></li>
+        <li><a href="#">电影</a></li>
+        <li><a href="#">影剧</a></li>
+        <li><a href="#">杂感</a></li>*@
+                            <li><a href="#">文章区<span class="sr-only">(current)</span></a></li>
+                            <li><a href="#">视频区</a></li>
+                            <li><a href="/SearchInfo/Index/">去搜索</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                @if (Session["UserName"] == null)
+                                {
+                                    <a href="/T_User/Load" class="dropdown-toggle" target="_self"><img src="@ViewBag.MyHeadImg" alt="" />登录</a>
+                                }
+                                else
+                                {
+                                    <form method="post" action="/T_User/LogOut" id="Info">
+                                        <img src="@ViewBag.MyHeadImg" alt="" style="border-radius:70%;height:50px;width:50px;" />
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" target="_blank">@Session["UserName"].ToString()</a>
+                                        <ul class="dropdown-menu">
+                                            @if (Session["Role"].ToString() == "R3")
+                                            {
+                                                <li><a href="/Manager/MainPage">用户管理</a></li>
+                                            }
+                                            <li><a href="/NotifyInfo/NotifyIndex/">我的消息<small id="InfoCount" class="InfoCount" name="InfoCount"></small></a></li>
+                                            <li><a href="/T_User/MyInfo">个人信息</a></li>
+                                            <li><a href="/T_User/MyEassy">我的文章</a></li>
+                                            <li><a href="/T_User/MyVideo">我的视频</a></li>
+                                            <li><a href="/T_User/FollowInfo">关注信息</a></li>
+                                            <li><a href="/T_User/UserCenter">个人主页</a></li>
+                                            <li><button type="submit" style="border:none;background-color:white;color:#91103f;margin:0 0 0 8px;" />退出登录</li>
+                                        </ul>
+                                    </form>
+                                }
+                            </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+    </div>
+    <script src="~/Js/bootstrap.js"></script>
+
+
+
+    <!--banner-->
+    <div class="banner">
+        <div class="container">
+            <script src="~/Scripts/responsiveslides.min.js"></script>
+            <script>
+                $(function () {
+                    $("#slider").responsiveSlides({
+                        auto: true,
+                        nav: true,
+                        speed: 1,
+                        namespace: "callbacks",
+                        pager: true,
+                    });
+                });
+            </script>
+            <div class="slider">
+                <div class="callbacks_container">
+                    <ul class="rslides" id="slider">
+                        <li>
+                            <div class="banner1"></div>
+                        </li>
+                        <li>
+                            <div class="banner2"></div>
+                        </li>
+                        <li>
+                            <div class="banner3"></div>
+                        </li>
+                        <li>
+                            <div class="banner4"></div>
+                        </li>
+                        <li>
+                            <div class="banner5"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!----->
+        </div>
+    </div>
+
+    <!--content-->
+    <div class="content">
+        <div class="container">
+            <div class="content-left">
+                <div class="sec_1">
+                    <div class="sec_1 grids">
+                        <div class="post7">
+                            <img src="~/ALL_IMAGE/Gao_Fu/14.png" class="img-responsive" alt="" />
+                            <h3>马男波杰克</h3>
+                            <small>_</small>
+                            <small>官方</small>
+                            <small>2018/12/16 22:26:50</small>
+                            <a name="/Shared/YangWanJing_bojeck" onclick="IndexEssayGetInfo(this)"><small>进入</small></a>
+                            <p style="font-size: 16px;color: white;"><br><br>这是一篇关于马男波杰克的文章。。。<br><br><br><br></p>
+                        </div>
+                        <script>
+                            function IndexEssayGetInfo(status) {
+                                //获取父节点信息
+                                var fathernode = status.parentElement;
+                                //获取当前的连接路径
+                                var GetPath = status.getAttribute("name");
+                                //获取当前的作者名
+                                var AuthorName = fathernode.children[3].innerHTML; 
+                                //获取当前的作品名
+                                var WorkName = fathernode.children[1].innerHTML;
+                                //获取当前的作品名
+                                var WorkTime = fathernode.children[4].innerHTML;
+                                var W_Id = 1;
+                                console.log(GetPath);
+                                console.log(AuthorName);
+                                console.log(W_Id);
+                                console.log(WorkName);
+                                window.open("" + GetPath + "?AuthorName=" + AuthorName + "&W_Id=" + W_Id + "&WorkName=" + WorkName + "&WorkTime=" + WorkTime+"");
+                            }
+                        </script>
+                        <div class="post2">
+                            <div class="post2-pic">
+                                <img src="~/ALL_IMAGE/Gao_Fu/post2.png" class="img-responsive" alt="" />
+                            </div>
+                            <div class="post2-info">
+                                <div class="post2_text">
+                                    <h3><a href="/Shared/YangWanJing_rickyandmorty">瑞克和莫蒂</a></h3>
+                                    <p style="font-size: 16px;line-height: 20px">该系列追随着疯狂科学家瑞克·桑切斯以及他容易受影响的外孙莫蒂·史密斯的脚步，展现了将他们的国内家庭生活和跨维度冒险的奇幻经历。</p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="sale-box"><span class="on_sale title_shop">NEW POST</span></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="sec_3">
+                    <div class="sec_3 grids">
+                        <div class="post6">
+                            <div class="post6-pic">
+                                <img src="~/ALL_IMAGE/Gao_Fu/16.png" class="img-responsive" alt="">
+                            </div>
+                            <div class="post6-pic-info" style="padding-left: 1em;">
+                                <h3><a href="/Shared/LiuBoWen_dragonball">龙珠</a></h3>
+                                <p style="line-height: 25px;">
+                                    独自住在深山的少年孙悟空，遇上搜集七龙珠的少女科学家布尔玛，
+                                    布尔玛为得到悟空拥有的四星七龙珠而带同悟空踏上找寻七龙珠的旅程。<br><br><br>
+                                </p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="posts-grids">
+                    <h3>排行榜</h3>
+                    <div class="post-grid1">
+                        <div class="post-pic">
+                            <img src="~/ALL_IMAGE/Gao_Fu/long.png" class="img-responsive" alt="" />
+                        </div>
+                        <div class="post-pic-text">
+                            <h5><a href="/Shared/LiuBoWen_dragonball">龙珠！</a></h5>
+                            <p>《龙珠》（DRAGON BALL），是七龙珠系列中的开山之作，根据日本著名漫画家鸟山明的同名漫画改编。</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="post-grid1">
+                        <div class="post-pic">
+                            <img src="~/ALL_IMAGE/Gao_Fu/zhe.png" class="img-responsive" alt="" />
+                        </div>
+                        <div class="post-pic-text">
+                            <h5><a href="/Shared/AnZiXiang_MainPage">哲♂学入门</a></h5>
+                            <p>“浏览这个网页，聆听王の教♂诲”<br>“AS$♂WE♂CAN”</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="post-grid1">
+                        <div class="post-pic">
+                            <img src="~/ALL_IMAGE/Gao_Fu/8.png" class="img-responsive" alt="" />
+                        </div>
+                        <div class="post-pic-text">
+                            <h5><a href="/Shared/YangWanJing_BVS">正义黎明</a></h5>
+                            <p>故事讲述了超人帮助人类解决了很多问题，成为了人类的神，却引起了莱克斯·卢瑟的嫉妒，从而挑拨蝙蝠侠与超人之间战斗的故事。</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="post-grid1">
+                        <div class="post-pic">
+                            <img src="~/ALL_IMAGE/Gao_Fu/ma.png" class="img-responsive" alt="" />
+                        </div>
+                        <div class="post-pic-text">
+                            <h5><a href="/Shared/YangWanJing_bojeck">马男波杰克</a></h5>
+                            <p>剧情讲述了一个被拟人化了的、热爱威士忌的马——波杰克（威尔·阿内奈配音），他的人类搭档陶德（亚伦·保罗配音）应对他个人危机的故事。</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="post-grid1">
+                        <div class="post-pic">
+                            <img src="~/ALL_IMAGE/Gao_Fu/rui.png" class="img-responsive" alt="" />
+                        </div>
+                        <div class="post-pic-text">
+                            <h5><a href="/Shared/YangWanJing_rickyandmorty">瑞克和莫蒂</a></h5>
+                            <p>Rick和Morty是由 Justin Roiland和 Dan Harmon为卡通网络深夜节目ADULT SWIM创作的美国成人动画科幻情景喜剧。</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copywrite">
+            <div class="container">
+                <p> &copy; 2018.剧享网</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

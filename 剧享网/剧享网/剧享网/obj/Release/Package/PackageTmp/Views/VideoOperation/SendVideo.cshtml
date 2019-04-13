@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    @*需要兼容模式才能打开视频*@
+    @*<meta name="renderer" content="ie-comp" />*@
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <title></title>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Js/jQuery.Form.js"></script>
+    <script src="~/plupload/plupload.full.min.js"></script>
+</head>
+<body>
+    <form id="submitvideoinfo" enctype="multipart/form-data" method="post" >
+        <div>
+            <input type="text" placeholder="视频名" name="VideoName" id="VideoName" style="width:300px;" />
+        </div>
+        <div>
+            <textarea id="VideoIntroduction" placeholder="给您的视频一个简单的介绍吧" name="VideoIntroduction" style="width:300px;height:30px;"></textarea>
+        </div>
+        <div>
+            <div id="MyVideoDisplay">
+                <label>选择你的视频：</label>
+                <input id="PreVideo" type="file" name="video"  />
+            </div>
+            <div id="MyVideoImg">
+                <label>为视频选上封面：</label><input type="file" name="img" onchange="showPreImg(this)" />
+                <img id="PreImg" style="width:238px;height:134px;"/>
+                <script>
+                    function showPreImg(values) {
+                        var fileImg = values.files[0];
+                        var Reg = /^image/;
+                        var reader = null;
+                        if (!Reg.test(fileImg.type)) {
+                            alert("请选择图片类型");
+                            return false;
+                        }
+                        if (window.FileReader) {
+                            reader = new FileReader();
+                        }
+                        else {
+                            alert("浏览器版本过低，请升级或更换浏览器");
+                            return false;
+                        }
+                        reader.onload = function () {
+                            $("#PreImg").attr("src", this.result);
+                        }
+                        reader.readAsDataURL(fileImg);
+                    }
+                </script>
+            </div>
+        </div>
+        <button id="SendVideo">发布</button>
+        <script>
+            $(function () {
+                $("#SendVideo").click(function () {
+                    if (document.getElementById("VideoName").value == "" || document.getElementById("VideoName").value == null || document.getElementById("VideoIntroduction").value == "" || document.getElementById("VideoIntroduction").value == null) {
+                        alert("视频名、视频介绍不能为空");
+                        return false;
+                    }
+                    if (document.getElementById("PreVideo").value == "") {
+                        alert("你还未选择上传的视频呢~");
+                        return false;
+                    }
+                    if (document.getElementById("PreImg").src == "") {
+                        alert("为你的视频选出最合心意的封面吧！");
+                        return false;
+                    }
+                    var OperationAjaxForm = {
+                        success: function (data) {
+                            if (data == "30M") {
+                                alert("上传的视频及图片总大小请勿超过30M");
+                            }
+                            else if (data == "Close") {
+                                alert("该功能被禁用，无法发送文章");
+                            }
+                            else if (data == "Fail") {
+                                alert("空间不足，发送失败");
+                            }
+                            else if (data == "OK") {
+                                window.location.href = "/T_User/MyVideo/";
+                            }
+                        },
+                        error: function () {
+                            alert("上传失败");
+                        }
+                    }
+                    $("#submitvideoinfo").ajaxForm(OperationAjaxForm);
+                })
+            });
+        </script>
+    </form>
+</body>
+</html>

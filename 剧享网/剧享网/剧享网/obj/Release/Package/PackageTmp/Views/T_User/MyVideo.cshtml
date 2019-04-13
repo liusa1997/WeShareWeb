@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>剧享网——用户个人中心</title>
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="~/Content/Gao_Fu/animate.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="~/Content/Gao_Fu/bootstrap.css">
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="~/Content/Gao_Fu/flexslider.css">
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="~/Content/Gao_Fu/style.css">
+
+    <!-- Modernizr JS -->
+    <script src="~/Js/modernizr-2.6.2.min.js"></script>
+
+</head>
+<body>
+    <div id="fh5co-page">
+        <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
+
+            <h1 id="fh5co-logo"><a href="/T_User/UserCenter">剧享网</a></h1>
+            <nav id="fh5co-main-menu" role="navigation">
+                <ul>
+                    <li>
+                        <img class="my_headimg" name="imgs" src="@ViewBag.MyHeadImg" style="border-radius:70%;height:70px;width:70px;" />
+                        <label>@Session["UserName"].ToString()</label>
+                    </li>
+                    <li><a href="/T_User/MyInfo">个人信息</a></li>
+                    <li><a href="/T_User/MyEassy">我的文章</a></li>
+                    <li><a href="/T_User/MyVideo">我的视频</a></li>
+                    <li><a href="">关注信息</a></li>
+                    <li class="fh5co-active"><a href="/T_User/UserCenter">用户中心</a></li>
+                    <li><a href="/T_User/Index">返回主页</a></li>
+                </ul>
+            </nav>
+            <!--版权声明-->
+            <div class="fh5co-footer">
+                <p><small><span>&copy; 2018 剧享网</span></small></p>
+            </div>
+
+        </aside>
+
+
+        <div id="fh5co-main">
+            <div class="fh5co-narrow-content">
+
+                <!--我的视频-->
+                <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">我的视频</h2>
+                <a href="/VideoOperation/SendVideo/" target="_blank">发布视频</a>
+                <br />
+                <label>你还能使用的空间大小：@ViewBag.VideoSize MB</label>
+                <div class="row row-bottom-padded-md">
+                    @{
+                        if (ViewBag.WorkCount == 0)
+                        {
+                            <p>你暂时没有发不过任何视频哦~</p>
+                        }
+                        else
+                        {
+                            for (int i = 0; i < ViewBag.WorkCount; ++i)
+                            {
+                                for (int j = i; j < (i + 1); ++j)
+                                {
+                                    string ImgPath = ViewBag.ImgPath[j];
+                                    string WorkName = ViewBag.WorkName[j];
+                                    string WorkTime = ViewBag.WorkTime[j];
+                                    string VideoContent = ViewBag.VideoContent[j];
+                                    <div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+                                        <a name="/VideoOperation/OpenVideo/" class="work image-popup" onclick="VideoGetInfo(this)">
+                                            <img src="@ImgPath" class="img-responsive">
+                                            <div class="desc">
+                                                <label id="VideoName">@WorkName</label>
+                                                <label id="Author">@Session["UserName"].ToString()</label>
+                                                <label id="SendTime">@WorkTime</label>
+                                                <p>@VideoContent</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    }
+                                }
+                            }
+                        }
+                    <script>
+                        function VideoGetInfo(values) {
+                            var Author = values.children[1].children[1].innerHTML;
+                            var W_Id = 2;
+                            var WorkName = values.children[1].children[0].innerHTML;
+                            var WorkTime = values.children[1].children[2].innerHTML;
+                            window.open("/VideoOperation/OpenVideo/?AuthorName=" + Author + "&W_Id=" + W_Id + "&WorkName=" + WorkName + "&WorkTime=" + WorkTime + "", "_blank");
+                        }
+                    </script>
+                        @*<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+                <a href="/Shared/YangWanJing_BVS" target="_blank" class="work image-popup" style="background: url(../../ALL_IMAGE/YangWanJing/bvs2.jpg);background-size:100%;background-repeat:no-repeat">
+                    <div class="desc">
+                        <h3>正义黎明</h3>
+                        <span>蝙蝠侠大战超人</span>
+                    </div>
+                </a>
+            </div>*@
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="~/Js/jquery.min.js"></script>
+    <!-- jQuery Easing -->
+    <script src="~/Js/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Js/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="~/Js/jquery.waypoints.min.js"></script>
+    <!-- Flexslider -->
+    <script src="~/Js/jquery.flexslider-min.js"></script>
+
+
+    <!-- MAIN JS -->
+    <script src="~/Js/main.js"></script>
+</body>
+</html>
+

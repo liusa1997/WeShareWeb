@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>剧享网-注册</title>
+    <link rel="stylesheet" href="~/Content/Gao_Fu/registercss.css">
+    <script src="~/Js/register.js"></script>
+</head>
+<body>
+    <div class="back">
+        <br><br>
+        <div class="wrap_box">
+            <div>
+                <div class="title">
+                    注册
+                </div>
+                <div class="form_text">
+                    <input name="U_UserName" id="U_UserName" type="text" placeholder="用户名">
+                </div>
+                <div class="form_text">
+                    <input name="U_UserPassWord" id="U_UserPassWord" type="password" placeholder="密码（至少6位）">
+                </div>
+                <div class="form_text">
+                    <input name="passWordAgain" id="passWordAgain" type="password" placeholder="确认密码">
+                </div>
+                <div class="form_text">
+                    <input name="U_UserEmail" id="U_UserEmail" type="text" placeholder="QQ邮箱">
+                </div>
+                <div style="margin:10px 0 0 29px;">
+                    <input type="button" name="GetCode" id="GetCode" onclick="GetVerificationCode()" value="获取验证码?" />
+                    <input style="width:203.1px;" type="text" id="Verification_Code" name="Verification_Code" placeholder="验证码" />
+                </div>
+                <div class="form_btn">
+                    <button type="button" name="sendForm" id="sendForm" onclick="SubmitInfo(this)">注册</button>
+                </div>
+                <div class="form_reg_btn">
+                    <span>已有帐号？</span><a href="@Url.Action("Load","T_User")">马上登录</a>
+                </div>
+                <div style="height:35px;"></div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script>
+        //全局的时间值
+        var PublicTimeValue = 0;
+        //自动运行的对象变量
+        var WaitCoolTime;
+        //计算冷却时间
+        function Cooling_Time() {
+            PublicTimeValue--;
+            if (PublicTimeValue == 0) {
+                clearInterval(WaitCoolTime);
+            }
+        }
+        //获取验证码
+        function GetVerificationCode() {
+            var U_UserEmail = document.getElementById("U_UserEmail").value;
+            if (U_UserEmail == "") {
+                return alert("请输入邮箱");
+            }
+            if (PublicTimeValue != "0") {
+                return alert("操作太快，请等待" + PublicTimeValue + "秒后在进行操作");
+            }
+            $.ajax({
+                url: "/T_User/GetVerificationCode/",
+                method: "post",
+                data: {
+                    U_UserEmail: U_UserEmail,
+                },
+                success: function (data) {
+                    if (data == "验证码已发送到您的邮箱，请获取填写") {
+                        alert(data);
+                        PublicTimeValue = 60;
+                        //不能加上括号：setInterval(Cooling_Time(), 1000);
+                        WaitCoolTime = setInterval(Cooling_Time, 1000);
+                    }
+                    else {
+                        alert(data);
+                    }
+                },
+                error: function () {
+                    alert("错误");
+                }
+            })
+        }
+        //这里改成一个优先块，注册页面变成子块，优先块里面有HTML进行显示时间变化
+        function timeover(timespan) {
+            console.log("注册成功,页面将在" + timespan + "秒跳转到登录界面");
+            if (timespan == 0) {
+                window.location.href = "/T_User/Load/";
+            }
+            else {
+                timespan--;
+                setTimeout(timeover(timespan), 1000);
+                console.log(timespan);
+            }
+        }  
+        function SubmitInfo(status) {
+            var U_UserName = document.getElementById("U_UserName").value;
+            var U_UserPassWord = document.getElementById("U_UserPassWord").value;
+            var passWordAgain = document.getElementById("passWordAgain").value;
+            var U_UserEmail = document.getElementById("U_UserEmail").value;
+            var Verification_Code = document.getElementById("Verification_Code").value;
+            if (U_UserName == "" || U_UserPassWord == "" || passWordAgain == "" || U_UserEmail == "" || Verification_Code=="") {
+                alert("用户名、密码、确认密码、邮箱、验证码有空，请填写后完成注册");
+                return false;
+            }
+            if (passWordAgain != U_UserPassWord) {
+                return alert("两次密码不一致，请检查后输入");
+            }
+            $.ajax({
+                url: "/T_User/Create/",
+                method: "post",
+                data: {
+                    U_UserName: U_UserName,
+                    U_UserPassWord: U_UserPassWord,
+                    U_UserEmail: U_UserEmail,
+                    Verification_Code: Verification_Code,
+                },
+                success: function (data) {
+                    if (data == "注册成功") {
+                        console.log(data);
+                        timeover(3);
+                    }
+                    else {
+                        alert(data);
+                    }
+                },
+                error: function () {
+                    alert("错误");
+                }
+            })
+        }
+    </script>
+</body>
+</html>

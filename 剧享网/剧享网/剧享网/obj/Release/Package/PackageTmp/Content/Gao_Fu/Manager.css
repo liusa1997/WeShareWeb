@@ -1,0 +1,105 @@
+#header{
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 幼圆;
+    height: 80px;
+    margin-top: 30px;
+}
+
+#Top{
+    margin: 10px 0 20px;
+    font-size: 22px;
+}
+
+#SecondUser{
+    margin: 10px 0 10px 20px;
+    font-size: 20px;
+}
+#SecondManager{
+    margin: 10px 0 10px 20px;
+    font-size: 20px;
+}
+
+a{
+    text-decoration: none;
+}
+a:link{color: black}
+a:visited{color: black}
+a:hover{color: darkgray}
+a:active{color: darkgray}
+
+ul{
+    padding-left: 30px;
+    margin: 10px 0;
+}
+li{
+    list-style: none;
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.nav{
+    width: 13%;
+    height: 400px;
+    float: left;
+    border-right-style: solid;
+    border-right-width: 2px;
+    border-right-color: darkgray;
+
+}
+
+.mainbody{
+    width: 85%;
+    float: right;
+}
+
+
+/*卡片切换*/
+.tab-wrapper{
+    margin: 30px;
+    width: 1000px;
+    height: 300px;
+    float: right;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+.tab-content>div{
+    height: 200px;
+    width: 500px;
+    background-color: #ffffff;
+    box-sizing:border-box;
+    padding: 50px;
+}
+
+.tab-menu li {
+    position:relative;
+    background-color: #ffffff;
+    display: inline-block;
+    padding: 20px 40px;
+    opacity: 0.8;
+    cursor:pointer;
+}
+
+.tab-menu li:hover {
+    color:#464646;
+}
+
+.tab-menu li.active {
+    opacity: 1;
+}
+
+.tab-menu li.active:hover {
+    color:#464646;
+}
+
+.line {
+    position:absolute;
+    width: 0;
+    height: 5px;
+    background-color: #008acd;
+    top: 0;
+    left: 0;
+}

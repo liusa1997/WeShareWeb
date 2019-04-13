@@ -1,0 +1,164 @@
+#header {
+    width: 1300px;
+    float: left;
+    text-align: center;
+    background-color: peru;
+}
+
+#container {
+    width: 1300px;
+    float: left;
+}
+
+#main {
+    width: 1300px;
+    float: left;
+}
+
+.nav {
+    width: 100px;
+    height: 1090px;
+    float: left;
+    border-right: 1px solid rgb(170,170,170);
+    background-color: khaki;
+    margin: 0 0 0 0;
+}
+
+.mainbody {
+    width: 1198px;
+    float: left;
+    /*<!--背景透明--> ;*/
+    background: transparent;
+    /*rgba:背景透明度*/
+    background-color: burlywood;
+    border-right: 1px solid rgb(170,170,170);
+}
+
+#sidebar {
+    width: 150px;
+    float: right;
+    background: wheat;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.CharacterIntroduct {
+    border-left: 12px solid #37ab2f;
+    float: left;
+}
+
+.nav_main {
+    padding: 0;
+    text-align: center;
+}
+
+    .nav_main li {
+        list-style: none;
+        line-height: 30px;
+    }
+
+    .nav_main a {
+        text-decoration: none;
+    }
+
+h1 {
+    margin: 0 0 0 42px;
+}
+
+#七龙珠 {
+    float: left;
+    clear: left;
+    margin: 15px 0 0 0;
+}
+
+.LeftContainer {
+    float: left;
+}
+
+.img_Left {
+    float: left;
+    margin: 20px 0 0 54px;
+}
+
+.LeftName {
+    float: left;
+}
+
+    .LeftName p {
+        margin: 20px 0 2px 30px;
+    }
+
+.LeftDubbing {
+    clear: left;
+    float: left;
+}
+
+    .LeftDubbing a {
+        text-decoration: none;
+        color: cadetblue;
+    }
+
+        .LeftDubbing a:hover {
+            color: blueviolet;
+            text-decoration: underline;
+        }
+
+    .LeftDubbing p {
+        margin: 10px 0 2px 30px;
+    }
+
+.LeftPara {
+    margin: 0 0 2px 30px;
+    float: left;
+    width: 500px;
+}
+
+    .LeftPara p {
+        margin: 10px 0 0 0;
+    }
+
+.RightContainer {
+    float: right;
+    width: 670px;
+}
+
+.img_Right {
+    float: right;
+    margin: 20px 0 0 54px;
+}
+
+.RightName {
+    float: right;
+}
+
+    .RightName p {
+        margin: 20px 0 2px 30px;
+    }
+
+.RightDubbing {
+    clear: right;
+    float: right;
+}
+
+    .RightDubbing a {
+        text-decoration: none;
+        color: cadetblue;
+    }
+
+        .RightDubbing a:hover {
+            color: blueviolet;
+            text-decoration: underline;
+        }
+
+    .RightDubbing p {
+        margin: 10px 0 2px 0;
+    }
+
+.RightPara {
+    margin: 0 30px 2px 0;
+    float: right;
+    width: 460px;
+}
+
+    .RightPara p {
+        margin: 10px 0 0 0;
+    }

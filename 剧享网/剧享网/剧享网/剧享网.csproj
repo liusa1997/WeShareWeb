@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{57EA3D03-8190-4E25-9B47-322CDB607D97}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>剧享网</RootNamespace>
+    <AssemblyName>；0l咯polp哦、；</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.5.1\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.5.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.5.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.5.1\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.5.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.5.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Comment_cs\AgreeDisCount.cs" />
+    <Compile Include="Comment_cs\ChildrenNode.cs" />
+    <Compile Include="Comment_cs\FatherNode.cs" />
+    <Compile Include="Comment_cs\UI.Models.cs" />
+    <Compile Include="Controllers\SearchInfoController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManagerController.cs" />
+    <Compile Include="Controllers\NotifyInfoController.cs" />
+    <Compile Include="Controllers\EassyOperationController.cs" />
+    <Compile Include="Controllers\SharedController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\T_AgreeDisagreeController.cs" />
+    <Compile Include="Controllers\T_UserController.cs" />
+    <Compile Include="Controllers\VideoOperationController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_AgreeDisagree.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_Comment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_FollowUsers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_Function.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_IpReport.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_ManOperLog.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_NotifyInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_NotifyInfoRecord.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_Permission.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_Role.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_SendWork.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_User.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_Statistical.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ALL_IMAGE\AnZiXiang\DDF状态VAN.jpg" />
+    <Content Include="ALL_IMAGE\AnZiXiang\VAN.jpg" />
+    <Content Include="ALL_IMAGE\AnZiXiang\哲学三信.jpg" />
+    <Content Include="ALL_IMAGE\AnZiXiang\哲学符号.jpg" />
+    <Content Include="ALL_IMAGE\AnZiXiang\哲学领导人民.jpg" />
+    <Content Include="ALL_IMAGE\AnZiXiang\新日暮里战队.jpg" />
+    <Content Include="ALL_IMAGE\AnZiXiang\木吉.jpg" />
+    <Content Include="ALL_IMAGE\AnZiXiang\比利.jpg" />
+    <Content Include="ALL_IMAGE\AnZiXiang\蕉男.jpg" />
+    <Content Include="ALL_IMAGE\AnZiXiang\起源.jpg" />
+    <Content Include="ALL_IMAGE\AnZiXiang\金阁.jpg" />
+    <Content Include="ALL_IMAGE\AnZiXiang\银阁.jpg" />
+    <Content Include="ALL_IMAGE\AnZiXiang\镰田吾作.jpg" />
+    <Content Include="ALL_IMAGE\Gao_Fu\14.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\16.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\8.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\arrows.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\BackGroundImg.jpg" />
+    <Content Include="ALL_IMAGE\Gao_Fu\bvs2.jpg" />
+    <Content Include="ALL_IMAGE\Gao_Fu\changeBack.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\chek1.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\DragonBall.gif" />
+    <Content Include="ALL_IMAGE\Gao_Fu\h1.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\left.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\loginBack.jpg" />
+    <Content Include="ALL_IMAGE\Gao_Fu\login_logo.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\logo.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\long.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\ma.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\post2.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\registerBack.jpg" />
+    <Content Include="ALL_IMAGE\Gao_Fu\right.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\rui.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\slid.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\zhe.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\新日暮里战队.jpg" />
+    <Content Include="ALL_IMAGE\Gao_Fu\瑞克和莫蒂.jpg" />
+    <Content Include="ALL_IMAGE\Gao_Fu\马男.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\DragonBall_MainPage\BackGroundImg.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\DragonBall_MainPage\ドラゴンボール.gif" />
+    <Content Include="ALL_IMAGE\LiuBoWen\DragonBall_MainPage\龙珠第一部.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\DragonBall_MainPage\龙珠第三部.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\DragonBall_MainPage\龙珠第二部.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\世界最强的高手_5.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\危险的两人！超战士安眠_13.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\地球争霸超决战_6.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\复活的弗利萨_19.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\复活的融合！！悟空与贝吉塔_15.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\把我的悟饭还来！！卡里克二世_4.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\摩诃不可思议大冒险_3.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\极限之战！！三大超级赛亚人_10.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\激突！！100亿能量战士_9.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\燃烧殆尽吧！！热战·烈战·超激战_11.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\神与神_18.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\神龙的传说_1.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\超战士击破！！胜利非我莫属_14.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\超级赛亚人孙悟空_7.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\超越极限最强对最强_8.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\迈向最强之道_17.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\银河面临危机!!身手不凡的高手_12.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\魔神城里的睡美人_2.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\龙拳爆发！！悟空舍我其谁_16.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\Movies\龙珠超：布罗利_20.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\七龙珠人物\乌龙.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\七龙珠人物\克林.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\七龙珠人物\加林仙人.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\七龙珠人物\占卜婆婆.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\七龙珠人物\天津饭.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\七龙珠人物\孙悟空.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\七龙珠人物\布玛.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\七龙珠人物\普尔.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\七龙珠人物\比克.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\七龙珠人物\比克大魔王.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\七龙珠人物\瑞特.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\七龙珠人物\皮拉夫.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\七龙珠人物\雅木茶.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\七龙珠人物\饺子.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\七龙珠人物\龟仙人.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\反派角色\17号.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\反派角色\一星龙.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\反派角色\六星龙.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\反派角色\布罗利.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\反派角色\库尔德王.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\反派角色\弗利沙.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\反派角色\沙鲁.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\反派角色\达列斯.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\反派角色\魔人布欧.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\龙珠Game\cs七龙珠2.3.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\龙珠Game\龙珠mugen.jpg" />
+    <Content Include="ALL_IMAGE\LiuBoWen\龙珠Game\龙珠超宇宙.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\bat1.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\bat2.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\Bvs.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\bvs1.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\bvs2.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\louise1.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\luther1.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\stewrad1.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\superman1.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\superman2.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\women1.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\ww1.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\人物介绍-beth.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\人物介绍-jerry.png" />
+    <Content Include="ALL_IMAGE\YangWanJing\人物介绍-summer.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\人物介绍-卡洛琳公主.JPEG" />
+    <Content Include="ALL_IMAGE\YangWanJing\人物介绍-戴南阮.JPEG" />
+    <Content Include="ALL_IMAGE\YangWanJing\人物介绍-瑞克.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\人物介绍-花生酱先生.JPEG" />
+    <Content Include="ALL_IMAGE\YangWanJing\人物介绍-莫蒂.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\人物介绍-陶德.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\人物介绍-马男.JPEG" />
+    <Content Include="ALL_IMAGE\YangWanJing\瑞克和莫蒂.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\瑞克和莫蒂1.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\瑞克和莫蒂2.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\瑞克和莫蒂3.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\马男.jpg" />
+    <Content Include="ALL_IMAGE\YangWanJing\马男1.jpg" />
+    <Content Include="Content\AnZiXiang\all.css" />
+    <Content Include="Content\Gao_Fu\animate.css" />
+    <Content Include="Content\Gao_Fu\bootstrap.css" />
+    <Content Include="Content\Gao_Fu\changecss.css" />
+    <Content Include="Content\Gao_Fu\flexslider.css" />
+    <Content Include="Content\Gao_Fu\four.css" />
+    <Content Include="Content\Gao_Fu\icomoon.css" />
+    <Content Include="Content\Gao_Fu\indexBootstrap.css" />
+    <Content Include="Content\Gao_Fu\indexStyle.css" />
+    <Content Include="Content\Gao_Fu\logincss.css" />
+    <Content Include="Content\Gao_Fu\Manager.css" />
+    <Content Include="Content\Gao_Fu\NotifyIndex.css" />
+    <Content Include="Content\Gao_Fu\registercss.css" />
+    <Content Include="Content\Gao_Fu\style.css" />
+    <Content Include="Content\LiuBoWen\CharacterBrief.css" />
+    <Content Include="Content\LiuBoWen\dragonball.css" />
+    <Content Include="Content\LiuBoWen\Iframe.css" />
+    <Content Include="Content\LiuBoWen\Movies.css" />
+    <Content Include="Content\LiuBoWen\NotifyIndex.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\YangWanJing\bojeck.css" />
+    <Content Include="Content\YangWanJing\bvs.css" />
+    <Content Include="Content\YangWanJing\Index-css.css" />
+    <Content Include="Content\YangWanJing\ricky and morty.css" />
+    <Content Include="Error.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="flvplayer.swf" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="head_img\dragonball.jpg" />
+    <Content Include="Js\bootstrap-3.1.1.min.js" />
+    <Content Include="Js\bootstrap.js" />
+    <Content Include="Js\bootstrap.min.js" />
+    <Content Include="Js\CommentaryAgreeorDisagree.js" />
+    <Content Include="Js\EssayAgreeDisagree.js" />
+    <Content Include="Js\FollowAndShowInfo.js" />
+    <Content Include="Js\google_map.js" />
+    <Content Include="Js\Iframe.js" />
+    <Content Include="Js\jquery.easing.1.3.js" />
+    <Content Include="Js\jquery.flexslider-min.js" />
+    <Content Include="Js\jQuery.Form.js" />
+    <Content Include="Js\jquery.min.js" />
+    <Content Include="Js\jquery.waypoints.min.js" />
+    <Content Include="Js\login.js" />
+    <Content Include="Js\main.js" />
+    <Content Include="Js\modernizr-2.6.2.min.js" />
+    <Content Include="Js\Movies.js" />
+    <Content Include="Js\MyEssayGetInfoByImg.js" />
+    <Content Include="Js\MyEssayGetInfoByText.js" />
+    <Content Include="Js\register.js" />
+    <Content Include="Js\respond.min.js" />
+    <Content Include="Js\Response.js" />
+    <Content Include="Js\responsiveslides.min.js" />
+    <Content Include="Js\SelfComment.js" />
+    <Content Include="Js\SubmitComment.js" />
+    <Content Include="Js\VideoAgreeDisagree.js" />
+    <Content Include="Js\WindowLoad.js" />
+    <Content Include="Logo\logo.png" />
+    <Content Include="Logo\动漫.png" />
+    <Content Include="Logo\影视.png" />
+    <Content Include="Logo\杂感.png" />
+    <Content Include="Logo\用户.png" />
+    <Content Include="Logo\电影.png" />
+    <Content Include="Log\2019-01-09.txt" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="MyEassy\SYSTEM_EASSY.txt" />
+    <Content Include="MyVideo\SYSTEM_Video.txt" />
+    <Content Include="plupload\Moxie.swf" />
+    <Content Include="plupload\plupload.full.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Js\.DS_Store" />
+    <Content Include="Content\Gao_Fu\bootstrap.css.map" />
+    <Content Include="Content\Gao_Fu\style.css.map" />
+    <Content Include="plupload\Moxie.xap" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile10.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile11.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile2.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile3.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile4.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile5.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile6.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile7.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile8.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile9.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\responsiveslides.min.js" />
+    <Content Include="Views\VideoOperation\vcastr.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\T_User\Create.cshtml" />
+    <Content Include="Views\T_User\Load.cshtml" />
+    <Content Include="Views\T_User\ChangePWD.cshtml" />
+    <Content Include="Views\T_User\FindPWD.cshtml" />
+    <Content Include="Views\Manager\MainPage.cshtml" />
+    <Content Include="Views\T_User\Index.cshtml" />
+    <Content Include="Views\Shared\AnZiXiang_MainPage.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\YangWanJing_BVS.cshtml" />
+    <Content Include="Views\Shared\LiuBoWen_dragonball.cshtml" />
+    <Content Include="Views\Shared\YangWanJing_bojeck.cshtml" />
+    <Content Include="Views\Shared\YangWanJing_rickyandmorty.cshtml" />
+    <Content Include="Views\Shared\AnZiXiang_HeadPage.cshtml" />
+    <Content Include="Views\Shared\AnZiXiang_Dark.cshtml" />
+    <Content Include="Views\Shared\AnZiXiang_Light.cshtml" />
+    <Content Include="Views\Shared\LiuBoWen_Movies.cshtml" />
+    <Content Include="Views\Shared\LiuBoWen_Iframe.cshtml" />
+    <Content Include="Views\Shared\LiuBoWen_CharacterBrief.cshtml" />
+    <Content Include="Views\NotifyInfo\NotifyIndex.cshtml" />
+    <Content Include="Views\Test\Test.cshtml" />
+    <Content Include="Views\T_User\MyEassy.cshtml" />
+    <Content Include="Views\T_User\MyInfo.cshtml" />
+    <Content Include="Views\T_User\MyVideo.cshtml" />
+    <Content Include="Views\T_User\UserCenter.cshtml" />
+    <Content Include="Views\EassyOperation\SendMyEassy.cshtml" />
+    <Content Include="Views\EassyOperation\OpenMyEassy.cshtml" />
+    <Content Include="Views\VideoOperation\SendVideo.cshtml" />
+    <Content Include="Views\VideoOperation\OpenVideo.cshtml" />
+    <Content Include="Views\SearchInfo\Index.cshtml" />
+    <Content Include="Views\T_User\FollowInfo.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\FollowUsers\" />
+    <Folder Include="Views\Sendlkpo\" />
+    <Folder Include="Views\T_AgreeDisagree\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1028</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1028/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

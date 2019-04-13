@@ -1,0 +1,426 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理页面</title>
+    <link rel="stylesheet" href="~/Content/Gao_Fu/Manager.css" type="text/css" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script>
+        function ShowSecondUser() {
+            if (document.getElementById("SecondUser").style.display == "none") {
+                document.getElementById("SecondUser").style.display = "block";
+            }
+            else {
+                document.getElementById("SecondUser").style.display = "none";
+            }
+        }
+        function ShowThirdNormal() {
+            document.getElementById("NormalUserFunction").style.display = "block";
+            document.getElementById("VIPUserFunction").style.display = "none";
+            document.getElementById("ManagerFunction").style.display = "none";
+        }
+        function ShowThirdVIP() {
+            document.getElementById("VIPUserFunction").style.display = "block";
+            document.getElementById("NormalUserFunction").style.display = "none";
+            document.getElementById("ManagerFunction").style.display = "none";
+        }
+        function ShowSecondManager() {
+            document.getElementById("ManagerFunction").style.display = "block";
+            document.getElementById("NormalUserFunction").style.display = "none";
+            document.getElementById("VIPUserFunction").style.display = "none";
+        }
+    </script>
+    <script>
+        //网页退出，传递退出时间
+        window.onbeforeunload = function (event) {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = (date.getMonth() + 1);
+            var day = date.getDate();
+            var hour = date.getHours();
+            var minute = date.getMinutes()
+            var seconds = date.getSeconds()
+            var quittime = year + "-" + month + "-" + day + ' ' + hour + ':' + minute + ':' + seconds;
+            $.ajax({
+                url: "/Manager/UpdateQuitTime/",
+                type: "post",
+                async: true,
+                contentType: "application/json",//提交的是具体的数据必须json，提交的数据才能被解析
+                data: '{"QuitTime":"' + quittime + '"}',
+            });
+        };
+        //将通知的信息传递调用相应方法
+        function NotifyInfo() {
+            var content = document.getElementById("notifyinfo").value;
+            $.ajax({
+                url: "/Manager/NotifyInfo/",
+                method: "post",
+                data: '{"content":"' + content + '"}',
+                contentType: "application/json",//传具体数据必须要这个不能false
+                success: function (data) {
+                    alert(data);
+                },
+                error: function () {
+                    alert("错误");
+                }
+            });
+        }
+        //查询修改的角色的角色信息
+        function ModifyRole_Select() {
+            var form = new FormData(document.getElementById("form1"));
+            $.ajax({
+                url: "/Manager/ModifyRole_Select/",
+                type: "post",
+                data: form,
+                processData: false,//当提交的是表单（文件）时，必须设置为false，默认为true是无法将data转化成对象的
+                contentType: false,//提交的是表单文件时，必须设置为false，这是编码类型（前台向后台提交的）
+                success: function (data) {
+                    console.log("over..");
+                    console.log(data);
+                    document.getElementById("Role").value = data;
+                },
+                error: function (e) {
+                    alert("错误！！");
+                }
+            });
+        }
+        //修改角色
+        function ModifyRole_updaterole() {
+            var form = new FormData(document.getElementById("form1"));
+            $.ajax({
+                url: "/Manager/ModifyRole_updaterole/",
+                type: "post",
+                data: form,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    console.log("over..");
+                    alert(data);
+                },
+                error: function (e) {
+                    alert("信息错误！！");
+                }
+            });
+        }
+        function SendAjax(status) {
+            //通过属性获取值
+            var value = status.getAttribute("value");
+            $.ajax({
+                url: "/Manager/MainPage/",
+                type: "post",
+                async: true,
+                contentType: "application/json",//必须的
+                data: '{"send":"' + value + '"}',
+                success: function () {
+                    alert("操作成功");
+                },
+                error: function (e) {
+                    alert("错误！！");
+                }
+            });
+        }
+        function CheckAjax(status) {
+            //通过属性获取值
+            var value = status.getAttribute("value");
+            $.ajax({
+                url: "/Manager/MainPage/",
+                type: "post",
+                async: true,
+                contentType: "application/json",//必须的
+                data: '{"check":"' + value + '"}',
+                success: function () {
+                    alert("操作成功");
+                },
+                error: function (e) {
+                    alert("错误！！");
+                }
+            });
+        }
+        function DeleteAjax(status) {
+            //通过属性获取值
+            var value = status.getAttribute("value");
+            $.ajax({
+                url: "/Manager/MainPage/",
+                type: "post",
+                async: true,
+                contentType: "application/json",//必须的
+                data: '{"delete":"' + value + '"}',
+                success: function () {
+                    alert("操作成功");
+                },
+                error: function (e) {
+                    alert("错误！！");
+                }
+            });
+        }
+        function NotifyAjax(status) {
+            //通过属性获取值
+            var value = status.getAttribute("value");
+            $.ajax({
+                url: "/Manager/MainPage/",
+                type: "post",
+                async: true,
+                contentType: "application/json",//必须的
+                data: '{"notify":"' + value + '"}',
+                success: function () {
+                    alert("操作成功");
+                },
+                error: function (e) {
+                    alert("错误！！");
+                }
+            });
+        }
+        function ModifyAjax(status) {
+            //通过属性获取值
+            var value = status.getAttribute("value");
+            $.ajax({
+                url: "/Manager/MainPage/",
+                type: "post",
+                async: true,
+                contentType: "application/json",//必须的
+                data: '{"modify":"' + value + '"}',
+                success: function (data) {
+                    alert("操作成功");
+                },
+                error: function (e) {
+                    alert("错误！！");
+                }
+            });
+        }
+        function ClickAjax(status) {
+            //通过属性获取值
+            var value = status.getAttribute("value");
+            $.ajax({
+                url: "/Manager/MainPage/",
+                type: "post",
+                async: true,
+                contentType: "application/json",//必须的
+                data: '{"click":"' + value + '"}',
+                success: function () {
+                    alert("操作成功");
+                },
+                error: function (e) {
+                    alert("错误！！");
+                }
+            });
+        }
+        //获取统计报表的信息
+        function Statistical() {
+            $.ajax({
+                url: "/Manager/GetStatisticalResult/",
+                type: "post",
+                success: function (List) {
+                    console.log("操作成功");
+                    //返回的是字符串，通过split函数隔开“，”然后取出其值
+                    //可以尝试看看aja返回的数组如何取其值？
+                    document.getElementById("UserCount").innerHTML = List.split(",")[0];
+                    document.getElementById("IndexCount").innerHTML = List.split(",")[1];
+                    document.getElementById("AccessRate").innerHTML = List.split(",")[2];
+                },
+                error: function (e) {
+                    alert("错误！！");
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <form id="form1" onsubmit="return false" action="#" method="post">
+        <div id="header">剧享网</div>
+        <div id="container">
+            <div id="main">
+                <div class="nav">
+                    <div id="Top">
+                        <br>
+                        <a href="javascript:ShowSecondManager();">管理员管理</a>
+                        <br><br><br>
+                        <a href="javascript:ShowSecondUser();">用户管理</a>
+                    </div>
+                    <div id="SecondUser" style="display:none">
+                        <a href="javascript:ShowThirdNormal();">普通用户</a>
+                        <br><br>
+                        <a href="javascript:ShowThirdVIP();">VIP用户</a>
+                        <br>
+                    </div>
+                </div>
+                <div id="NormalUserFunction" class="tab-wrapper1 tab-wrapper" style="display: none">
+                    <ul class="tab-menu1 tab-menu">
+                        <li class="active">发送</li>
+                        <li>点赞</li>
+                    </ul>
+                    <div class="tab-content1 tab-content">
+                        <div>
+                            <input type="button" name="send" value="启用" onclick="SendAjax(this)" />
+                            <input type="button" name="send" value="禁止" onclick="SendAjax(this)" />
+                        </div>
+                        <div>
+                            <input type="button" name="click" value="启用" onclick="ClickAjax(this)" />
+                            <input type="button" name="click" value="禁止" onclick="ClickAjax(this)" />
+                        </div>
+                    </div><!-- //tab-content -->
+                </div><!-- //tab-wrapper -->
+
+
+                <div id="VIPUserFunction" class="tab-wrapper2 tab-wrapper" style="display: none">
+                    <ul class="tab-menu2 tab-menu">
+                        <li class="active">发送</li>
+                        <li>点赞</li>
+                        <li>删除评论</li>
+                    </ul>
+                    <div class="tab-content2 tab-content">
+                        <div>
+                            <input type="button" name="send" value="启用" onclick="SendAjax(this)" />
+                            <input type="button" name="send" value="禁止" onclick="SendAjax(this)" />
+                        </div>
+                        <div>
+                            <input type="button" name="click" value="启用" onclick="ClickAjax(this)" />
+                            <input type="button" name="click" value="禁止" onclick="ClickAjax(this)" />
+                        </div>
+                        <div>
+                            <input type="button" name="delete" value="启用" onclick="DeleteAjax(this)" />
+                            <input type="button" name="delete" value="禁止" onclick="DeleteAjax(this)" />
+                        </div>
+                    </div><!-- //tab-content -->
+                </div><!-- //tab-wrapper -->
+
+
+                <div id="ManagerFunction" class="tab-wrapper3 tab-wrapper" style="display: none; margin-right:100px;">
+                    <ul class="tab-menu3 tab-menu">
+                        <li class="active">发送</li>
+                        <li>审视规范</li>
+                        <li>点赞</li>
+                        <li>删除评论</li>
+                        <li>通知</li>
+                        <li>修改角色</li>
+                        <li>统计</li>
+                    </ul>
+                    <div class="tab-content3 tab-content">
+                        <div>
+                            <input type="button" name="send" value="启用" onclick="SendAjax(this)" />
+                            <input type="button" name="send" value="禁止" onclick="SendAjax(this)" />
+                        </div>
+                        <div>
+                            <input type="button" name="check" value="启用" onclick="CheckAjax(this)" />
+                            <input type="button" name="check" value="禁止" onclick="CheckAjax(this)" />
+                        </div>
+                        <div>
+                            <input type="button" name="click" value="启用" onclick="ClickAjax(this)" />
+                            <input type="button" name="click" value="禁止" onclick="ClickAjax(this)" />
+                        </div>
+                        <div>
+                            <input type="button" name="delete" value="启用" onclick="DeleteAjax(this)" />
+                            <input type="button" name="delete" value="禁止" onclick="DeleteAjax(this)" />
+                        </div>
+                        <div>
+                            <input type="button" name="notify" value="启用" onclick="NotifyAjax(this)" />
+                            <input type="button" name="notify" value="禁止" onclick="NotifyAjax(this)" /><br><br>
+                            <label>通知信息：</label><input type="text" name="notify" id="notifyinfo" />
+                            <input type="button" name="notifyinfo" value="通知" onclick="NotifyInfo(this)" />
+                        </div>
+                        <div>
+                            <input type="button" name="modify" value="启用" onclick="ModifyAjax(this)" />
+                            <input type="button" name="modify" value="禁止" onclick="ModifyAjax(this)" /><br><br>
+                            <label>用户名：</label>@Html.TextBox("UserName")<br><br>
+                            <label>电话号码：</label>@Html.TextBox("TelNum")<br><br>
+                            <input type="button" name="modify" value="查找角色" onclick="ModifyRole_Select(this)" />
+                            <input type="text" name="Role" id="Role" /><br><br><br>
+                            <label><input type="radio" name="OptionRadio" value="Normal" />普通用户</label>
+                            <label><input type="radio" name="OptionRadio" value="VIP" />VIP用户</label>
+                            <label><input type="radio" name="OptionRadio" value="Manager" />管理员</label>
+                            <input type="button" name="updaterole" value="修改角色" onclick="ModifyRole_updaterole(this)" /><br>
+                        </div>
+                        <div>
+                            <input type="button" id="statistical" value="统计" onclick="Statistical(this)" />
+                            <label>用户量：</label><label class="UserCount" id="UserCount"></label>
+                            <label>主页访问量：</label><label class="IndexCount" id="IndexCount"></label>
+                            <label>主页访问率：</label><label class="AccessRate" id="AccessRate"></label>
+                        </div>
+                    </div><!-- //tab-content -->
+                </div><!-- //tab-wrapper -->
+            </div>
+        </div>
+    </form>
+    <!--tab1-->
+    <script>
+        $(document).ready(function () {
+            var $wrapper = $('.tab-wrapper1'),
+                $allTabs = $wrapper.find('.tab-content1 > div'),
+                $tabMenu = $wrapper.find('.tab-menu1 li'),
+                $line = $('<div class="line"></div>').appendTo($tabMenu);
+            $allTabs.not(':first-of-type').hide();
+            $tabMenu.filter(':first-of-type').find(':first').width('100%')
+            $tabMenu.each(function (i) {
+                $(this).attr('data-tab', 'tab' + i);
+            });
+            $allTabs.each(function (i) {
+                $(this).attr('data-tab', 'tab' + i);
+            });
+            $tabMenu.on('click', function () {
+                var dataTab = $(this).data('tab'),
+                    $getWrapper = $(this).closest($wrapper);
+                $getWrapper.find($tabMenu).removeClass('active');
+                $(this).addClass('active');
+                $getWrapper.find('.line').width(0);
+                $(this).find($line).animate({ 'width': '100%' }, 'fast');
+                $getWrapper.find($allTabs).hide();
+                $getWrapper.find($allTabs).filter('[data-tab=' + dataTab + ']').show();
+            });
+        });//end ready
+    </script>
+    <!--tab2-->
+    <script>
+        $(document).ready(function () {
+            var $wrapper = $('.tab-wrapper2'),
+                $allTabs = $wrapper.find('.tab-content2 > div'),
+                $tabMenu = $wrapper.find('.tab-menu2 li'),
+                $line = $('<div class="line"></div>').appendTo($tabMenu);
+            $allTabs.not(':first-of-type').hide();
+            $tabMenu.filter(':first-of-type').find(':first').width('100%')
+            $tabMenu.each(function (i) {
+                $(this).attr('data-tab', 'tab' + i);
+            });
+            $allTabs.each(function (i) {
+                $(this).attr('data-tab', 'tab' + i);
+            });
+            $tabMenu.on('click', function () {
+                var dataTab = $(this).data('tab'),
+                    $getWrapper = $(this).closest($wrapper);
+                $getWrapper.find($tabMenu).removeClass('active');
+                $(this).addClass('active');
+                $getWrapper.find('.line').width(0);
+                $(this).find($line).animate({ 'width': '100%' }, 'fast');
+                $getWrapper.find($allTabs).hide();
+                $getWrapper.find($allTabs).filter('[data-tab=' + dataTab + ']').show();
+            });
+        });//end ready
+    </script>
+    <!--tab3-->
+    <script>
+        $(document).ready(function () {
+            var $wrapper = $('.tab-wrapper3'),
+                $allTabs = $wrapper.find('.tab-content3 > div'),
+                $tabMenu = $wrapper.find('.tab-menu3 li'),
+                $line = $('<div class="line"></div>').appendTo($tabMenu);
+            $allTabs.not(':first-of-type').hide();
+            $tabMenu.filter(':first-of-type').find(':first').width('100%')
+            $tabMenu.each(function (i) {
+                $(this).attr('data-tab', 'tab' + i);
+            });
+            $allTabs.each(function (i) {
+                $(this).attr('data-tab', 'tab' + i);
+            });
+            $tabMenu.on('click', function () {
+                var dataTab = $(this).data('tab'),
+                    $getWrapper = $(this).closest($wrapper);
+                $getWrapper.find($tabMenu).removeClass('active');
+                $(this).addClass('active');
+                $getWrapper.find('.line').width(0);
+                $(this).find($line).animate({ 'width': '100%' }, 'fast');
+                $getWrapper.find($allTabs).hide();
+                $getWrapper.find($allTabs).filter('[data-tab=' + dataTab + ']').show();
+            });
+        });//end ready
+    </script>
+</body>
+</html>
+

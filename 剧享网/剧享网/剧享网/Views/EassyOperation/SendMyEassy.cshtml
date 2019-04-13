@@ -1,0 +1,97 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <title>编辑文章</title>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Js/jQuery.Form.js"></script>
+</head>
+<body>
+    <form id="SendEassyForm" method="post" enctype="multipart/form-data">
+        <div>
+            <input type="text" placeholder="文章名" name="EassyName" id="EassyName" style="width:300px;" />
+        </div>
+        <div>
+            <textarea id="EassyContent" placeholder="文章内容" name="EassyContent" style="width:300px;height:300px;"></textarea>
+        </div>
+        <div id="Append">
+            <input type="file" name="img" onchange="OnLoadImg(this)" />
+        </div>
+        <button id="SendEassy">发布</button>
+        @*<input type="button" id="SendEassy" value="发布" />*@
+    </form>
+    <script type="text/javascript">
+        $(function () {
+            $("#SendEassy").click(function () {
+                console.log(document.getElementById("EassyName").value);
+                console.log(document.getElementById("EassyContent").value);
+                if (document.getElementById("EassyName").value == "" || document.getElementById("EassyName").value == null || document.getElementById("EassyContent").value == "" || document.getElementById("EassyContent").value == null) {
+                    alert("文章名、文章内容不能为空");
+                    return false;
+                }
+                if (document.getElementById("PreImg") == null) {
+                    alert("请选择最适合文章的图片");
+                    return false;
+                }
+                var operation = {
+                    success: function (data) {
+                        if (data == "Close") {
+                            alert("该功能被禁用，无法发送文章");
+                        }
+                        else if (data == "Fail") {
+                            alert("空间不足，发送失败");
+                        }
+                        else if (data=="OK") {
+                            window.location.href = "/T_User/MyEassy/";
+                        }
+                    },
+                    error: function (data) {
+                        alert("错误");
+                    }
+                };
+                $("#SendEassyForm").ajaxForm(operation);
+            });
+        });
+    </script>
+    <script>
+        function OnLoadImg(Info) {
+            var Img = Info.files[0];
+            var Reg = /^image/;
+            var reader = "";
+            if (!Reg.test(Img.type)) {
+                alert("请选择图片");
+                return false;
+            }
+            if (window.FileReader) {
+                reader = new FileReader();
+            }
+            else {
+                alert("当前浏览器不支持所选的图片，请升级或者更换图片");
+                return false;
+            }
+            reader.onload = function () {
+                if (!document.getElementById("PreImg")) {
+                    var img = document.createElement("img");
+                    img.id = "PreImg";
+                    img.name = "imgs";
+                    img.style = "width:238px;height:134px;";
+                    var getDiv = document.getElementById("Append");
+                    getDiv.appendChild(img);
+                }
+                else {
+                    var img = document.getElementById("PreImg");
+                    var getDiv = document.getElementById("Append");
+                    getDiv.removeChild(img);
+                    var img = document.createElement("img");
+                    img.id = "PreImg";
+                    img.style = "width:238px;height:134px;";
+                    var getDiv = document.getElementById("Append");
+                    getDiv.appendChild(img);
+                }
+                var imgdom = document.getElementById("PreImg");
+                imgdom.src = this.result;
+            }
+            reader.readAsDataURL(Img);
+        }
+    </script>
+</body>
+</html>

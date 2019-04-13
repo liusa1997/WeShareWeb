@@ -1,0 +1,395 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <title>剧享网</title>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <div class="WorkInfo">
+        <h1 id="Article">你好</h1>
+        <small id="Author">liu</small>
+        <input type="button" value="赞成" class="WorkAgree" name="agree" onclick="EssayAgreeDisagree(this)" />
+        <label id="agreecount"></label>
+        <input type="button" value="反对" class="WorkDisAgree" name="disagree" onclick="EssayAgreeDisagree(this)" />
+        <label id="disagreecount"></label>
+    </div>
+    <div class="CommnentBlock" id="CommnentBlock">
+        <div class="AutoCreate">
+            @while (true)
+            {
+                try
+                {
+                    //计算父信息的数量
+                    var fathercount = 0;
+                    foreach (var item in (List<String>)ViewBag.FatherList)
+                    {
+                        ++fathercount;
+                    }
+                    //动态给出系统数组大小
+                    string[] fatherArray = new string[fathercount];
+                    int i = 0;
+                    //将视图包里面的数据全部放入系统数组
+                    foreach (var item in (List<String>)ViewBag.FatherList)
+                    {
+                        fatherArray[i] = item;
+                        ++i;
+                    }
+                    //父信息轮询的初始化
+                    int FatherLunXun = -1;
+                    //子信息有多少数量的判断
+                    int SubJudge = 0;
+                    for (i = 0; i < fathercount; ++i)
+                    {
+                        if (i % 9 == 0)
+                        {
+                            //先让轮询++
+                            FatherLunXun++;
+                            <div class="father">
+                                @for (var j = i; j < i + 9; ++j)
+                                {
+                                    if (j % (fathercount + 1) == 9 * FatherLunXun)
+                                    {
+                                        <label>@fatherArray[j]</label>//姓名
+                                    }
+                                    else if (j % (fathercount + 1) == (9 * FatherLunXun + 1))
+                                    {
+                                        <label>@fatherArray[j]</label>//冒号：
+                                    }
+                                    else if (j % (fathercount + 1) == (9 * FatherLunXun + 2))
+                                    {
+                                        <label>@fatherArray[j]</label>//回复的内容
+                                    }
+                                    else if (j % (fathercount + 1) == (9 * FatherLunXun + 3))
+                                    {
+                                        <button onclick="test(this)">@fatherArray[j]</button>//回复
+                                    }
+                                    else if (j % (fathercount + 1) == (9 * FatherLunXun + 4))
+                                    {
+                                        <button name="agree" onclick="CommentaryAgreeorDisagree(this)">@fatherArray[j]</button>//赞
+                                    }
+                                    else if (j % (fathercount + 1) == (9 * FatherLunXun + 5))
+                                    {
+                                        <label>[@fatherArray[j]]</label>//赞数量
+                                    }
+                                    else if (j % (fathercount + 1) == (9 * FatherLunXun + 6))
+                                    {
+                                        <button name="disagree" onclick="CommentaryAgreeorDisagree(this)">@fatherArray[j]</button>//反对
+                                    }
+                                    else if (j % (fathercount + 1) == (9 * FatherLunXun + 7))
+                                    {
+                                        <label>[@fatherArray[j]]</label>//反对数量
+                                        <div style="display:none">
+                                            <input type="text" />
+                                            <input type="button" value="提交" onclick="SubmitComment(this)" />
+                                        </div>
+                                    }
+                                    else if (j % (fathercount + 1) == (9 * FatherLunXun + 8))
+                                    {
+                                        <label class="time">@fatherArray[j]</label>
+                                    }
+                                }
+                                @while (true)
+                                {
+                                    //子信息的数量
+                                    var subcount = 0;
+                                    foreach (var item in (List<String>)ViewBag.SubList)
+                                    {
+                                        ++subcount;
+                                    }
+
+                                    //动态给出系统数组大小
+                                    string[] subArray = new string[subcount];
+                                    int m = 0;
+                                    //将视图包里面的数据全部放入系统数组
+                                    foreach (var item in (List<String>)ViewBag.SubList)
+                                    {
+                                        subArray[m] = item;
+                                        ++m;
+                                    }
+                                    //如果当前父信息没有子信息回复则退出循环
+                                    if (subArray[SubJudge] == "0" && subArray[SubJudge + 1] == fatherArray[i])
+                                    {
+                                        SubJudge = SubJudge + 2;
+                                        break;
+                                    }
+                                    //获取每个对应父信息下的子信息的跨度
+                                    int span = (2 + Convert.ToInt32(subArray[SubJudge]) * 3);
+
+                                    //子信息的轮询初始化
+                                    int SubLunXun = -1;
+                                    //子信息如果有多条数量，则此变量作为索引计数
+                                    int IndexCal = SubJudge;
+                                    for (m = 0; m < Convert.ToInt32(subArray[SubJudge]); ++m)
+                                    {
+                                        //先让轮询数++
+                                        SubLunXun++;
+                                        <p class="sub">
+                                            @for (int n = (IndexCal + 2); n < (5 + IndexCal); n++)
+                                            {
+                                                <label>@subArray[n]</label>//子信息的姓名、冒号、回复的内容
+                                            }
+                                        </p>
+                                        //有多条数量，则在当前+3获取下一条信息的用户名
+                                        IndexCal = IndexCal + 3;
+                                    }
+                                    //SubJudge自加跨度获取下一个父信息的起点索引
+                                    SubJudge = SubJudge + span;
+                                    break;
+                                }
+                            </div>
+                        }
+                    }
+                    break;
+                }
+                catch { break; }
+            }
+        </div>
+        <div class="Comment" id="selfcomment">
+            <textarea class="SelfComment" name="SelfComment" placeholder="说出你的愿望!"></textarea>
+            <input type="submit" value="提交" onclick="SelfComment()" />
+        </div>
+    </div>
+    <script>
+        //AutoCreate(div)前面增加div，增加几个，则fatherdiv1.length！=n+3
+        //AutoCreate(div)后面增加div，增加几个，则i<fatherdiv2.length - n
+        
+        //获取父信息的第一个div
+        var fatherdiv1 = document.getElementsByTagName("div");
+        console.log(fatherdiv1.length);//调试用
+        //赋予父信息的第一个div ID
+        if (fatherdiv1.length != 4) {
+            var fatherdiv1Num = 1;
+            for (var i = 3; i < fatherdiv1.length - 1; i = i + 2) {
+                fatherdiv1[i].id = fatherdiv1Num;
+                fatherdiv1Num = fatherdiv1Num + 3;
+            }
+            //获取父信息的第一个button
+            var fatherbutton = document.getElementsByTagName("button");
+            //赋予父信息的第一个button ID
+            var fatherbuttonNum = 2;
+            for (var i = 0; i < fatherbutton.length; i = i + 3) {
+                fatherbutton[i].id = fatherbuttonNum;
+                fatherbuttonNum = fatherbuttonNum + 3;
+            }
+            //获取父信息的第二个div
+            var fatherdiv2 = document.getElementsByTagName("div");
+            //赋予父信息的第二个div ID
+            var fatherdiv2Num = 3;
+            for (var i = 4.; i < fatherdiv2.length - 1; i = i + 2) {
+                fatherdiv2[i].id = fatherdiv2Num;
+                fatherdiv2Num = fatherdiv2Num + 3;
+            }
+        }
+    </script>
+    <script>
+        function test(status) {
+            var id = status.getAttribute("id");
+            var id1 = parseInt(id) + 1;
+            console.log(id1);
+            document.getElementById(id1).style.display = "block";
+        }
+    </script>
+    <script>
+        function CommentaryAgreeorDisagree(status) {
+            //获取当前的agree还是disagree
+            var judge = status.getAttribute("name");
+            //获取父节点
+            var fatherNode = status.parentElement;
+            //获取父节点的第一个子节点的内容，被点赞的用户名
+            var username = fatherNode.children[0].innerHTML;
+            //获取父节点的第三个子节点的内容，被点赞的用户名回复的内容
+            var commentary = fatherNode.children[2].innerHTML;
+            //获取文章作者
+            var C_UserName = document.getElementById("Author").innerHTML;
+            //此为文章类型（！！！！这需要注意如何在用户生成自己的内容后区别类型！！！！）
+            var W_Id = 1;
+            //获取文章名字
+            var workname = document.getElementById("Article").innerHTML;
+            $.ajax({
+                url: "/T_AgreeDisagree/CommentaryAgreeorDisagree/",
+                type: "post",
+                async: true,
+                contentType: "application/json",//必须的
+                data: '{"judge":"' + judge + '","username":"' + username + '","C_UserName":"' + C_UserName + '","W_Id":"' + W_Id + '","workname":"' + workname + '","commentary":"' + commentary + '"}',
+                success: function (data) {
+                    console.log("over..");
+                    console.log(data);
+                    console.log(data.split(",")[0]);
+                    console.log(data.split(",")[1]);
+                    if (data.split(",")[0] == "agree") {
+                        fatherNode.children[5].innerHTML = "[" + data.split(",")[1] + "]";
+                    }
+                    else {
+                        fatherNode.children[7].innerHTML = "[" + data.split(",")[1] + "]";
+                    }
+                },
+                error: function () {
+                    alert("错误！！");
+                }
+            });
+        }
+        function EssayAgreeDisagree(status) {
+            //作品的名字
+            var WorkName = document.getElementById("Article").innerHTML;
+            //作品的作者名
+            var AuthorName = document.getElementById("Author").innerHTML;
+            //获取agree还是disagree
+            var judge = status.getAttribute("name");
+            //获取父节点信息
+            var fatherNode = status.parentElement;
+            $.ajax({
+                url: "/T_AgreeDisagree/EssayAgreeDisagree/",
+                type: "post",
+                async: true,
+                contentType: "application/json",//必须的
+                data: '{"judge":"' + judge + '","username":"' + AuthorName + '","workname":"' + WorkName + '"}',
+                success: function (data) {
+                    console.log("over..");
+                    console.log(data);
+                    if (data.split(",")[0] == "agree") {
+                        fatherNode.children[3].innerHTML = "[" + data.split(",")[1] + "]";
+                    }
+                    else {
+                        fatherNode.children[5].innerHTML = "[" + data.split(",")[1] + "]";
+                    }
+                },
+                error: function () {
+                    alert("错误！！");
+                }
+            });
+        }
+        function SubmitComment(status) {
+            //获取当前节点的父节点的Id
+            var fatherid = status.parentElement.id;
+            //获取祖父节点的Id
+            var GrandfatherId = parseInt(fatherid) - 2;
+            //祖父的所有信息
+            var GrandfatherNode = document.getElementById(GrandfatherId);
+            //祖父节点的第一个标签内容,被评论的人
+            var BeCommentedUserName = GrandfatherNode.children[0].innerHTML;
+            //父节点的Id转换成整型
+            var FatherId = parseInt(fatherid);
+            //父节点的所有信息
+            var FatherNode = document.getElementById(FatherId);
+            //父节点的第一个标签的文本框值，评论人的评论
+            var ResponseInfo = FatherNode.children[0].value;
+            //祖父节点的第10个标签内容，被评论人的评论时间
+            var BeCommentedInfo = GrandfatherNode.children[2].innerHTML;
+            //祖父节点的第3个标签内容，被评论人的评论内容
+            var Time = GrandfatherNode.children[9].innerHTML;
+            //作品的名字
+            var WorkName = document.getElementById("Article").innerHTML;
+            //作品的类型（！！！！这需要注意如何在用户生成自己的内容后区别类型！！！！）
+            var W_Id = 1;
+            //作品的作者名
+            var AuthorName = document.getElementById("Author").innerHTML;
+            //评论为空则提示
+            if (ResponseInfo == null || ResponseInfo == "") {
+                return alert("评论不能为空");
+            }
+            $.ajax({
+                url: "/Test/SubmitComment/",
+                type: "post",
+                async: true,
+                contentType: "application/json",//必须的
+                data: '{"BeCommentedUserName":"' + BeCommentedUserName + '","BeCommentedInfo":"' + BeCommentedInfo + '","Time":"' + Time + '","AuthorName":"' + AuthorName + '","W_Id":"' + W_Id + '","WorkName":"' + WorkName + '","ResponseInfo":"' + ResponseInfo + '"}',
+                success: function (data) {
+                    //创建p标签
+                    var paragraph = document.createElement("p");
+                    //给标签命名类名
+                    paragraph.className = "sub";
+                    //将返回值赋予给value
+                    var value = data;
+                    //给创建的标签赋予文本内容
+                    var content = document.createTextNode(value);
+                    //将内容追加到p标签的 ，完成赋予
+                    paragraph.appendChild(content);
+                    //祖父节点追加新增的评论内容
+                    GrandfatherNode.appendChild(paragraph);
+                    //父节点回复区隐藏
+                    FatherNode.style.display = "none";
+                    console.log("over..");
+                },
+                error: function () {
+                    alert("错误！！");
+                }
+            });
+        }
+        function SelfComment() {
+            var FatherNode = document.getElementById("selfcomment")
+            //自己的评论内容
+            var Comment = document.getElementById("selfcomment").children[0].value;
+            //作品的名字
+            var WorkName = document.getElementById("Article").innerHTML;
+            //作品的类型（！！！！这需要注意如何在用户生成自己的内容后区别类型！！！！）
+            var W_Id = 1;
+            //作品的作者名
+            var AuthorName = document.getElementById("Author").innerHTML;
+            if (Comment == "") {
+                return alert("评论不能为空");
+            }
+
+            //var GetAllFatherDiv = document.getElementsByClassName("father");
+            //var MaxId=0;
+            //for (var i = 0; i < GetAllFatherDiv.length; ++i) {
+            //    MaxId = GetAllFatherDiv[i].id;
+            //}
+            $.ajax({
+                url: "/Test/SelfComment/",
+                type: "post",
+                async: true,
+                contentType: "application/json",//必须的
+                data: '{"AuthorName":"' + AuthorName + '","W_Id":"' + W_Id + '","WorkName":"' + WorkName + '","Comment":"' + Comment + '"}',
+                success: function (data) {
+                    window.location.reload();
+                    ////评论区块的所有信息
+                    //var GetCommentBlock = document.getElementById("CommentBlock");
+                    ////创建div标签
+                    //var fatherdiv = document.createElement("div");
+                    ////给标签命名类名
+                    //paragraph.className = "father";
+                    ////给当前父节点Id赋值
+                    //paragraph.id = parseInt(MaxId) + 3;
+
+                    //var labelUsername = document.createElement("label");
+                    //var labelColon = document.createElement("label");
+                    //var labelContent = document.createElement("label");
+                    //var buttonResponse = document.createElement("label");
+                    //buttonResponse.className = "Response";
+
+                    //var buttonAgree = document.createElement("label");
+                    //buttonAgree.className = "agree";
+
+                    //var labelAgreeCount = document.createElement("label");
+
+                    //var buttonDisagree = document.createElement("label");
+                    //buttonDisagree.className = "disagree";
+
+                    //var labelDisagreeCount = document.createElement("label");
+
+                    //var subdiv = document.createElement("div");
+                    //var inputtext = document.createElement("input");
+                    //inputtext.type = "text";
+
+                    //var inputbutton = document.createElement("input");
+                    //inputbutton.type = "button";
+                    //inputbutton.className = "Submit";
+                    //inputbutton.value = "提交";
+
+                    ////将返回值赋予给value
+                    //var value = data;
+                    ////给创建的标签赋予文本内容
+                    //var content = document.createTextNode(value);
+                    ////将内容追加到p标签的 ，完成赋予
+                    //paragraph.appendChild(content);
+                    ////评论区块节点追加新增的评论内容
+                    //GetCommentBlock.appendChild(paragraph);
+                },
+                error: function () {
+                    alert("错误！！");
+                }
+            });
+        }
+    </script>
+</body>
+</html>

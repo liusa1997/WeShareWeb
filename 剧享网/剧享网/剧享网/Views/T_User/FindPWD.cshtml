@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="index,follow" />
+    <meta name="keywords" content="Movie,Cartoon" />
+    <meta name="description" content="探索动画之路——电影" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Gao_Fu/registercss.css" />
+    <title>剧享网——找回密码</title>
+</head>
+<body>
+    <div class="back">
+        <form name="form" action="" enctype="multipart/form-data" method="post" onsubmit="return findPWD()">
+            <br><br>
+            <div class="wrap_box">
+                <div>
+                    <div class="title">找回密码</div>
+                    <div class="form_text">
+                        <input name="U_UserName" id="U_UserName" type="text" placeholder="用户名">
+                    </div>
+                    <div class="form_text">
+                        <input name="U_UserTelNum" id="U_UserTelNum" type="text" placeholder="手机号">
+                    </div>
+                    <div class="form_text">
+                        <input name="U_UserPassWord" id="U_UserPassWord" type="password" placeholder="设置新密码（至少6位）">
+                    </div>
+                    <div class="form_text">
+                        <input name="passWordAgain" id="passWordAgain" type="password" placeholder="确认新密码">
+                    </div>
+                    <div class="form_btn">
+                        <button type="submit">确认修改</button>
+                    </div>
+                    <div class="form_reg_btn">
+                        <span>修改成功？</span>
+                        <a href="@Url.Action("Load","T_User")">马上去登录</a>
+                    </div>
+                    <div style="height:50px;"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

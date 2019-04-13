@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="剧享网Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="T_AgreeDisagree">
+    <Key>
+      <PropertyRef Name="A_Id" />
+    </Key>
+    <Property Name="A_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="U_Id" Type="int" Nullable="false" />
+    <Property Name="W_Id" Type="int" Nullable="false" />
+    <Property Name="A_InfoId" Type="int" Nullable="false" />
+    <Property Name="A_AgreeCount" Type="int" Nullable="false" />
+    <Property Name="A_DisAgreeCount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_Comment">
+    <Key>
+      <PropertyRef Name="C_InfoId" />
+    </Key>
+    <Property Name="U_UserName" Type="varchar" MaxLength="255" />
+    <Property Name="U_Id" Type="int" Nullable="false" />
+    <Property Name="C_Id" Type="int" Nullable="false" />
+    <Property Name="C_UserName" Type="varchar" MaxLength="255" />
+    <Property Name="W_Id" Type="int" Nullable="false" />
+    <Property Name="C_WorkName" Type="varchar" MaxLength="255" />
+    <Property Name="C_WorkTime" Type="char" MaxLength="30" />
+    <Property Name="C_InfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="C_Info" Type="varchar" MaxLength="255" />
+    <Property Name="C_Response" Type="int" Nullable="false" />
+    <Property Name="C_CommentTime" Type="char" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="T_FollowUsers">
+    <Key>
+      <PropertyRef Name="F_Id" />
+    </Key>
+    <Property Name="F_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="F_FollowerId" Type="int" Nullable="false" />
+    <Property Name="F_BeFollowerId" Type="int" Nullable="false" />
+    <Property Name="F_FollowTime" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="T_Function">
+    <Key>
+      <PropertyRef Name="F_Id" />
+    </Key>
+    <Property Name="F_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="F_SubId" Type="char" MaxLength="3" />
+    <Property Name="F_Function" Type="char" MaxLength="19" />
+    <Property Name="F_FatherId" Type="char" MaxLength="3" />
+    <Property Name="F_IsOpen" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_IpReport">
+    <Key>
+      <PropertyRef Name="I_Id" />
+    </Key>
+    <Property Name="I_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="I_Ipv4" Type="char" MaxLength="15" />
+    <Property Name="C_TypeId" Type="int" Nullable="false" />
+    <Property Name="I_EnTime" Type="datetime" />
+    <Property Name="I_QuitTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="T_ManOperLog">
+    <Key>
+      <PropertyRef Name="M_Id" />
+    </Key>
+    <Property Name="M_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="U_UserName" Type="varchar" MaxLength="255" />
+    <Property Name="M_OperFunc" Type="char" MaxLength="19" />
+    <Property Name="M_OperObject" Type="varchar" MaxLength="255" />
+    <Property Name="M_OperContent" Type="char" MaxLength="2" />
+    <Property Name="M_EnterTime" Type="datetime" />
+    <Property Name="M_QuitTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="T_NotifyInfo">
+    <Key>
+      <PropertyRef Name="N_Id" />
+    </Key>
+    <Property Name="N_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="N_ReplyUserName" Type="varchar" MaxLength="255" />
+    <Property Name="N_ReplyObject" Type="char" MaxLength="10" />
+    <Property Name="W_Id" Type="int" Nullable="false" />
+    <Property Name="N_WorkName" Type="varchar" MaxLength="255" />
+    <Property Name="N_Time" Type="varchar" MaxLength="30" />
+    <Property Name="N_SystemContent" Type="varchar" MaxLength="255" />
+    <Property Name="N_ReadStatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_NotifyInfoRecord">
+    <Key>
+      <PropertyRef Name="N_Id" />
+    </Key>
+    <Property Name="N_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="U_UserName" Type="varchar" MaxLength="255" />
+    <Property Name="N_Content" Type="varchar" MaxLength="255" />
+    <Property Name="N_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="T_Permission">
+    <Key>
+      <PropertyRef Name="P_Id" />
+    </Key>
+    <Property Name="P_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="R_Id" Type="char" MaxLength="2" />
+    <Property Name="F_SubId" Type="char" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="T_Role">
+    <Key>
+      <PropertyRef Name="R_Id" />
+    </Key>
+    <Property Name="R_Id" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="R_role" Type="char" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="T_SendWork">
+    <Key>
+      <PropertyRef Name="S_InfoId" />
+    </Key>
+    <Property Name="U_UserName" Type="varchar" MaxLength="255" />
+    <Property Name="U_Id" Type="int" Nullable="false" />
+    <Property Name="W_Id" Type="int" Nullable="false" />
+    <Property Name="S_InfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="S_WorkName" Type="varchar" MaxLength="255" />
+    <Property Name="S_WorkPath" Type="varchar" MaxLength="255" />
+    <Property Name="S_WorkSize" Type="int" Nullable="false" />
+    <Property Name="S_SendTime" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="T_User">
+    <Key>
+      <PropertyRef Name="U_Id" />
+    </Key>
+    <Property Name="U_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="R_Id" Type="char" MaxLength="2" />
+    <Property Name="U_HeadImgPath" Type="varchar" MaxLength="300" />
+    <Property Name="U_UserName" Type="varchar" MaxLength="255" />
+    <Property Name="U_UserPassWord" Type="varchar" MaxLength="255" />
+    <Property Name="U_Email" Type="varchar" MaxLength="255" />
+    <Property Name="U_UserTelNum" Type="char" MaxLength="11" />
+    <Property Name="U_RoleIsOpen" Type="int" Nullable="false" />
+    <Property Name="U_SendSpace" Type="int" Nullable="false" />
+    <Property Name="U_RegisterTime" Type="datetime" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“剧享网.dbo.V_Statistical”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="V_Statistical">
+    <Key>
+      <PropertyRef Name="V_Id" />
+    </Key>
+    <Property Name="V_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserCount" Type="int" />
+    <Property Name="IndexCount" Type="int" />
+    <Property Name="AccessRate" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityContainer Name="剧享网ModelStoreContainer">
+    <EntitySet Name="T_AgreeDisagree" EntityType="Self.T_AgreeDisagree" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Comment" EntityType="Self.T_Comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_FollowUsers" EntityType="Self.T_FollowUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Function" EntityType="Self.T_Function" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_IpReport" EntityType="Self.T_IpReport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_ManOperLog" EntityType="Self.T_ManOperLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_NotifyInfo" EntityType="Self.T_NotifyInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_NotifyInfoRecord" EntityType="Self.T_NotifyInfoRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Permission" EntityType="Self.T_Permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Role" EntityType="Self.T_Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_SendWork" EntityType="Self.T_SendWork" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_User" EntityType="Self.T_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="V_Statistical" EntityType="Self.V_Statistical" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_Statistical].[V_Id] AS [V_Id], 
+    [V_Statistical].[UserCount] AS [UserCount], 
+    [V_Statistical].[IndexCount] AS [IndexCount], 
+    [V_Statistical].[AccessRate] AS [AccessRate]
+    FROM [dbo].[V_Statistical] AS [V_Statistical]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

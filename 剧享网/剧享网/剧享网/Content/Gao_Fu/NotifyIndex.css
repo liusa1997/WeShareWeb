@@ -1,0 +1,82 @@
+﻿a:link {
+    color: #ffc600;
+}
+a:visited {
+    color: #ffc600;
+}
+a:hover {
+    color: #ffc600;
+}
+a:visited {
+    color: #ffc600;
+}
+a{
+    text-decoration:none;
+}
+body {
+    background: #2e2e2e;
+    margin:10%;
+    color:#ffc600;
+    font-size:18px;
+    height:700px;
+}
+
+.SysInfo {
+    margin: 0;
+    padding: 0;
+    height:50px;
+    line-height:50px;
+    clear: left;
+    border-bottom:2px solid white;
+}
+li {
+    text-decoration: none;
+    display:inline;
+}
+.sys {
+    float:left;   
+    clear:both;
+}
+.Syscontent {
+    float: left;
+}
+.str1 {
+    float:left;
+}
+.Time1 {
+    float: right;
+}
+
+.ResInfo {
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    line-height:50px;
+    clear: left;
+    border-bottom: 2px solid white;
+}
+p {
+    margin:0;
+}
+.ReplyUserName {
+    float:left;
+    clear:both;
+}
+.str2 {
+    float: left;
+}
+.Rescontent {
+    float: left;
+}
+.WorkType {
+    float: left;
+}
+.Quote {
+    float: left;
+}
+.WorkName {
+    float: left;
+}
+.Time2 {
+    float: right;
+}

@@ -1,0 +1,310 @@
+#header {
+    width: 1300px;
+    float: left;
+    text-align: center;
+}
+
+#container {
+    width: 1300px;
+    float: left;
+}
+
+#main {
+    width: 1100px;
+    float: left;
+}
+
+#nav {
+    width: 100px;
+    height: 970px;
+    float: left;
+    border-right: 1px solid rgb(170,170,170);
+    background-color: rgba(255,255,255,0.75);
+    margin: 0 0 0 0;
+}
+
+.mainbody {
+    width: 960px;
+    float: left;
+    /*<!--背景透明--> ;*/
+    background: transparent;
+    /*rgba:背景透明度*/
+    background-color: rgba(255,255,255,0.75);
+    border-right: 1px solid rgb(170,170,170);
+}
+
+#sidebar {
+    width: 150px;
+    float: right;
+    background: transparent;
+    background-color: rgba(255,255,255,0.5);
+}
+
+#footer {
+}
+
+.nav_main {
+    padding: 0;
+    line-height: 30px;
+}
+
+    .nav_main a {
+        text-decoration: none;
+        color: green;
+    }
+
+        .nav_main a:hover {
+            text-decoration: underline;
+            color: blue;
+        }
+
+h1 {
+    padding: 0 0 0 30px;
+    margin: 0;
+}
+
+.Act_Tool {
+    float: right;
+}
+
+    .Act_Tool p {
+        display: inline;
+        font-size: small;
+        margin: 0 5px 0 0;
+    }
+
+.Seperate {
+    margin: 0 5px 0 5px;
+    color: rgb(170,170,170);
+}
+
+.Act_Tool a {
+    text-decoration: none;
+    color: blueviolet;
+}
+
+    .Act_Tool a:hover {
+        text-decoration: underline;
+    }
+
+.Movie {
+    border-left: 12px solid cornflowerblue;
+    float: left;
+    height: 31px;
+}
+
+.Article {
+    float: left;
+}
+
+    .Article p {
+        text-indent: 2em;
+        margin: 19px 0 0 42px;
+        clear: left;
+        float: left;
+    }
+
+    .Article em {
+        font-weight: bold;
+    }
+
+    .Article a {
+        text-decoration: none;
+        color: blueviolet;
+    }
+
+        .Article a:hover {
+            text-decoration: underline;
+        }
+
+.BlockOne {
+    width: 420px;
+    float: left;
+}
+
+.Introduction {
+    float: left;
+    margin: 0 0 0 42px;
+}
+
+.BlockOne dl,
+.BlockTwo dl {
+    float: left;
+}
+
+.Dt_Name {
+    width: 80px;
+    font-size: 15px;
+    color: #999;
+    float: left;
+    line-height: 30px;
+}
+
+.Dd_Describe {
+    width: 320px;
+    margin: 0;
+    font-style: italic;
+    float: left;
+    line-height: 30px;
+    border-bottom: 1px dashed #999999;
+}
+
+    .Dd_Describe a {
+        text-decoration: none;
+        color: #136ec2;
+    }
+
+        .Dd_Describe a:hover {
+            text-decoration: underline;
+        }
+
+.BlockTwo {
+    width: 420px;
+    margin: 0 0 0 20px;
+    float: left;
+}
+
+.Movie_Info {
+    clear: left;
+    border-left: 12px solid cornflowerblue;
+}
+
+.Name_Situation,
+.Japan_GoldenWeek {
+    margin: 0 0 0 42px;
+}
+
+    .Name_Situation p,
+    .Japan_GoldenWeek p {
+        text-indent: 2em;
+    }
+
+.brief {
+    border-left: 12px solid #37ab2f;
+    float: left;
+    height: 42px;
+}
+
+.t_Paragraph {
+    margin: 10px 0 0 0;
+    float: left;
+}
+
+    .t_Paragraph b {
+        margin: 0 25px 15px 42px;
+        float: left;
+    }
+
+.FirstP {
+    display: inline-block;
+    width: 705px;
+    text-indent: 2em;
+    line-height: 25px;
+    float: right;
+    clear: left;
+    margin: 0 30px 0 20px;
+}
+
+.t_Img {
+    float: left;
+    clear: left;
+    margin: 0 0 0 42px;
+}
+
+.Click_Play {
+    float: right;
+    margin-right: 10px;
+}
+
+.t_Paragraph a {
+    text-decoration: none;
+    color: blueviolet;
+}
+
+    .t_Paragraph a:hover {
+        text-decoration: underline;
+    }
+
+.basic_info {
+    float: left;
+    clear: both;
+}
+
+.left_info {
+    float: left;
+    width: 450px;
+    padding: 0;
+    margin: 8px 0 0 42px;
+    line-height: 25px;
+    clear: left;
+}
+
+    .left_info li {
+        list-style: none;
+        float: left;
+        clear: left;
+        height: 30px;
+        border-bottom: 1px dashed rgb(170,170,170);
+        height: auto;
+    }
+
+    .left_info p {
+        display: inline-block;
+        margin: 0;
+    }
+
+.name {
+    width: 100px;
+}
+
+.value {
+    width: 300px;
+}
+
+.right_info {
+    float: right;
+    width: 450px;
+    padding: 0;
+    margin: 8px 0 0 0;
+    height: 300px;
+    line-height: 25px;
+}
+
+    .right_info p {
+        display: inline-block;
+        margin: 0;
+        float: left;
+    }
+
+    .right_info li {
+        list-style: none;
+        width: 450px;
+        float: right;
+        height: auto;
+        border-bottom: 1px dashed rgb(170,170,170);
+    }
+
+        .right_info li:last-child {
+            list-style: none;
+            width: 450px;
+            float: right;
+            height: auto;
+        }
+
+.basic {
+    float: left;
+    border-left: 12px solid #37ab2f;
+    margin: 25px 0 0 0;
+}
+
+h2 {
+    display: inline-block;
+    float: left;
+    margin: 0 0 0 29px;
+}
+
+.iframe {
+    float: right;
+    width: 200px;
+    height: 330px;
+}

@@ -1,0 +1,57 @@
+﻿.SysInfo {
+    margin: 0;
+    padding: 0;
+    height:30px;
+    clear: left;
+    border-bottom:1px solid rgb(170,170,170);
+}
+li {
+    text-decoration: none;
+    display:inline;
+}
+.sys {
+    float:left;   
+    clear:both;
+}
+.Syscontent {
+    float: left;
+}
+.str1 {
+    float:left;
+}
+.Time1 {
+    float: right;
+}
+
+.ResInfo {
+    margin: 0;
+    padding: 0;
+    height: 30px;
+    clear: left;
+    border-bottom: 1px solid rgb(170,170,170);
+}
+p {
+    margin:0;
+}
+.ReplyUserName {
+    float:left;
+    clear:both;
+}
+.str2 {
+    float: left;
+}
+.Rescontent {
+    float: left;
+}
+.WorkType {
+    float: left;
+}
+.Quote {
+    float: left;
+}
+.WorkName {
+    float: left;
+}
+.Time2 {
+    float: right;
+}

@@ -1,0 +1,239 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>BoJack Horseman</title>
+    <link rel="stylesheet" href="~/Content/YangWanJing/bojeck.css" />
+    <style>
+        .CommentBlock {
+            border-radius: 4px;
+            border: solid #e5e9ef;
+            width: 850px;
+            margin: auto;
+            padding: 15px;
+            overflow-y: scroll;
+            height: 300px;
+        }
+
+        button {
+            cursor: pointer;
+            color: #00a1d6;
+            background: #ffffff;
+            font-size: 12px;
+        }
+
+        .sub {
+            border: 10px solid #ffffff;
+            height: auto;
+            margin: auto;
+            background: #e5e9ef;
+        }
+
+        .Tijiao {
+            width: 70px;
+            height: 64px;
+            position: absolute;
+        }
+
+        .Comment {
+            width: 850px;
+            margin: auto;
+            padding: 15px;
+            height: 300px;
+        }
+
+        #Article {
+        }
+
+        .SelfComment {
+            resize: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <ul>
+            <li><a class="active" href="#home">BoJack Horseman</a></li>
+            <li>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">剧情梗概</a>
+                    <div class="dropdown-content"> </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">人物介绍</a>
+                    <div class="dropdown-content"> <a href="#bat">马男波杰克</a> <a href="#superman">戴南阮</a> <a href="#louise">卡洛琳公主</a> <a href="#ww">花生酱先生</a> <a href="#luther">陶德</a> </div>
+                </div>
+            </li>
+            <li style="margin-left:21em">
+                <div id="WorkInfo">
+                    <a id="Article">马男波杰克</a>
+                    <small id="Author">官方</small>
+                    <small id="SendTime">2018/12/16 22:26:50</small>
+                    <input type="button" value="赞成" class="WorkAgree" name="agree" onclick="EssayAgreeDisagree(this)" />
+                    @foreach (var list in (List<int>)ViewBag.List)
+                    {
+                        <label id="agreecount">[@list]</label>
+                        break;
+                    }
+                    <input type="button" value="反对" class="WorkDisAgree" name="disagree" onclick="EssayAgreeDisagree(this)" />
+                    @while (true)
+                    {
+                        int flag = 0;
+                        foreach (var list in (List<int>)ViewBag.List)
+                        {
+                            if (list == -1)
+                            {
+                                flag = 1;
+                            }
+                            if (flag == 1 && list != -1)
+                            {
+                                <label id="disagreecount">[@list]</label>
+                            }
+                        }
+                        break;
+                    }
+                </div>
+            </li>
+        </ul>
+    </div>
+    <img src="~/ALL_IMAGE/YangWanJing/马男1.jpg" id='superman1' width="1152" height="490">
+    <div class='right'>
+        <div id='r1'>
+            <h3>马男波杰克</h3>
+            <div id='bat'><a href='#'><img src="~/ALL_IMAGE/YangWanJing/人物介绍-马男.JPEG" width='200' alt=''></a></div>
+            <h3>戴南阮</h3>
+            <div id='superman'><a href='#'><img src="~/ALL_IMAGE/YangWanJing/人物介绍-戴南阮.JPEG" width='200' alt=''></a></div>
+            <h3>卡洛琳公主</h3>
+            <div id='louise'><a href='#'><img src='~/ALL_IMAGE/YangWanJing/人物介绍-卡洛琳公主.JPEG' width='200' alt=''></a></div>
+        </div>
+        <div id='r2'>
+            <h3>花生酱先生</h3>
+            <div id='ww'><a href='#'><img src='~/ALL_IMAGE/YangWanJing/人物介绍-花生酱先生.JPEG' width='200' alt=''></a></div>
+            <h3>陶德</h3>
+            <div id='luther'><a href='#'><img src='~/ALL_IMAGE/YangWanJing/人物介绍-陶德.jpg' width='200' alt=''></a></div>
+        </div>
+        <button id="btn1">1</button>
+        <button id="btn2">2</button>
+        <script>
+            document.getElementById("btn1").onclick = function () {
+                //获取两个div
+                var oDiv1 = document.getElementById("r1");
+                var oDiv2 = document.getElementById("r2");
+                oDiv1.style.display = "block";
+                oDiv2.style.display = "none";
+            }
+            document.getElementById("btn2").onclick = function () {
+                //获取两个div
+                var oDiv1 = document.getElementById("r1");
+                var oDiv2 = document.getElementById("r2");
+                oDiv1.style.display = "none";
+                oDiv2.style.display = "block";
+            }
+        </script>
+    </div>
+    <div class="main">
+        <p>
+            我太喜欢《马男波杰克》这部动画了。
+            </br>马男，名Bojack，姓Horseman，不是卷福也不是李咏，而真的是一只马。动画中他是九十年代大热的情景喜剧《胡闹的小马》的主演，跟“某次轰趴结束不知怎么就留在家里”的人类废柴Todd住在年轻时候买下的别墅里。他是一位过气男明星，抽烟酗酒，没有片约，每天坐在别墅里一遍遍看自己主演的电视剧，沉浸在过去的辉煌里；是个五十岁单身老男人，偶尔与前女友兼经纪人Princess Carolyn打打马后炮，甚至会跟剧中曾经扮演自己女儿、堕落的成年童星乱搞……还有，他是个丧比。
+            </br>丧比每天早上醒来都是丧比。片头，那个魔性的音乐一响起，马男就瞪着他那双充满了惊恐惶惑焦虑忧伤的大眼睛，直愣愣的一张马脸竖在镜头前，任由背景日日夜夜场景不断变换——直到，一束明晃晃的阳光刺向他的眼睛，于是他戴上墨镜，躺在自己家游泳池里，一闭眼屏蔽掉这世界——仿佛这样就能躲开所有的不快。 丧比，大丧比。他自私，自恋，自大，自妄；自毁，自欺，自怨，自弃。
+            </br>在B站刷的时候，几乎每集弹幕里都会飘出“人渣”“烂人”“心酸”之类的字眼。对啊，我们实在是很厌恶丧比。可是喜欢这部动画的人都说，总是能在马男身上看到自己的影子。
+            </br>片尾曲唱：“I'm more horse than a man ,or I'm more man than a horse.”
+            </br>编剧实在太讨厌了，把人性的阴暗面放到一匹马身上，然后牵出来指给观众看：喏，你看见没，你和这个丧比都是一个马样儿。
+            </br>我们厌恶马男，就像马男厌恶他自己一样——那个最真实的自我。一个剥离了所有外壳剩下的，那个不可爱甚至很丑陋的“自我”。
+            </br>但是马男自己却不是那么快发现这一点的——起码在遇见Diane之前。他一直活在自我欺骗的“过去”里，最渴望的是“所有人都喜欢我，不想活成一个笑话”。遇到Diane后，他最渴望的变成了“让Diane喜欢我，认可我”。 所以我很想讲讲Diane。
+            </br>Diane是我最喜欢的角色。她是马男的枪手作家，越南裔移民，有一个马男这张马嘴怎么也念不对的姓氏“Nguyen”。清秀安静，有条不紊，戴着眼镜，眉毛总是微蹙——那种有点紧张、纠结，好像总在质疑和否认的状态。
+            </br>动画中给Diane这种人贴了一个简单粗暴的标签：Zoe。这个标签如此粗暴却如此精准，比讨论星座还好用。 谁是Zoe？在动画中，Zoe和Zelda是一部情景喜剧里的双胞胎，Zelda阳光，风趣，性格外向；而Zoe是她的反面，聪明，尖酸，性格内向。
+            </br>不过两者的区别并不只是性格内向外向的区别。还有一点点本质的差别——在我看来，在于他们自身与生活/自我的微妙关系。Zelda们很少为这种关系操心，有些人是浮浅，有些人是单纯，有些人是应付自如；或者说，在他们看来这根本就不成问题。Zoe们，对这种关系常常敏感到像挑出皮肤里的小肉刺那样，挑剔、一丝丝游离和严苛。
+            </br></br>
+            </br>这种“关系”体现在很多事情上，比如社交。
+            </br>马男结识Diane，最初源于被穷困潦倒企鹅出版社编辑（真的是一只穷比企鹅）约稿，要他写一部自传。可是马男重症拖延且只会自我吹嘘，怎么会写书呢。于是企鹅编辑建议，让这个女孩去给马男写书。
+            </br>他们第一次见面是在马男搞的一次轰趴上。Diane明显是wall-flower，端着杯子不知所措。马男来和她搭讪，她说的第一件事就是：“抱歉我在聚会上总会感觉特别别扭。你看那边的人，我怎么就做不到像他们那样玩得开开心心呢？我在高中时候从来没受邀参加过任何聚会...”
+            </br>天哪。我当时看到这儿一拍大腿：Diane，我也是party不耐受型人！走动的人群，浮夸的音乐，扭动的身体，还有眼花缭乱的交际互动，无意义的谈天……在这种不得不强调形式的场域中我很难感受到快乐。别扭，往往来自与人互动时耗费口舌和心力的那种感觉。大概我们同属很难被集体情绪所传染的人吧
+            </br>当然，Zoe与Zelda也并不是那么水火不容、截然对立。两种人可以发生交集，比如爱情。
+            </br>Diane有一个男朋友，是一只金毛狗，叫Mr.Peanutbutter。Diane是typical Zoe，而花生酱先生却是typical Zelda：他热情洋溢，单纯可爱，凡事都很乐观，对朋友忠诚无比。在聚会上，是那种谈笑风生各种招呼朋友的小宇宙中心。是一只好狗狗。
+            </br>但是这样两个人在一起差异是不是太大了？反正有人觉得他们不合适——比如Diane的前男友Wayne。动画里是Buzzfeed记者，算是Diane同行
+            </br>Wayne对Diane说：我觉得你俩不合适。你知道为什么吗？因为你明显是个Zoe，但你总是试图做一个Zelda。 Diane反驳，是呀你很聪明、你很世故，你很酷。但是你太mean了。花生酱先生很nice，他对我很好！你根本不了解我
+            </br>Wayne说，你可以在这个快乐的Zelda城市过着快乐的Zelda生活并继续装作一个快乐的Zelda。但我了解你，这不是你。人是很难真正改变的。
+            </br>你看，花生酱先生是一个无忧无虑充满爱的Zelda，可是你和我一样，我们嫉世、悲观、刻薄——我们都是Zoe。
+            </br>所以不要把你的阴暗面都深深埋进墨西哥鸡肉卷里，它总有一天会跑出来的。
+            </br></br></br>
+            </br>我们都是Zoe。说的那么真诚，Wayne是真的了解Diane——从本质上了解她的人。
+            </br>没错，Diane的确无法假装成一个Zelda。可是在爱情里，她真的需要这种了解吗？为什么Zoe一定要跟另一个Zoe在一起呢？
+            </br>那句大俗话怎么讲，遇到爱很容易，遇到了解很难。但是Diane真正需要的是爱。
+            </br>为什么这么说呢，还是动画里剖析的直白且深入：看她的原生家庭。
+            </br>动画里Diane离家五年后回到老家，只是因为她老爸死了。而她的兄弟像废人一样等她回来帮忙收尸，她的母亲见了她也只是冷嘲热讽。Diane废了好大心劲儿安排了葬礼，却发现兄弟们把他们的爹剁成了肉酱……
+            </br>Diane瞬间爆炸了。
+            </br>Diane与马男谈心：我到现在还只是希望他们能为我感到骄傲——哪怕只是一丝丝，宽慰
+            </br>马男说，咳，我也来自一个很糟糕的家庭。家庭就像一个下水阀，当你有机会远离他们的时候，请走开。 从动画里很多片段来看，马男和Diane在这一点上十分相似——幼时在家庭中的疏离冷落，以及父母争吵不休的假性亲密关系，无法让他们建立对外界的信任感和安全感。所以他们会对自身产生焦虑，甚至是敌意。在走入依恋的亲密关系中，他们更需要的，是另一方给以的正面反馈和信任支撑，而不仅仅是同情与了解。
+            </br>说白了，Diane需要一个暖男。
+            </br>举个例子。花生酱先生是这样求婚的：“我们有很多不同之处，但是我觉得我们激发了彼此最好的一面。就像你是巧克力，而我是花生酱一样。绝配！”
+            </br>Diane开心地答应了。准备婚礼的时候，Diane会因为一个饼干加热器要不要放在wedding registry上小小地烦躁。花生酱先生这样耐心地安慰她： “嘿亲爱的，请你闭上眼。想象一下，多年以后，在一个寒冷的周日早晨，我给你拿来报纸和拖鞋，而你走到厨房里……你闻到饼干的香味儿了吗？” Diane：“是的。” “如果结婚让你压力很大的话，我们并不一定要结婚的。”花生酱补充到。 看到这里我真是发自内心地喜欢这只金毛狗狗。他这样简单，直接，虽然蠢了点儿，但是他这番话所预留的安全感，正如他描述的饼干加热器一样温暖。
+            </br>而“爱与了解”这个道理反过来，就是马男与Diane的故事了：马男需要的是了解，也遇到了Diane对他的了解，所以他认为自己”爱上“了她。 然而与Diane在一起时的那个马男，始终是一个索取者。他没有、也无法给予Diane像花生酱先生给出的爱，而只能是一味在表白中强调，“遇到一个了解你的人真的很难。我知道我自己不完美，但是，我与你在一起的时候，我不那么讨厌自己了。” 所以，当马男因为Diane与花生酱先生订婚而喝了烂醉耍疯的时候，他的前女友经纪人Princess Carolyn说，”你并不是爱上了Diane，你这么想只是因为你雇她来听你讲了自己的故事。“ 所以，马男一次次试图阻挡花生酱先生和Diane订婚的计划失败后，在飞大了梦到现实的反面、发现自己根本就是个丧比之后，他终于走到Diane面前，说到： ”难道我注定就是这样的人？我需要你告诉我，我是一个好人。“ 五十岁的马男眼里写满了孩子一样的忧伤。他从梦里醒来，向了解他的那个人质问：我还有救吗？
+            </br>马男爱上她是以为自己遇到了解，但Diane不爱他；Diane爱过一个很了解她的人，Wayne，但是他们在一起不快乐。Diane与金毛在一起很快乐，因为金毛是Zelda，而Zoe，与Zelda在一起能把彼此最好的一面展现出来——我觉得Zoe与Zelda在一起时，也像马男遇到Diane一样不那么讨厌自己了。
+            </br>
+            </br>最让我感动的，是Diane与花生酱先生结婚时她由衷地说出的那番话： ”我从没想过我会结婚。把自己的余生都交给另一个人，真的很奇怪。你怎么知道将来会如何呢？但是我又意识到，有不确定的因素没关系。有时候，人只是需要点儿信心而已。花生酱先生，我想跟你一起拥有这份信心。“ 看，多好的一个词，信心。在”跳入未知“的时候，你与对方能共同拾获这份幸运的承诺，作为对未来的抵押迎接丧失的可能性——这个时候，自我也在稳定的体验中完善起来了。 希望天下所有的Zoe都能遇到这样一个Zelda。也希望，天下所有的丧比最终都能拥有一份信心。
+        </p>
+    </div>
+    <div id="footer">
+        <p class="legal"><small>&copy; https://movie.douban.com/review/7590501/</small></p>
+    </div>
+
+    <div>
+        <h4>評論区</h4>
+        <div class="CommentBlock">
+            @foreach (var fatherinfo in (List<剧享网.Models.T_Comment>)ViewBag.FatherNode)
+            {
+                int U_Id = fatherinfo.U_Id;
+                int C_Id = fatherinfo.C_Id;
+                int C_InfoId = fatherinfo.C_InfoId;
+                <div class="father">
+                    <label>@fatherinfo.U_UserName</label>
+                    <label>：</label>
+                    <label>@fatherinfo.C_Info</label>
+                    <button onclick="Response(this)">回复</button>
+                    <div style="display:none">
+                        <input type="text" />
+                        <input type="button" value="提交" onclick="SubmitComment(this)" />
+                    </div>
+                    <label>@fatherinfo.C_CommentTime</label>
+
+                    @{
+                        List<剧享网.Models.T_AgreeDisagree> Count = new 剧享网.Comment_cs.AgreeDisCount().CountInfo(U_Id, C_Id, C_InfoId);
+                        foreach (var countinfo in Count)
+                        {
+                            <button name="agree" onclick="CommentaryAgreeorDisagree(this)">赞成</button>
+                            <label>[@countinfo.A_AgreeCount]</label>
+                            <button name="disagree" onclick="CommentaryAgreeorDisagree(this)">反对</button>
+                            <label>[@countinfo.A_DisAgreeCount]</label>
+                        }
+                    }
+                    @{
+                        List<剧享网.Models.T_Comment> children = new 剧享网.Comment_cs.ChildrenNode().ChildrenInfo(C_InfoId);
+                        foreach (var childreninfo in children)
+                        {
+                            <div class="sub">
+                                <label class="suninfo">@childreninfo.U_UserName：@childreninfo.C_Info</label>
+                            </div>
+                        }
+                    }
+                </div>
+
+            }
+            <div class="Comment" id="selfcomment">
+                <textarea class="SelfComment" name="SelfComment" placeholder="说出你的愿望!"></textarea>
+                <input id="Tijiao" type="submit" value="提交" onclick="SelfComment()" />
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Js/Response.js"></script>
+    <script src="~/Js/SubmitComment.js"></script>
+    <script src="~/Js/CommentaryAgreeorDisagree.js"></script>
+    <script src="~/Js/EssayAgreeDisagree.js"></script>
+    <script src="~/Js/SelfComment.js"></script>
+</body>
+</html>
+

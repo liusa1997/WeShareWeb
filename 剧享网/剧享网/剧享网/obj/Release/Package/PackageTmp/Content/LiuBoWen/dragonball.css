@@ -1,0 +1,731 @@
+body {
+    background: url("../../ALL_IMAGE/LiuBoWen/DragonBall_MainPage/BackGroundImg.jpg") no-repeat;
+    height: 900px;
+    float: left;
+    /*-moz-background-size: 100% 100%;*/
+    background-size: 1370px 900px;
+    margin: 0 8px 8px 8px;
+}
+
+#header {
+    width: 1300px;
+    height: 5%;
+    float: left;
+    text-align: center;
+}
+
+#container {
+    width: 1300px;
+    height: 95%;
+    float: left;
+}
+
+#main {
+    width: 739px;
+    height: 100%;
+    float: left;
+}
+
+.nav {
+    width: 100px;
+    height: 100%;
+    float: left;
+    border-right: 1px solid rgb(170,170,170);
+    background-color: rgba(255,255,255,0.75);
+    margin: 0 30px 0 0;
+}
+
+.mainbody {
+    width: 600px;
+    height: 100%;
+    float: left;
+    /*<!--背景透明--> ;*/
+    background: transparent;
+    /*rgba:背景透明度*/
+    background-color: rgba(255,255,255,0.75);
+    border-right: 1px solid rgb(170,170,170);
+}
+
+#sidebar {
+    width: 560px;
+    height: 100%;
+    float: right;
+    background: transparent;
+    background-color: rgba(255,255,255,0.5);
+}
+
+#footer {
+}
+
+.nav_main {
+    padding: 0 0 0 5px;
+    line-height: 30px;
+    text-decoration: none;
+}
+
+    .nav_main li {
+        list-style: none;
+        color: black;
+    }
+
+    .nav_main a {
+        text-decoration: none;
+        color: black;
+    }
+
+        .nav_main a:hover {
+            color: blue;
+        }
+
+#First, #Second, #Third {
+    height: 190px;
+}
+
+#First_container, #Second_container, #Third_container {
+    height: 875px;
+}
+
+#First_main, #Second_main, #Third_main {
+    height: 167px;
+}
+
+#mainbody_series {
+    height: 45px;
+}
+
+#mainbody_blues {
+    height: 70px;
+}
+
+#mainbody_plot {
+    height: 515px;
+}
+/*********this is the First start**************/
+.First_nav {
+    float: left;
+}
+
+.First_mainbody {
+    float: left;
+}
+
+.First_name_red {
+    display: inline;
+    color: red;
+}
+
+.First_name_black {
+    display: inline;
+    color: blue;
+}
+
+.First_nav {
+    padding: 5px 0 0 0;
+    float: left;
+}
+
+.First_PartOne_over {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    font-size: 13px;
+    padding: 0 0 0 0;
+    margin: 5px 0 0 15px;
+    color: rgb(255,255,255);
+    background-size: 10px;
+    background-color: lightskyblue;
+    float: left;
+}
+
+.First_PartOne_video {
+    display: inline-block;
+    padding: 0 0 0 0;
+    margin: 5px 0 0 5px;
+    font-size: 13px;
+    float: left;
+}
+
+.First_PartTwo_time {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    font-size: 13px;
+    padding: 0 0 0 0;
+    margin: 5px 0 0 15px;
+    float: left;
+    clear: left;
+}
+
+.First_PartTwo_span {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    color: #d8d8d8;
+    margin: 3px 0 0 5px;
+    float: left;
+}
+
+.First_PartTwo_language {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    margin: 5px 0 0 5px;
+    font-size: 13px;
+    float: left;
+}
+
+.First_PartThree_brief {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    font-size: 13px;
+    padding: 0 0 0 0;
+    margin: 3px 0 0 15px;
+    /*position: absolute;/*绝对定位：将标签完全固定到该位置*/
+    float: left;
+    clear: left;
+}
+
+.First_PartThree_contain {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    font-size: 13px;
+    padding: 0 0 0 0;
+    margin: 3px 0 0 0;
+    width: 340px;
+    float: left;
+}
+/***********this is the First End****************/
+
+/***********this is the Second Start**********************/
+.Second_nav {
+    float: left;
+}
+
+.Second_mainbody {
+    float: left;
+}
+
+.Second_name_red {
+    display: inline;
+    color: red;
+}
+
+.Second_name_black {
+    display: inline;
+    color: blue;
+}
+
+.Second_nav {
+    padding: 5px 0 0 0;
+    float: left;
+}
+
+.Second_PartOne_over {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    font-size: 13px;
+    padding: 0 0 0 0;
+    margin: 5px 0 0 15px;
+    color: rgb(255,255,255);
+    background-size: 10px;
+    background-color: lightskyblue;
+    float: left;
+}
+
+.Second_PartOne_video {
+    display: inline-block;
+    padding: 0 0 0 0;
+    margin: 5px 0 0 5px;
+    font-size: 13px;
+    float: left;
+}
+
+.Second_PartTwo_time {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    font-size: 13px;
+    padding: 0 0 0 0;
+    margin: 5px 0 0 15px;
+    float: left;
+    clear: left;
+}
+
+.Second_PartTwo_span {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    color: #d8d8d8;
+    margin: 3px 0 0 5px;
+    float: left;
+}
+
+.Second_PartTwo_language {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    margin: 5px 0 0 5px;
+    font-size: 13px;
+    float: left;
+}
+
+.Second_PartThree_brief {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    font-size: 13px;
+    padding: 0 0 0 0;
+    margin: 3px 0 0 15px;
+    /*position: absolute;/*绝对定位：将标签完全固定到该位置*/
+    float: left;
+    clear: left;
+}
+
+.Second_PartThree_contain {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    font-size: 13px;
+    padding: 0 0 0 0;
+    margin: 3px 0 0 0;
+    width: 340px;
+    float: left;
+}
+/********* this is the Second End*************/
+
+/***********this is the Third Start***********/
+.Third_nav {
+    float: left;
+}
+
+.Third_mainbody {
+    float: left;
+}
+
+.Third_name_red {
+    display: inline;
+    color: red;
+}
+
+.Third_name_black {
+    display: inline;
+    color: blue;
+}
+
+.Third_nav {
+    padding: 5px 0 0 0;
+    float: left;
+}
+
+.Third_PartOne_over {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    font-size: 13px;
+    padding: 0 0 0 0;
+    margin: 5px 0 0 15px;
+    color: rgb(255,255,255);
+    background-size: 10px;
+    background-color: lightskyblue;
+    float: left;
+}
+
+.Third_PartOne_video {
+    display: inline-block;
+    padding: 0 0 0 0;
+    margin: 5px 0 0 5px;
+    font-size: 13px;
+    float: left;
+}
+
+.Third_PartTwo_time {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    font-size: 13px;
+    padding: 0 0 0 0;
+    margin: 5px 0 0 15px;
+    float: left;
+    clear: left;
+}
+
+.Third_PartTwo_span {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    color: #d8d8d8;
+    margin: 3px 0 0 5px;
+    float: left;
+}
+
+.Third_PartTwo_language {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    margin: 5px 0 0 5px;
+    font-size: 13px;
+    float: left;
+}
+
+.Third_PartThree_brief {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    font-size: 13px;
+    padding: 0 0 0 0;
+    margin: 3px 0 0 15px;
+    /*position: absolute;/*绝对定位：将标签完全固定到该位置*/
+    float: left;
+    clear: left;
+}
+
+.Third_PartThree_contain {
+    display: inline-block; /*行和块属性：前者对margin左右调控,后者对magin上下调控*/
+    font-size: 13px;
+    padding: 0 0 0 0;
+    margin: 3px 0 0 0;
+    width: 340px;
+    float: left;
+}
+/***********this is the Third End***********/
+.mainbody_series_PartOne_Three {
+    clear: left;
+    padding: 0;
+    border-bottom: 1px solid rgb(170,170,170);
+}
+
+    .mainbody_series_PartOne_Three li {
+        display: inline-block;
+        text-decoration: none;
+        border: 1px solid rgb(170,170,170);
+    }
+
+    .mainbody_series_PartOne_Three input:hover {
+        color: red;
+    }
+/*************第一部剧集****************/
+.mainbody_blues_PartOne {
+    float: left;
+}
+
+.mainbody_blues_PartOne_1-7 ol {
+    padding: 0;
+    margin: 0;
+}
+
+.mainbody_blues_PartOne_1-7 li {
+    display: inline-block;
+    text-decoration: none;
+    border: 1px solid rgb(170,170,170);
+    margin: 0 6px 0 0;
+}
+/*.PartFive_1-7 a{
+    text-decoration: none;
+    color:blue;
+    font-family: 微软雅黑, sans-serif;
+}*/
+.mainbody_blues_PartOne_1-7 li {
+    height: 20px;
+    width: 50px;
+}
+
+.mainbody_blues_PartOne_1-7 a:link {
+    color: #00FF00;
+    text-decoration: none;
+}
+
+.mainbody_blues_PartOne_1-7 a:visited {
+    color: #FF0000;
+    text-decoration: none;
+}
+
+.mainbody_blues_PartOne_1-7 a:hover {
+    color: #FF00FF;
+    text-decoration: none;
+}
+
+.mainbody_blues_PartOne_1-7 a:active {
+    color: #0000FF;
+    text-decoration: none;
+}
+/*************第二部剧集****************/
+.mainbody_blues_PartTwo_1-7 li {
+    height: 20px;
+    width: 50px;
+}
+
+.mainbody_blues_PartTwo {
+    float: left;
+}
+
+.mainbody_blues_PartTwo_1-7 ol {
+    padding: 0;
+    margin: 0;
+}
+
+.mainbody_blues_PartTwo_1-7 li {
+    display: inline-block;
+    text-decoration: none;
+    border: 1px solid rgb(170,170,170);
+    margin: 0 6px 0 0;
+}
+
+.mainbody_blues_PartTwo_1-7 a:link {
+    color: #FF0000;
+    text-decoration: none;
+}
+
+.mainbody_blues_PartTwo_1-7 a:visited {
+    color: #00FF00;
+    text-decoration: none;
+}
+
+.mainbody_blues_PartTwo_1-7 a:hover {
+    color: #FF00FF;
+    text-decoration: none;
+}
+
+.mainbody_blues_PartTwo_1-7 a:active {
+    color: #0000FF;
+    text-decoration: none;
+}
+/*************第三部剧集****************/
+.mainbody_blues_PartThree_1-7 li {
+    height: 20px;
+    width: 50px;
+}
+
+.mainbody_blues_PartThree {
+    float: left;
+}
+
+.mainbody_blues_PartThree_1-7 ol {
+    padding: 0;
+    margin: 0;
+}
+
+.mainbody_blues_PartThree_1-7 li {
+    display: inline-block;
+    text-decoration: none;
+    border: 1px solid rgb(170,170,170);
+    margin: 0 6px 0 0;
+}
+
+.mainbody_blues_PartThree_1-7 a:link {
+    color: #FF0000;
+    text-decoration: none;
+}
+
+.mainbody_blues_PartThree_1-7 a:visited {
+    color: #00FF00;
+    text-decoration: none;
+}
+
+.mainbody_blues_PartThree_1-7 a:hover {
+    color: #FF00FF;
+    text-decoration: none;
+}
+
+.mainbody_blues_PartThree_1-7 a:active {
+    color: #0000FF;
+    text-decoration: none;
+}
+/*************BOSS***********/
+.Boss {
+    float: left;
+}
+
+    .Boss h3 {
+        margin: 0 0 5px 15px;
+        float: left;
+    }
+
+.Game {
+    clear: left;
+    padding: 20px 0 0 0;
+}
+
+    .Game h3 {
+        margin: 0 0 5px 15px;
+        float: left;
+    }
+
+.row {
+    height: 25px;
+}
+
+    .row a {
+        margin: 0 0 5px 15px;
+        float: right;
+    }
+
+.xiru {
+    margin: 0 0 0 15px;
+    width: 121px;
+    float: left;
+    clear: left;
+}
+
+    .xiru a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: blueviolet;
+    }
+
+    .xiru blockquote {
+        margin: 5px 0 0 0;
+        width: 110px;
+        text-align: center;
+    }
+
+.buou {
+    margin: 0 0 0 20px;
+    float: left;
+}
+
+    .buou a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: blueviolet;
+    }
+
+    .buou blockquote {
+        margin: 5px 0 0 0;
+        width: 110px;
+        text-align: center;
+    }
+
+.furiza {
+    margin: 0 0 0 20px;
+    float: left;
+}
+
+    .furiza a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: blueviolet;
+    }
+
+    .furiza blockquote {
+        margin: 5px 0 0 0;
+        width: 110px;
+        text-align: center;
+    }
+
+.TheFirstDragon {
+    margin: 0 0 0 20px;
+    float: left;
+}
+
+    .TheFirstDragon a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: blueviolet;
+    }
+
+    .TheFirstDragon blockquote {
+        margin: 5px 0 0 0;
+        width: 110px;
+        text-align: center;
+    }
+
+#burori {
+    margin: 0 0 0 15px;
+    float: left;
+    clear: left;
+}
+
+    #burori a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: blueviolet;
+    }
+
+    #burori blockquote {
+        margin: 5px 0 0 0;
+        width: 110px;
+        text-align: center;
+    }
+
+#kuedeon {
+    margin: 0 0 0 20px;
+    float: left;
+}
+
+    #kuedeon a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: blueviolet;
+    }
+
+    #kuedeon blockquote {
+        margin: 5px 0 0 0;
+        width: 110px;
+        text-align: center;
+    }
+
+#dariesi {
+    margin: 0 0 0 20px;
+    float: left;
+}
+
+    #dariesi a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: blueviolet;
+    }
+
+    #dariesi blockquote {
+        margin: 5px 0 0 0;
+        width: 110px;
+        text-align: center;
+    }
+
+#number17 {
+    margin: 0 0 0 20px;
+    float: left;
+}
+
+    #number17 a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: blueviolet;
+    }
+
+    #number17 blockquote {
+        margin: 5px 0 0 0;
+        width: 110px;
+        text-align: center;
+    }
+/**********game********/
+.cs2\.3 {
+    margin: 0 0 0 20px;
+    float: left;
+    clear: left;
+}
+
+    .cs2\.3 a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: blueviolet;
+    }
+
+    .cs2\.3 blockquote {
+        margin: 5px 0 0 0;
+        width: 110px;
+        text-align: center;
+    }
+
+.mugen {
+    margin: 0 0 0 20px;
+    float: left;
+}
+
+    .mugen a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: blueviolet;
+    }
+
+    .mugen blockquote {
+        margin: 5px 0 0 0;
+        width: 110px;
+        text-align: center;
+    }
+
+.super {
+    margin: 0 0 0 20px;
+    float: left;
+}
+
+    .super a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: blueviolet;
+    }
+
+    .super blockquote {
+        margin: 5px 0 0 0;
+        width: 110px;
+        text-align: center;
+    }

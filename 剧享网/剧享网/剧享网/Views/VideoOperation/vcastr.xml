@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<vcastr>
+  <channel>
+    <item>
+      <source>http://vcastr.ruochi.com/video/happy_feet.flv</source>
+      <duration></duration>
+      <title></title>
+    </item>
+    <item>
+      <source>http://vcastr.ruochi.com/video/happy_feet.flv</source>
+      <duration></duration>
+      <title></title>
+    </item>
+    <item>
+      <source>http://vcastr.ruochi.com/video/happy_feet.flv</source>
+      <duration></duration>
+      <title></title>
+    </item>
+  </channel>
+  <config>
+    <buffertime>4</buffertime>
+    <contralpanelalpha>0.75</contralpanelalpha>
+    <controlpanelbgcolor>0xff6600</controlpanelbgcolor>
+    <controlpanelbtncolor>0xffffff</controlpanelbtncolor>
+    <contralpanelbtnglowcolro>0xffff00</contralpanelbtnglowcolro>
+    <controlpanelmode>float</controlpanelmode>
+    <defautvolume>0.8</defautvolume>
+    <isautoplay>true</isautoplay>
+    <isloadbegin>true</isloadbegin>
+    <isshowabout>true</isshowabout>
+    <scalemode>showAll</scalemode>
+  </config>
+  <plugins>
+    <logoplugin>
+      <url>LogoPlugIn.swf</url>
+      <logotext>Ruochi.com</logotext>
+      <logotextalpha>0.75</logotextalpha>
+      <logotextfontsize>24</logotextfontsize>
+      <logotextcolor>0xffffff</logotextcolor>
+      <textmargin>10 auto auto 10</textmargin>
+      <logoclipurl>http://www.ruochigroup.com/images/logo.png</logoclipurl>
+      <logoclipalpha>1</logoclipalpha>
+      <clipmargin>10 10 auto auto</clipmargin>
+    </logoplugin>
+    <beginendimageplugin>
+      <url>beginEndImagePlugIn.swf</url>
+      <source>beginSwfTest.swf</source>
+      <type>begin</type>
+      <scaletype>exactFit</scaletype>
+    </beginendimageplugin>
+    <javascriptplugin>
+      <url>javaScriptPlugIn.swf</url>
+    </javascriptplugin>
+  </plugins>
+</vcastr>
