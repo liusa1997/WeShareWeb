@@ -29,7 +29,7 @@
                 <ul>
                     <li>
                         <img class="my_headimg" name="imgs" src="@ViewBag.MyHeadImg" style="border-radius:70%;height:70px;width:70px;" />
-                        <label>@Session["UserName"].ToString()</label>
+                        <label id="MyName">@Session["UserName"]</label>
                     </li>
                     <li><a href="/T_User/MyInfo">个人信息</a></li>
                     <li><a href="/T_User/MyEassy">我的文章</a></li>
@@ -128,20 +128,40 @@
             $("#btn_show").click(function () {  
                 var options = {
                     success: function (responseText) {
-                        var picPath = responseText.pic;
+                        var picPath = responseText.picpath;
+                        var myname = responseText.myname;
+                        var NotNullValueCount = responseText.NotNullValueCount;
+                        var ExceCount = responseText.ExceCount;
+                        var error = responseText.error;
                         var Result = responseText.result;
                         console.log(picPath);
-                        if (picPath != "" || Result != "") {
-                            $(".my_img").attr("src", picPath).show();
-                            alert("修改成功");
+                        console.log(Result);
+                        console.log(myname);
+                        console.log(NotNullValueCount);
+                        console.log(ExceCount);
+                        console.log(error);
+
+                        if (Result == "OK") {
+                            if (NotNullValueCount == ExceCount && NotNullValueCount != 0) {
+                                if (picPath != "") {
+                                    $(".my_headimg").attr("src", picPath).show();
+                                    console.log(picPath);
+                                }
+                                if (myname != "") {
+                                    document.getElementById("MyName").innerHTML = myname;
+                                }
+                                alert("修改成功");
+                            }
+                            else {
+                                alert("修改失败，修改邮箱之前请确认验证码是否正确、修改的用户名是否一样、信息是否都为空");
+                            }
                         }
                         else {
-                            alert("信息修改无效");
+                            document.getElementById("MyName").innerHTML = myname;
+                            alert("服务器出现异常，信息修改失败");
                         }
                     },
-                    error: function (textStatus, errorThrown) {
-                        console.log(textStatus);
-                        console.log(errorThrown);
+                    error: function () {
                     }
                 };
                 $("#form_upload").ajaxForm(options);

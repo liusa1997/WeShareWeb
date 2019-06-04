@@ -121,6 +121,7 @@
           <Property Name="S_WorkName" Type="varchar" MaxLength="255" />
           <Property Name="S_WorkPath" Type="varchar" MaxLength="255" />
           <Property Name="S_WorkSize" Type="int" Nullable="false" />
+          <Property Name="S_WorkViewCount" Type="int" Nullable="false" />
           <Property Name="S_SendTime" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="T_User">
@@ -207,9 +208,9 @@
           <EntitySet Name="V_Statistical" EntityType="剧享网Model.V_Statistical" />
           <EntitySet Name="T_Comment" EntityType="剧享网Model.T_Comment" />
           <EntitySet Name="T_User" EntityType="剧享网Model.T_User" />
-          <EntitySet Name="T_SendWork" EntityType="剧享网Model.T_SendWork" />
           <EntitySet Name="T_FollowUsers" EntityType="剧享网Model.T_FollowUsers" />
           <EntitySet Name="T_NotifyInfo" EntityType="剧享网Model.T_NotifyInfo" />
+          <EntitySet Name="T_SendWork" EntityType="剧享网Model.T_SendWork" />
         </EntityContainer>
         <EntityType Name="T_Function">
           <Key>
@@ -303,19 +304,6 @@
           <Property Name="U_SendSpace" Type="Int32" Nullable="false" />
           <Property Name="U_RegisterTime" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="T_SendWork">
-          <Key>
-            <PropertyRef Name="S_InfoId" />
-          </Key>
-          <Property Name="U_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="U_Id" Type="Int32" Nullable="false" />
-          <Property Name="W_Id" Type="Int32" Nullable="false" />
-          <Property Name="S_InfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="S_WorkName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="S_WorkPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="S_WorkSize" Type="Int32" Nullable="false" />
-          <Property Name="S_SendTime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="T_FollowUsers">
           <Key>
             <PropertyRef Name="F_Id" />
@@ -337,6 +325,20 @@
           <Property Name="N_Time" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="N_SystemContent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="N_ReadStatus" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_SendWork">
+          <Key>
+            <PropertyRef Name="S_InfoId" />
+          </Key>
+          <Property Name="U_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="U_Id" Type="Int32" Nullable="false" />
+          <Property Name="W_Id" Type="Int32" Nullable="false" />
+          <Property Name="S_InfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="S_WorkName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="S_WorkPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="S_WorkSize" Type="Int32" Nullable="false" />
+          <Property Name="S_WorkViewCount" Type="Int32" Nullable="false" />
+          <Property Name="S_SendTime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -461,20 +463,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="T_SendWork">
-            <EntityTypeMapping TypeName="剧享网Model.T_SendWork">
-              <MappingFragment StoreEntitySet="T_SendWork">
-                <ScalarProperty Name="S_SendTime" ColumnName="S_SendTime" />
-                <ScalarProperty Name="S_WorkSize" ColumnName="S_WorkSize" />
-                <ScalarProperty Name="S_WorkPath" ColumnName="S_WorkPath" />
-                <ScalarProperty Name="S_WorkName" ColumnName="S_WorkName" />
-                <ScalarProperty Name="S_InfoId" ColumnName="S_InfoId" />
-                <ScalarProperty Name="W_Id" ColumnName="W_Id" />
-                <ScalarProperty Name="U_Id" ColumnName="U_Id" />
-                <ScalarProperty Name="U_UserName" ColumnName="U_UserName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="T_FollowUsers">
             <EntityTypeMapping TypeName="剧享网Model.T_FollowUsers">
               <MappingFragment StoreEntitySet="T_FollowUsers">
@@ -496,6 +484,21 @@
                 <ScalarProperty Name="N_ReplyObject" ColumnName="N_ReplyObject" />
                 <ScalarProperty Name="N_ReplyUserName" ColumnName="N_ReplyUserName" />
                 <ScalarProperty Name="N_Id" ColumnName="N_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_SendWork">
+            <EntityTypeMapping TypeName="剧享网Model.T_SendWork">
+              <MappingFragment StoreEntitySet="T_SendWork">
+                <ScalarProperty Name="S_SendTime" ColumnName="S_SendTime" />
+                <ScalarProperty Name="S_WorkViewCount" ColumnName="S_WorkViewCount" />
+                <ScalarProperty Name="S_WorkSize" ColumnName="S_WorkSize" />
+                <ScalarProperty Name="S_WorkPath" ColumnName="S_WorkPath" />
+                <ScalarProperty Name="S_WorkName" ColumnName="S_WorkName" />
+                <ScalarProperty Name="S_InfoId" ColumnName="S_InfoId" />
+                <ScalarProperty Name="W_Id" ColumnName="W_Id" />
+                <ScalarProperty Name="U_Id" ColumnName="U_Id" />
+                <ScalarProperty Name="U_UserName" ColumnName="U_UserName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

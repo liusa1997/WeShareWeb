@@ -52,11 +52,18 @@
         //将通知的信息传递调用相应方法
         function NotifyInfo() {
             var content = document.getElementById("notifyinfo").value;
+            console.log(content);
             $.ajax({
                 url: "/Manager/NotifyInfo/",
                 method: "post",
-                data: '{"content":"' + content + '"}',
-                contentType: "application/json",//传具体数据必须要这个不能false
+                data:
+                {
+                    content: content,
+                    ReplyUserName: "系统公告：",
+                    W_Id: 0,
+                    UserName: null,
+                    WorkName:null
+                },
                 success: function (data) {
                     alert(data);
                 },

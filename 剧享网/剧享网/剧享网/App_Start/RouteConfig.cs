@@ -17,12 +17,13 @@ namespace 剧享网
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                // defaults: new { controller = "Manager", action = "MainPage", id = UrlParameter.Optional }
-               //defaults: new { controller = "NotifyInfo", action = "NotifyIndex", id = UrlParameter.Optional }
+              // defaults: new { controller = "NotifyInfo", action = "NotifyIndex", id = UrlParameter.Optional }
                // defaults: new { controller = "T_User", action = "Create", id = UrlParameter.Optional }
-              // defaults: new { controller = "T_User", action = "Index", id = UrlParameter.Optional }
+               defaults: new { controller = "T_User", action = "Index", id = UrlParameter.Optional }
                // defaults: new { controller = "T_User", action = "contact", id = UrlParameter.Optional }
-            //defaults: new { controller = "Test", action = "Test", id = UrlParameter.Optional }
-            defaults: new { controller = "SearchInfo", action = "Index", id = UrlParameter.Optional }
+               //defaults: new { controller = "Test", action = "Test", id = UrlParameter.Optional }
+               //defaults: new { controller = "SearchInfo", action = "Index", id = UrlParameter.Optional }
+               //defaults: new { controller = "T_User", action = "MyEassy", id = UrlParameter.Optional }
             );
         }
     }

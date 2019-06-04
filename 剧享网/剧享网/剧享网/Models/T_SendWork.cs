@@ -21,6 +21,7 @@ namespace 剧享网.Models
         public string S_WorkName { get; set; }
         public string S_WorkPath { get; set; }
         public int S_WorkSize { get; set; }
+        public int S_WorkViewCount { get; set; }
         public string S_SendTime { get; set; }
     }
 }

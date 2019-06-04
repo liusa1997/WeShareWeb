@@ -16,7 +16,7 @@ namespace 剧享网.Controllers
             {
                 using (剧享网Entities db = new 剧享网Entities())
                 {
-                    //Session["UserName"] = "liu";
+                    //Session["UserName"] = "li";
                     string UserName = Session["UserName"].ToString();
                     //选出系统对自己所有未读通知(包括关注通知)
                     var SelectSystemInfo = from sysinfo in db.T_NotifyInfo where sysinfo.N_ReplyObject == UserName && sysinfo.N_ReadStatus == 0 && sysinfo.W_Id == 0 select sysinfo;

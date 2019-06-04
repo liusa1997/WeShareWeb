@@ -27,7 +27,6 @@
     <EntitySet Name="T_Function" EntityType="剧享网Model.T_Function" />
     <EntitySet Name="T_ManOperLog" EntityType="剧享网Model.T_ManOperLog" />
     <EntitySet Name="T_NotifyInfoRecord" EntityType="剧享网Model.T_NotifyInfoRecord" />
-    <EntitySet Name="T_NotifyInfo" EntityType="剧享网Model.T_NotifyInfo" />
     <EntitySet Name="T_AgreeDisagree" EntityType="剧享网Model.T_AgreeDisagree" />
     <EntitySet Name="T_IpReport" EntityType="剧享网Model.T_IpReport" />
     <EntitySet Name="V_Statistical" EntityType="剧享网Model.V_Statistical" />
@@ -35,6 +34,7 @@
     <EntitySet Name="T_User" EntityType="剧享网Model.T_User" />
     <EntitySet Name="T_SendWork" EntityType="剧享网Model.T_SendWork" />
     <EntitySet Name="T_FollowUsers" EntityType="剧享网Model.T_FollowUsers" />
+    <EntitySet Name="T_NotifyInfo" EntityType="剧享网Model.T_NotifyInfo" />
   </EntityContainer>
   <EntityType Name="T_Function">
     <Key>
@@ -66,19 +66,6 @@
     <Property Name="U_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="N_Content" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="N_Time" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="T_NotifyInfo">
-    <Key>
-      <PropertyRef Name="N_Id" />
-    </Key>
-    <Property Name="N_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="N_ReplyUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="N_ReplyObject" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="W_Id" Type="Int32" Nullable="false" />
-    <Property Name="N_WorkName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="N_Time" Type="DateTime" Precision="3" />
-    <Property Name="N_SystemContent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="N_ReadStatus" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="T_AgreeDisagree">
     <Key>
@@ -162,5 +149,18 @@
     <Property Name="F_FollowerId" Type="Int32" Nullable="false" />
     <Property Name="F_BeFollowerId" Type="Int32" Nullable="false" />
     <Property Name="F_FollowTime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_NotifyInfo">
+    <Key>
+      <PropertyRef Name="N_Id" />
+    </Key>
+    <Property Name="N_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="N_ReplyUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="N_ReplyObject" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="W_Id" Type="Int32" Nullable="false" />
+    <Property Name="N_WorkName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="N_Time" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="N_SystemContent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="N_ReadStatus" Type="Int32" Nullable="false" />
   </EntityType>
 </Schema>

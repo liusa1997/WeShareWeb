@@ -1,7 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    @*<link href="~/Content/LiuBoWen/NotifyIndex.css" type="text/css" rel="stylesheet" />*@
     <link href="~/Content/Gao_Fu/NotifyIndex.css" type="text/css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script>
@@ -30,7 +29,7 @@
     </script>
     @while (true)
     {
-        //获取无数据时的异常处理
+        //显示未读的系统公告信息
         try
         {
             //计数有多少信息
@@ -66,12 +65,13 @@
                                 <li><a class="Syscontent" onclick="LeapAndKillSmall(this)">@SysArray[j]</a></li>
                             }
                         }
-                        <li><button class="DeleteNotifyInfo"onclick="deleteSysnotifyinfo(this)">删除</button></li>
+                        <li class="DeleteNotifyInfo"><button onclick="deleteSysnotifyinfo(this)">删除</button></li>
                     </ul>
                 }
             }
         }
         catch { }
+        //显示未读的动态公告信息
         try
         {
             var rescount = 0;
@@ -91,6 +91,7 @@
                 if (i % 7 == 0)
                 {
                     <ul class="ResInfo">
+                        <!----这里加上NEW类为了不被后面点击文本隐藏掉下面的系统通知字符串-->
                         <li><small class="NEW">[NEW]</small></li>
                         @for (var j = i; j < i + 7; ++j)
                         {
@@ -103,13 +104,14 @@
                                 <li><a class="Rescontent"onclick="LeapAndKillSmall(this)">@ResArray[j]</a></li>
                             }
                         }
-                        <li><button class="DeleteNotifyInfo"onclick="deleteResnotifyinfo(this)">删除</button></li>
+                        <li class="DeleteNotifyInfo"><button onclick="deleteResnotifyinfo(this)">删除</button></li>
                     </ul>
                 }
             }
         }
         catch
         { }
+        //显示已读的系统公告信息
         try
         {
             //计数有多少信息
@@ -145,12 +147,13 @@
                                 <li><a class="SysReadcontent" onclick="LeapAndKillSmall(this)">@SysReadArray[j]</a></li>
                             }
                         }
-                        <li><button class="DeleteNotifyInfo"onclick="deleteSysnotifyinfo(this)">删除</button></li>
+                        <li class="DeleteNotifyInfo"><button onclick="deleteSysnotifyinfo(this)">删除</button></li>
                     </ul>
                 }
             }
         }
         catch { }
+        //显示已读的动态公告信息
         try
         {
             var resreadcount = 0;
@@ -182,7 +185,7 @@
                                 <li><a class="ResReadcontent"onclick="LeapAndKillSmall(this)">@ResReadArray[j]</a></li>
                             }
                         }
-                        <li><button class="DeleteNotifyInfo" onclick="deleteResnotifyinfo(this)">删除</button></li>
+                        <li class="DeleteNotifyInfo"><button onclick="deleteResnotifyinfo(this)">删除</button></li>
                     </ul>
                 }
             }
@@ -209,7 +212,7 @@
         var ResInfo = document.getElementsByClassName("ResInfo");
         for (var i = 0; i < ResInfo.length; i++) {
             ResInfo[i].children[1].children[0].className = "ReplyUserName";
-            ResInfo[i].children[2].children[0].className = "str1";
+            ResInfo[i].children[2].children[0].className = "str";
             ResInfo[i].children[3].children[0].className = "WorkType";
             ResInfo[i].children[4].children[0].className = "WorkName";
             ResInfo[i].children[5].children[0].className = "Quote";

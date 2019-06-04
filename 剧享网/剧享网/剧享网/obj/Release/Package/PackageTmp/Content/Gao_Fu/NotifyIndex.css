@@ -14,39 +14,36 @@ a{
     text-decoration:none;
 }
 body {
-    background: #2e2e2e;
-    margin:10%;
-    color:#ffc600;
-    font-size:18px;
-    height:700px;
+    background-image: url(/ALL_IMAGE/Gao_Fu/notify.jpg);
+    background-size: 100%;
+    color: white;
+    font-size: 18px;
+    height: 700px;
+    padding-top: 10%;
 }
 
-.SysInfo {
+.SysReadInfo ,.SysInfo{
     margin: 0;
     padding: 0;
-    height:50px;
-    line-height:50px;
+    height: 50px;
+    line-height: 50px;
     clear: left;
-    border-bottom:2px solid white;
+    border-bottom: 2px solid white;
 }
 li {
     text-decoration: none;
-    display:inline;
+    display: inline;
 }
-.sys {
-    float:left;   
-    clear:both;
-}
-.Syscontent {
+.NEW {
     float: left;
+    color:orangered;
 }
-.str1 {
-    float:left;
-}
-.Time1 {
+.DeleteNotifyInfo {
     float: right;
 }
 
+
+/***********************************ResInfo**********************************/
 .ResInfo {
     margin: 0;
     padding: 0;
@@ -58,12 +55,12 @@ li {
 p {
     margin:0;
 }
+.str {
+    float: left;
+}
 .ReplyUserName {
     float:left;
     clear:both;
-}
-.str2 {
-    float: left;
 }
 .Rescontent {
     float: left;
@@ -76,7 +73,4 @@ p {
 }
 .WorkName {
     float: left;
-}
-.Time2 {
-    float: right;
 }

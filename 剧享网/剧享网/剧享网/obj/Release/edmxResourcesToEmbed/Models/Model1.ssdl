@@ -77,7 +77,7 @@
     <Property Name="N_ReplyObject" Type="char" MaxLength="10" />
     <Property Name="W_Id" Type="int" Nullable="false" />
     <Property Name="N_WorkName" Type="varchar" MaxLength="255" />
-    <Property Name="N_Time" Type="datetime" />
+    <Property Name="N_Time" Type="varchar" MaxLength="30" />
     <Property Name="N_SystemContent" Type="varchar" MaxLength="255" />
     <Property Name="N_ReadStatus" Type="int" Nullable="false" />
   </EntityType>

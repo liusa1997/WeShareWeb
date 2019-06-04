@@ -118,20 +118,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="T_SendWork">
-      <EntityTypeMapping TypeName="剧享网Model.T_SendWork">
-        <MappingFragment StoreEntitySet="T_SendWork">
-          <ScalarProperty Name="S_SendTime" ColumnName="S_SendTime" />
-          <ScalarProperty Name="S_WorkSize" ColumnName="S_WorkSize" />
-          <ScalarProperty Name="S_WorkPath" ColumnName="S_WorkPath" />
-          <ScalarProperty Name="S_WorkName" ColumnName="S_WorkName" />
-          <ScalarProperty Name="S_InfoId" ColumnName="S_InfoId" />
-          <ScalarProperty Name="W_Id" ColumnName="W_Id" />
-          <ScalarProperty Name="U_Id" ColumnName="U_Id" />
-          <ScalarProperty Name="U_UserName" ColumnName="U_UserName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="T_FollowUsers">
       <EntityTypeMapping TypeName="剧享网Model.T_FollowUsers">
         <MappingFragment StoreEntitySet="T_FollowUsers">
@@ -153,6 +139,21 @@
           <ScalarProperty Name="N_ReplyObject" ColumnName="N_ReplyObject" />
           <ScalarProperty Name="N_ReplyUserName" ColumnName="N_ReplyUserName" />
           <ScalarProperty Name="N_Id" ColumnName="N_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_SendWork">
+      <EntityTypeMapping TypeName="剧享网Model.T_SendWork">
+        <MappingFragment StoreEntitySet="T_SendWork">
+          <ScalarProperty Name="S_SendTime" ColumnName="S_SendTime" />
+          <ScalarProperty Name="S_WorkViewCount" ColumnName="S_WorkViewCount" />
+          <ScalarProperty Name="S_WorkSize" ColumnName="S_WorkSize" />
+          <ScalarProperty Name="S_WorkPath" ColumnName="S_WorkPath" />
+          <ScalarProperty Name="S_WorkName" ColumnName="S_WorkName" />
+          <ScalarProperty Name="S_InfoId" ColumnName="S_InfoId" />
+          <ScalarProperty Name="W_Id" ColumnName="W_Id" />
+          <ScalarProperty Name="U_Id" ColumnName="U_Id" />
+          <ScalarProperty Name="U_UserName" ColumnName="U_UserName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

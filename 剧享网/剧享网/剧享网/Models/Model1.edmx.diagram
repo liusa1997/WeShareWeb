@@ -15,9 +15,9 @@
         <EntityTypeShape EntityType="剧享网Model.V_Statistical" Width="1.5" PointX="7.25" PointY="3" />
         <EntityTypeShape EntityType="剧享网Model.T_Comment" Width="1.5" PointX="0.5" PointY="4.75" />
         <EntityTypeShape EntityType="剧享网Model.T_User" Width="1.5" PointX="3.875" PointY="0.5" />
-        <EntityTypeShape EntityType="剧享网Model.T_SendWork" Width="1.5" PointX="2.25" PointY="4.125" />
         <EntityTypeShape EntityType="剧享网Model.T_FollowUsers" Width="1.5" PointX="5.625" PointY="4.75" />
         <EntityTypeShape EntityType="剧享网Model.T_NotifyInfo" Width="1.5" PointX="5.625" PointY="2" />
+        <EntityTypeShape EntityType="剧享网Model.T_SendWork" Width="1.5" PointX="2.25" PointY="4.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

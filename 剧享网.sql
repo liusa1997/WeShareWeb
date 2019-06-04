@@ -126,6 +126,7 @@ M_EnterTime datetime,--管理员进入操作界面的时间
 M_QuitTime datetime--管理员退出操作界面的时间
 )
 select * from T_ManOperLog;
+delete from T_ManOperLog;
 
 --通知信息记录表
 create table T_NotifyInfoRecord
@@ -136,6 +137,7 @@ N_Content varchar(255),--通知的内容，255字节
 N_Time datetime--通知的时间
 )
 select * from T_NotifyInfoRecord;
+delete from T_NotifyInfoRecord;
 
 --通知信息表
 create table T_NotifyInfo
@@ -176,10 +178,11 @@ S_InfoId int identity(1,1) primary key,--该ID是作品的自增
 S_WorkName varchar(255),--只有文章和视频
 S_WorkPath varchar(255),--存放文章的路径
 S_WorkSize int not null,--作品大小
-S_SendTime varchar(30)--发送作品的时间，来确保唯一检索
+S_WorkViewCount int not null, --作品的浏览数,衡量热度的因素之一,另一个是点赞与反对的差值数量,二者之和为热度衡量
+S_SendTime varchar(30),--发送作品的时间，来确保唯一检索
 )
 insert into T_SendWork
-values('官方',0,1,'马男波杰克',null,0,'2018/12/16 22:26:50');--官方的id是0
+values('官方',0,1,'马男波杰克',null,0,0,'2018/12/16 22:26:50');--官方的id是0
 select * from T_SendWork;
 
 --评论表（这个就是3）
@@ -198,6 +201,9 @@ C_Response int not null,--回复的对象，先取出C_InfoId然后赋给这个值，如果对象是父
 C_CommentTime char(30)--来区分同一用户同一内容的区别(精确)
 )
 select * from T_Comment;
+select * from T_User;
+select * from T_SendWork;
+delete from T_Comment
 
 --赞同反对表
 create table T_AgreeDisagree
@@ -217,6 +223,7 @@ A_AgreeCount int not null ,
 A_DisAgreeCount int not null
 )
 select * from T_AgreeDisagree;
+delete from T_AgreeDisagree
 
 --分类列表
 create table T_Classificationlist
@@ -239,6 +246,7 @@ I_EnTime datetime,
 I_QuitTime datetime--二者相减获取用户在当前列表停留时间
 )
 select * from T_IpReport;
+delete from T_IpReport;
 
 --视图：统计报表获取网页个列表访问量
 --该视图会随着列表的数量增加而修改的
@@ -324,6 +332,7 @@ end
 select dbo.F_GetAccessRate(2,3)
 drop function F_GetAccessRate
 
+
 --自定义的函数语法
 create function hello(@inputStr varchar(255))--就是函数的参数
 returns varchar(255)
@@ -333,3 +342,20 @@ declare @result varchar(255)--函数内部变量
 select @result = @inputStr--调用
 return @result
 end
+
+select * from T_SendWork;
+select * from T_AgreeDisagree;
+select *
+from T_SendWork left join T_AgreeDisagree
+on T_SendWork.U_Id=T_AgreeDisagree.U_Id 
+and T_SendWork.W_Id=T_AgreeDisagree.W_Id 
+and T_SendWork.S_InfoId=T_AgreeDisagree.A_InfoId
+and T_SendWork.U_Id!=0
+ 
+ 
+
+select S_WorkViewCount,ISNULL(A_AgreeCount,0)as '赞同数',ISNULL(A_DisAgreeCount,0)as '反对数'
+from T_SendWork full join T_AgreeDisagree 
+on T_SendWork.U_Id=1
+group by S_WorkViewCount
+ 

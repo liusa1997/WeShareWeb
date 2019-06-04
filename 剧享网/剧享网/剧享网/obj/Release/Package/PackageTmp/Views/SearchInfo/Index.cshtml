@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>搜索</title>
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Js/FollowAndShowInfo.js"></script>
 </head>
 <body>
     <div id="SearchUsers">
@@ -35,8 +36,8 @@
                                     //FBIWARNING!!：这里必须将长度赋值给一个变量，不然循环只会执行一次，劳资也不晓得为什么！
                                     var Length = document.getElementsByClassName("UserInfo").length;
                                     if (document.getElementsByClassName("UserInfo").length != 0) {
-                                        for (var i = 13; i < (Length+13); ++i) {
-                                            Fuzzy.removeChild(Fuzzy.childNodes[13]);
+                                        for (var i = 11; i < (Length+11); ++i) {
+                                            Fuzzy.removeChild(Fuzzy.childNodes[11]);
                                         }
                                     }
                                     for (var i = 0; i < SearchInfo.length; ++i) {
@@ -114,70 +115,6 @@
                             }
                         })
                     }
-                </script>
-                <script>
-                    $("document").ready(function () {
-                        $("body").on("mouseover",".UserHeadImg",function () {
-                            var fathernode = this.parentElement;
-                            var subdiv = fathernode.children[2];
-                            subdiv.style.display = "block";
-                        })
-                        $("body").on("mouseout", ".UserHeadImg", function () {
-                            var fathernode = this.parentElement;
-                            var subdiv = fathernode.children[2];
-                            subdiv.style.display = "none";
-                        })
-                        $("body").on("click", ".FollowOK", function () {
-                            var fathernode = this.parentElement;
-                            var SearchUserName = fathernode.children[1].innerHTML;
-                            var Email = fathernode.children[2].children[2].innerHTML;
-                            $.ajax({
-                                url: "/SearchInfo/FollowOKUsers/",
-                                method: "post",
-                                data: {
-                                    SearchUserName: SearchUserName,
-                                    Email: Email
-                                },
-                                success: function (data) {
-                                    if (data == "Followed") {
-                                        alert("你已经关注过该用户了");
-                                    }
-                                    else if (data == "Laugh") {
-                                        alert("太臭美了，不要关注自己哦~");
-                                    }
-                                    else {
-                                        alert("成功关注");
-                                    }
-                                },
-                                error: function (data) {
-                                }
-                            })
-                        })
-                        $("body").on("click", ".FollowOver", function () {
-                            var fathernode = this.parentElement;
-                            var SearchUserName = fathernode.children[1].innerHTML;
-                            var Email = fathernode.children[2].children[2].innerHTML;
-                            $.ajax({
-                                url: "/SearchInfo/FollowOverUsers/",
-                                method: "post",
-                                data: {
-                                    SearchUserName: SearchUserName,
-                                    Email: Email
-                                },
-                                success: function (data) {
-                                    if (data == "NoneFollow") {
-                                        alert("你还未关注该用户");
-                                    }
-                                    else {
-                                        alert("成功取消关注");
-                                    }
-                                },
-                                error: function (data) {
-                                }
-                            })
-                        })
-                    })
-
                 </script>
             </div>
             <div class="AccurateSearch">

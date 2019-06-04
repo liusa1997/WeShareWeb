@@ -107,6 +107,7 @@ namespace 剧享网.Controllers
                     StreamWriter mysw = new StreamWriter(fs);
                     //只存入文章的内容
                     mysw.Write(EassyContent);
+                    //必须关掉文件流！！！
                     mysw.Close();
                     fs.Close();
                     //
@@ -121,6 +122,7 @@ namespace 剧享网.Controllers
                     sendWork.S_WorkName = EassyName;
                     sendWork.S_WorkPath = FatherFilePath;
                     sendWork.S_WorkSize = fileBase.ContentLength;//给发布的文章大小赋值
+                    sendWork.S_WorkViewCount = 0;//发送文章初试浏览数为0
                     sendWork.S_SendTime = NowTime;
                     db.T_SendWork.Add(sendWork);
                     db.SaveChanges();
@@ -146,10 +148,6 @@ namespace 剧享网.Controllers
         {
             using (剧享网Entities db = new 剧享网Entities())
             {
-                //AuthorName = "liu";
-                //W_Id = "1";
-                //WorkName = "你好";
-                //WorkTime = "2018/12/14 22:10:00";
                 int w_id = Convert.ToInt32(W_Id);
                 剧享网.Comment_cs.FatherNode father = new Comment_cs.FatherNode();
                 List<T_Comment> FatherNode = new List<T_Comment>();
@@ -160,17 +158,21 @@ namespace 剧享网.Controllers
                 List<int> list = new List<int>();
                 list = test.WebInitGetAgreeCount(AuthorName, w_id, WorkName, WorkTime);
                 ViewBag.List = list;
+                //打开文章前先更新浏览数
+                UpdateViewCount(AuthorName, w_id, WorkName, WorkTime);
 
                 //获取文章内容
                 var GetCurrentInfo = from currentinfo in db.T_SendWork where currentinfo.U_UserName == AuthorName && currentinfo.W_Id == w_id && currentinfo.S_WorkName == WorkName && currentinfo.S_SendTime == WorkTime select currentinfo;
-                ViewBag.Title = "MyEassy";
                 ViewBag.EassyName = WorkName;
                 ViewBag.Author = AuthorName;
                 ViewBag.EassySendTime = WorkTime;
                 string WorkPath = null;
+                //浏览数
+                int ViewCount = 0;
                 foreach (var info in GetCurrentInfo)
                 {
                     WorkPath = info.S_WorkPath;
+                    ViewCount = info.S_WorkViewCount;
                 }
                 string EassyName = null;
                 for (int i = 10; i < WorkPath.Length; ++i)
@@ -180,15 +182,116 @@ namespace 剧享网.Controllers
                 FileStream fs = new FileStream(Server.MapPath(WorkPath + "\\" + EassyName + ".txt"), FileMode.Open, FileAccess.Read);
                 StreamReader reader = new StreamReader(fs);
                 ViewBag.EassyContent = reader.ReadToEnd();
-
+                ViewBag.ViewCount = ViewCount;
+                //给定作品类型
+                ViewBag.WorkType = "MyEssay";
+                //必须关掉文件流
+                fs.Close();
+                reader.Close();
             }
             return View();
         }
         [HttpPost]
         public ActionResult OpenMyEassy(FormCollection collection)
         {
-            
             return View();
+        }
+
+        //文章区
+        public ActionResult EassyZone()
+        {
+            using (剧享网Entities db = new 剧享网Entities())
+            {
+                //获取所有非官方的文章路径
+                var GetAllPath = from path in db.T_SendWork where path.W_Id == 1 && path.U_Id!=0 select path;
+                //没有文章
+                if (GetAllPath.Count() <= 0)
+                {
+                    return View();
+                }
+                //存放用户名、文章名、发布时间、图片路径四个为一组
+                List<string> InfoContent = new List<string>();
+                foreach (var Info in GetAllPath)
+                {
+                    //找到每行的用户ID
+                    int U_Id = Info.U_Id;
+                    //用户名
+                    string UserName = null;
+
+                    //找对应用户的用户名
+                    var GetUserName = from username in db.T_User where username.U_Id == U_Id select username;
+                    foreach (var user in GetUserName)
+                    {
+                        UserName = user.U_UserName;
+                    }
+
+                    //获取文章图片的名字
+                    string eassyimgName = null;
+                    string Example = Info.S_WorkPath;
+                    for (int j = 10; j < Info.S_WorkPath.Length; ++j)
+                    {
+                        eassyimgName += Example[j];
+                    }
+
+                    //根据相对路径，读取所有文件，并且不查找子文件夹。之后筛选格式是图片的文件
+                    var strs = System.IO.Directory.GetFiles(Server.MapPath(Info.S_WorkPath), "*.*", System.IO.SearchOption.TopDirectoryOnly).Where(s => s.EndsWith(".jpg") || s.EndsWith(".gif") || s.EndsWith(".bmp") || s.EndsWith(".png"));
+                    foreach (string imgpath in strs)
+                    {
+                        FileInfo fileInfo = new FileInfo(imgpath);
+                        //记住一定不能是~/MyEassy/，我们要相对路径
+                        InfoContent.Add("/MyEassy/" + eassyimgName + "/" + fileInfo.Name);
+                    }
+                    //添加用户名
+                    InfoContent.Add(UserName);
+                    //添加文章名
+                    InfoContent.Add(Info.S_WorkName);
+                    //添加发布时间
+                    InfoContent.Add(Info.S_SendTime);
+                }
+                ViewBag.InfoContent = InfoContent;
+                ViewBag.InfoContentCount = InfoContent.Count();
+                return View();
+            }
+        }
+        [HttpPost]
+        public ActionResult EassyZone(FormCollection collection)
+        {
+            return View();
+        }
+
+        //更新浏览数
+        public void UpdateViewCount(string AuthorName, int W_Id, string WorkName, string WorkTime)
+        {
+            using (剧享网Entities db = new 剧享网Entities())
+            {
+                //获取文章内容
+                var Info = from currentinfo in db.T_SendWork where currentinfo.U_UserName == AuthorName && currentinfo.W_Id == W_Id && currentinfo.S_WorkName == WorkName && currentinfo.S_SendTime == WorkTime select currentinfo;
+                //作者名
+                string userName = null;
+                //当前的浏览数
+                int ViewCount = 0;
+                //信息id,用于更新数据
+                int InfoId = 0;
+                foreach (var info in Info)
+                {
+                    userName = info.U_UserName;
+                    ViewCount = info.S_WorkViewCount;
+                    InfoId = info.S_InfoId;
+                }
+                //用户不登录也可以访问,但没有浏览增加
+                try
+                {
+                    //如果是本人访问自己的文章则不修改浏览数
+                    if (userName == Session["UserName"].ToString())
+                    {
+                        return;
+                    }
+                }
+                catch { return; }
+                var UpdateViewCount = db.T_SendWork.Find(InfoId);
+                UpdateViewCount.S_WorkViewCount = (++ViewCount);
+                db.SaveChanges();
+            }
         }
     }
 }

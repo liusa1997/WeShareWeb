@@ -11,13 +11,16 @@
     var C_UserName = document.getElementById("Author").innerHTML;
     //此为文章类型
     var W_Id = 0;
-    var JudgeW_Id = document.getElementsByTagName("title")[0].text;
+    var JudgeW_Id = document.getElementsByTagName("label")[0].text;
     if (JudgeW_Id == "MyVideo") {
         W_Id = 2;
     }
-    else {
+    else if (JudgeW_Id == "MyEssay"){
         W_Id = 1;
     }
+
+    console.log(JudgeW_Id);
+
     //获取文章名字
     var workname = document.getElementById("Article").innerHTML;
     //获取作品发布时间
@@ -28,8 +31,6 @@
         url: "/T_AgreeDisagree/CommentaryAgreeorDisagree/",
         type: "post",
         async: true,
-        //contentType: "application/json",//必须的
-
         data: {
             judge: judge,
             username: username,//这样
@@ -40,7 +41,6 @@
             GetTime: GetTime,
             CommentTime:CommentTime
         },
-        //data: '{"judge":"' + judge + '","username":"' + username + '","C_UserName":"' + C_UserName + '","W_Id":"' + W_Id + '","workname":"' + workname + '","commentary":"' + commentary + '"}',
         success: function (data) {
             if (data == "Warning") {
                 return alert("请先登录");

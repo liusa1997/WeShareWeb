@@ -391,8 +391,8 @@
     <Content Include="Js\main.js" />
     <Content Include="Js\modernizr-2.6.2.min.js" />
     <Content Include="Js\Movies.js" />
-    <Content Include="Js\MyEssayGetInfoByImg.js" />
-    <Content Include="Js\MyEssayGetInfoByText.js" />
+    <Content Include="Js\MyEassyGetInfoByImg.js" />
+    <Content Include="Js\MyEassyGetInfoByText.js" />
     <Content Include="Js\register.js" />
     <Content Include="Js\respond.min.js" />
     <Content Include="Js\Response.js" />
@@ -439,6 +439,7 @@
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile10.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile11.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile12.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile2.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile3.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile4.pubxml" />
@@ -511,6 +512,7 @@
     <Content Include="Views\VideoOperation\OpenVideo.cshtml" />
     <Content Include="Views\SearchInfo\Index.cshtml" />
     <Content Include="Views\T_User\FollowInfo.cshtml" />
+    <Content Include="Views\EassyOperation\EassyZone.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

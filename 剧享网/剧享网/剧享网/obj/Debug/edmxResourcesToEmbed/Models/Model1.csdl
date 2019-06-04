@@ -32,9 +32,9 @@
     <EntitySet Name="V_Statistical" EntityType="剧享网Model.V_Statistical" />
     <EntitySet Name="T_Comment" EntityType="剧享网Model.T_Comment" />
     <EntitySet Name="T_User" EntityType="剧享网Model.T_User" />
-    <EntitySet Name="T_SendWork" EntityType="剧享网Model.T_SendWork" />
     <EntitySet Name="T_FollowUsers" EntityType="剧享网Model.T_FollowUsers" />
     <EntitySet Name="T_NotifyInfo" EntityType="剧享网Model.T_NotifyInfo" />
+    <EntitySet Name="T_SendWork" EntityType="剧享网Model.T_SendWork" />
   </EntityContainer>
   <EntityType Name="T_Function">
     <Key>
@@ -128,19 +128,6 @@
     <Property Name="U_SendSpace" Type="Int32" Nullable="false" />
     <Property Name="U_RegisterTime" Type="DateTime" Precision="3" />
   </EntityType>
-  <EntityType Name="T_SendWork">
-    <Key>
-      <PropertyRef Name="S_InfoId" />
-    </Key>
-    <Property Name="U_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="U_Id" Type="Int32" Nullable="false" />
-    <Property Name="W_Id" Type="Int32" Nullable="false" />
-    <Property Name="S_InfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="S_WorkName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="S_WorkPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="S_WorkSize" Type="Int32" Nullable="false" />
-    <Property Name="S_SendTime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="T_FollowUsers">
     <Key>
       <PropertyRef Name="F_Id" />
@@ -162,5 +149,19 @@
     <Property Name="N_Time" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="N_SystemContent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="N_ReadStatus" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_SendWork">
+    <Key>
+      <PropertyRef Name="S_InfoId" />
+    </Key>
+    <Property Name="U_UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="U_Id" Type="Int32" Nullable="false" />
+    <Property Name="W_Id" Type="Int32" Nullable="false" />
+    <Property Name="S_InfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="S_WorkName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="S_WorkPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="S_WorkSize" Type="Int32" Nullable="false" />
+    <Property Name="S_WorkViewCount" Type="Int32" Nullable="false" />
+    <Property Name="S_SendTime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

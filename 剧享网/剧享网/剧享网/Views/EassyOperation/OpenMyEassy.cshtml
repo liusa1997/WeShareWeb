@@ -1,7 +1,7 @@
 ﻿<html>
 <head>
     <meta charset="utf-8">
-    <title>@ViewBag.Title</title>
+    <title>@ViewBag.EassyName</title>
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Js/EssayAgreeDisagree.js"></script>
     <script src="~/Js/SubmitComment.js"></script>
@@ -11,7 +11,9 @@
 </head>
 <body>
     <div id="WorkInfo">
+        <label style="display:none">@ViewBag.WorkType</label>
         <h1 id="Article">@ViewBag.EassyName</h1>
+        <small>浏览数:</small><small id="ViewCount">@ViewBag.ViewCount</small>
         <small id="Author">@ViewBag.Author</small>
         <small id="SendTime">@ViewBag.EassySendTime</small>
         <input type="button" value="赞成" class="WorkAgree" name="agree" onclick="EssayAgreeDisagree(this)" />

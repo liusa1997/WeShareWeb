@@ -43,9 +43,6 @@
     </div>
     <div id="VideoContent"><textarea style="width:500px;height:30px;" readonly="readonly">@ViewBag.VideoContent</textarea></div>
     <div>
-        @*<object id="NSPlay" FileName="@ViewBag.VideoPath" width=500 height=300 classid="CLSID:22d6f312-b0f6-11d0-94ab-0080c74c7e95" codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=6,4,5,715" standby="Loading Microsoft Windows Media Player components..." type="application/x-oleobject" hspace="5">
-            <param id="PrePlay" name="FileName" value="@ViewBag.VideoPath" />
-        </object>*@
         <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="560" height="355">
             <param name="movie" value="~/flvplayer.swf" />
             <param name="quality" value="high" />

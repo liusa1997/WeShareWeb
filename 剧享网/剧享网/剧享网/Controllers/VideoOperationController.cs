@@ -129,10 +129,6 @@ namespace 剧享网.Controllers
         {
             using (剧享网Entities db = new 剧享网Entities())
             {
-                //AuthorName = "liu";
-                //W_Id = "1";
-                //WorkName = "你好";
-                //WorkTime = "2018/12/14 22:10:00";
                 剧享网.Comment_cs.FatherNode father = new Comment_cs.FatherNode();
                 List<T_Comment> FatherNode = new List<T_Comment>();
                 FatherNode = father.FatherInfo(AuthorName, W_Id, WorkName, WorkTime);

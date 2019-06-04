@@ -243,61 +243,67 @@ namespace 剧享网.Controllers
         {
             using (剧享网Entities db = new 剧享网Entities())
             {
-                //Session["UserName"] = "liu"; 
-                var GetNotify = from list in db.T_Function where list.F_SubId == "3F5" && list.F_Function == "Notify" && list.F_FatherId == "2F3" select list;
-                Int32 NotifyId = 0;
-                foreach (var list in GetNotify)
+                try
                 {
-                    NotifyId = list.F_Id;
-                }
-                //此时Find()里面的Id 不能加引号，不然会去找"Id"这个值不是Id了，而且页面不会报错只是不会往下面运行了
-                var GetFindNotifyId = db.T_Function.Find(NotifyId);
-                if (GetFindNotifyId.F_IsOpen == 0)
-                {
-                    return "该功能被禁用";
-                }
-                //当UserName!=null就是关注通知和动态通知
-                if (UserName != null)
-                {
-                    //取对应用户进行通知
-                    T_NotifyInfo notifyInfo = new T_NotifyInfo();
-                    notifyInfo.N_ReplyUserName = UserName;
-                    notifyInfo.N_ReplyObject = ReplyUserName;
-                    notifyInfo.W_Id = W_Id;
-                    notifyInfo.N_WorkName = WorkName;
-                    notifyInfo.N_Time = Convert.ToString(DateTime.Now);
-                    notifyInfo.N_SystemContent = content;
-                    notifyInfo.N_ReadStatus = 0;
-                    db.T_NotifyInfo.Add(notifyInfo);
-                    db.SaveChanges();
-                }
-                else
-                {
-                    //向通知记录表里面插入通知记录信息
-                    string name = Session["UserName"].ToString();
-                    var time = DateTime.Now;
-                    T_NotifyInfoRecord InfoRecord = new T_NotifyInfoRecord();
-                    InfoRecord.U_UserName = name;
-                    InfoRecord.N_Content = content;
-                    InfoRecord.N_Time = time;
-                    db.T_NotifyInfoRecord.Add(InfoRecord);
-                    var SelectUser = from user in db.T_User select user;
-                    foreach (var insert in SelectUser)
+                    //Session["UserName"] = "liu"; 
+                    var GetNotify = from list in db.T_Function where list.F_SubId == "3F5" && list.F_Function == "Notify" && list.F_FatherId == "2F3" select list;
+                    Int32 NotifyId = 0;
+                    foreach (var list in GetNotify)
                     {
-                        //向通知信息表里面插入通知信息,这个实例化必须写在里面，不然只会保存最后一条信息
+                        NotifyId = list.F_Id;
+                    }
+                    //此时Find()里面的Id 不能加引号，不然会去找"Id"这个值不是Id了，而且页面不会报错只是不会往下面运行了
+                    var GetFindNotifyId = db.T_Function.Find(NotifyId);
+                    if (GetFindNotifyId.F_IsOpen == 0)
+                    {
+                        return "该功能被禁用";
+                    }
+                    //当UserName!=null就是关注通知和动态通知
+                    if (UserName != null && UserName != "")
+                    {
+                        //取对应用户进行通知
                         T_NotifyInfo notifyInfo = new T_NotifyInfo();
-                        notifyInfo.N_ReplyUserName = ReplyUserName;
-                        notifyInfo.N_ReplyObject = insert.U_UserName;
+                        notifyInfo.N_ReplyUserName = UserName;
+                        notifyInfo.N_ReplyObject = ReplyUserName;
                         notifyInfo.W_Id = W_Id;
-                        notifyInfo.N_WorkName = null;
+                        notifyInfo.N_WorkName = WorkName;
                         notifyInfo.N_Time = Convert.ToString(DateTime.Now);
                         notifyInfo.N_SystemContent = content;
                         notifyInfo.N_ReadStatus = 0;
                         db.T_NotifyInfo.Add(notifyInfo);
+                        db.SaveChanges();
                     }
-                    db.SaveChanges();
+                    //管理员(系统)通知
+                    else
+                    {
+                        //向通知记录表里面插入通知记录信息
+                        string name = Session["UserName"].ToString();
+                        var time = DateTime.Now;
+                        T_NotifyInfoRecord InfoRecord = new T_NotifyInfoRecord();
+                        InfoRecord.U_UserName = name;
+                        InfoRecord.N_Content = content;
+                        InfoRecord.N_Time = time;
+                        db.T_NotifyInfoRecord.Add(InfoRecord);
+                        //选出所有有数据信息的用户名
+                        var SelectUser = from user in db.T_User select user;
+                        foreach (var insert in SelectUser)
+                        {
+                            //向通知信息表里面插入通知信息,这个实例化必须写在里面，不然只会保存最后一条信息
+                            T_NotifyInfo notifyInfo = new T_NotifyInfo();
+                            notifyInfo.N_ReplyUserName = ReplyUserName;
+                            notifyInfo.N_ReplyObject = insert.U_UserName;
+                            notifyInfo.W_Id = W_Id;
+                            notifyInfo.N_WorkName = null;
+                            notifyInfo.N_Time = Convert.ToString(DateTime.Now);
+                            notifyInfo.N_SystemContent = content;
+                            notifyInfo.N_ReadStatus = 0;
+                            db.T_NotifyInfo.Add(notifyInfo);
+                        }
+                        db.SaveChanges();
+                    }
+                    return "通知成功";
                 }
-                return "通知成功";
+                catch { return "通知失败"; }
             }
         }
         public void ModifyRole(string modify,FormCollection collection)

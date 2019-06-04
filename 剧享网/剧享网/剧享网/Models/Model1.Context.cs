@@ -37,9 +37,9 @@ namespace 剧享网.Models
         public virtual DbSet<V_Statistical> V_Statistical { get; set; }
         public virtual DbSet<T_Comment> T_Comment { get; set; }
         public virtual DbSet<T_User> T_User { get; set; }
-        public virtual DbSet<T_SendWork> T_SendWork { get; set; }
         public virtual DbSet<T_FollowUsers> T_FollowUsers { get; set; }
         public virtual DbSet<T_NotifyInfo> T_NotifyInfo { get; set; }
+        public virtual DbSet<T_SendWork> T_SendWork { get; set; }
     
         public virtual ObjectResult<string> P_FindUserRole(string userName)
         {

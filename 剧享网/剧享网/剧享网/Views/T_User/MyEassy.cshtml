@@ -7,8 +7,8 @@
     <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
     <meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
 
-    <script src="~/Js/MyEssayGetInfoByText.js"></script>
-    <script src="~/Js/MyEssayGetInfoByImg.js"></script>
+    <script src="~/Js/MyEassyGetInfoByText.js"></script>
+    <script src="~/Js/MyEassyGetInfoByImg.js"></script>
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 
     <!-- Animate.css -->
@@ -69,7 +69,7 @@
                                                 @for (int j = i; j < (i + 1); ++j)
                                                 {
                                                     string imgpath = ViewBag.ImgPath[j];
-                                                    <img src="@imgpath" class="img-responsive" onclick="MyEssayGetInfoByImg(this)">
+                                                    <img src="@imgpath" class="img-responsive" onclick="MyEassyGetInfoByImg(this)">
                                                 }
                                             </a>
                                         </div>
@@ -79,11 +79,23 @@
                                                 string workname = ViewBag.WorkName[j];
                                                 string eassycontent = ViewBag.EassyContent[j];
                                                 string worktime = ViewBag.WorkTime[j];
-                                                <h3><a name="/EassyOperation/OpenMyEassy" onclick="MyEssayGetInfoByText(this)">@workname</a><br /><small>@worktime</small></h3>
-                                                <label>@Session["UserName"]</label>
-                                                <p>@eassycontent</p>
+                                                <div>
+                                                    <label>文章:</label>
+                                                    <a name="/EassyOperation/OpenMyEassy" onclick="MyEassyGetInfoByText(this)">@workname</a>
+                                                </div>
+                                                <div>
+                                                    <label>时间:</label>
+                                                    <small>@worktime</small>
+                                                </div>
+                                                <div>
+                                                    <label>作者:</label>
+                                                    <label>@Session["UserName"]</label>
+                                                </div>
+                                                <div>
+                                                    <label>介绍:</label>
+                                                    <label>@eassycontent</label>
+                                                </div>
                                             }
-                                            <div><a name="/EassyOperation/OpenMyEassy" onclick="MyEssayGetInfoByText(this)" class="lead">Read More <i class="icon-arrow-right3"></i></a></div>
                                         </div>
                                     </div>
                                 </div>

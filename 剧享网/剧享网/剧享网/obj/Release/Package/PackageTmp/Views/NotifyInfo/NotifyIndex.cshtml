@@ -1,7 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    @*<link href="~/Content/LiuBoWen/NotifyIndex.css" type="text/css" rel="stylesheet" />*@
     <link href="~/Content/Gao_Fu/NotifyIndex.css" type="text/css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script>
@@ -21,10 +20,16 @@
 </head>
 
 <body>
-    @*这个算法差点让我死掉...*@
+    <script>
+        function LeapAndKillSmall(value) {
+            var grandfathernode = value.parentElement.parentElement;
+            //将未读标识置空
+            grandfathernode.children[0].children[0].innerHTML = "";
+        }
+    </script>
     @while (true)
     {
-        //获取无数据时的异常处理
+        //显示未读的系统公告信息
         try
         {
             //计数有多少信息
@@ -45,25 +50,28 @@
             for (i = 0; i < syscount; ++i)
             {
                 //系统信息为4个一组，每4个则创建一个ul
-                if (i % 4 == 0)
+                if (i % 3 == 0)
                 {
                     <ul class="SysInfo">
-                        @for (var j = i; j < i + 4; ++j)//标签判断，是系统内容的话就是一个a标签
+                        <li><small class="NEW">[NEW]</small></li>
+                        @for (var j = i; j < i + 3; ++j)//标签判断，是系统内容的话就是一个a标签
                         {
-                            if (j != (i + 2))
+                            if (j != (i + 1))
                             {
                                 <li><div class="" style="display:inline-block">@SysArray[j]</div></li>
                             }
                             else
                             {
-                                <li><a href="" class="Syscontent">@SysArray[j]</a></li>
+                                <li><a class="Syscontent" onclick="LeapAndKillSmall(this)">@SysArray[j]</a></li>
                             }
                         }
+                        <li class="DeleteNotifyInfo"><button onclick="deleteSysnotifyinfo(this)">删除</button></li>
                     </ul>
                 }
             }
         }
         catch { }
+        //显示未读的动态公告信息
         try
         {
             var rescount = 0;
@@ -82,19 +90,103 @@
             {
                 if (i % 7 == 0)
                 {
-               <ul class="ResInfo">
-                    @for (var j = i; j < i + 7; ++j)
-                    {
-                        if (j != (i + 5))
+                    <ul class="ResInfo">
+                        <!----这里加上NEW类为了不被后面点击文本隐藏掉下面的系统通知字符串-->
+                        <li><small class="NEW">[NEW]</small></li>
+                        @for (var j = i; j < i + 7; ++j)
                         {
-                              <li><p class="" style="display:inline-block">@ResArray[j]</p></li>
+                            if (j != (i + 5))
+                            {
+                                <li><p class="" style="display:inline-block">@ResArray[j]</p></li>
+                            }
+                            else
+                            {
+                                <li><a class="Rescontent"onclick="LeapAndKillSmall(this)">@ResArray[j]</a></li>
+                            }
                         }
-                        else
+                        <li class="DeleteNotifyInfo"><button onclick="deleteResnotifyinfo(this)">删除</button></li>
+                    </ul>
+                }
+            }
+        }
+        catch
+        { }
+        //显示已读的系统公告信息
+        try
+        {
+            //计数有多少信息
+            var sysreadcount = 0;
+            foreach (var item in (List<String>)ViewBag.SysReadList)
+            {
+                ++sysreadcount;
+            }
+            //动态给出系统数组大小
+            string[] SysReadArray = new string[sysreadcount];
+            int i = 0;
+            //将视图包里面的数据全部放入系统数组
+            foreach (var item in (List<String>)ViewBag.SysReadList)
+            {
+                SysReadArray[i] = item;
+                ++i;
+            }
+            for (i = 0; i < sysreadcount; ++i)
+            {
+                //系统信息为4个一组，每4个则创建一个ul
+                if (i % 3 == 0)
+                {
+                    <ul class="SysReadInfo">
+                        <li><small class="NEW"></small></li>
+                        @for (var j = i; j < i + 3; ++j)//标签判断，是系统内容的话就是一个a标签
                         {
-                              <li><a href="" class="Rescontent">@ResArray[j]</a></li>
+                            if (j != (i + 1))
+                            {
+                                <li><div class="" style="display:inline-block">@SysReadArray[j]</div></li>
+                            }
+                            else
+                            {
+                                <li><a class="SysReadcontent" onclick="LeapAndKillSmall(this)">@SysReadArray[j]</a></li>
+                            }
                         }
-                    }
-               </ul>
+                        <li class="DeleteNotifyInfo"><button onclick="deleteSysnotifyinfo(this)">删除</button></li>
+                    </ul>
+                }
+            }
+        }
+        catch { }
+        //显示已读的动态公告信息
+        try
+        {
+            var resreadcount = 0;
+            foreach (var item in (List<String>)ViewBag.ResReadList)
+            {
+                ++resreadcount;
+            }
+            string[] ResReadArray = new string[resreadcount];
+            int i = 0;
+            foreach (var item in (List<String>)ViewBag.ResReadList)
+            {
+                ResReadArray[i] = item;
+                ++i;
+            }
+            for (i = 0; i < resreadcount; ++i)
+            {
+                if (i % 7 == 0)
+                {
+                    <ul class="ResReadInfo">
+                        <li><small class="NEW"></small></li>
+                        @for (var j = i; j < i + 7; ++j)
+                        {
+                            if (j != (i + 5))
+                            {
+                                <li><p class="" style="display:inline-block">@ResReadArray[j]</p></li>
+                            }
+                            else
+                            {
+                                <li><a class="ResReadcontent"onclick="LeapAndKillSmall(this)">@ResReadArray[j]</a></li>
+                            }
+                        }
+                        <li class="DeleteNotifyInfo"><button onclick="deleteResnotifyinfo(this)">删除</button></li>
+                    </ul>
                 }
             }
         }
@@ -103,37 +195,78 @@
         break;
     }
     <script>
-        var d = document.getElementsByTagName("div");
-        console.log(d.length);//调试用
-        for (var i = 0; i < d.length; i = i + 3) {
-            d[i].className = "sys";
+        //系统所有未读信息标记(包括关注通知)
+        var SysInfo = document.getElementsByClassName("SysInfo");
+        for (var i = 0; i < SysInfo.length ; i++) {
+            SysInfo[i].children[1].children[0].className = "sys";
+            SysInfo[i].children[3].children[0].className = "Time";
         }
-        for (var i = 1; i < d.length; i = i + 3) {
-            d[i].className = "str1";
-        }
-        for (var i = 2; i < d.length; i = i + 3) {
-            d[i].className = "Time1";
+        //系统所有已读信息标记
+        var SysReadInfo = document.getElementsByClassName("SysReadInfo");
+        for (var i = 0; i < SysReadInfo.length; i++) {
+            SysReadInfo[i].children[1].children[0].className = "sys";
+            SysReadInfo[i].children[3].children[0].className = "Time";
         }
 
-        var c = document.getElementsByTagName("p");
-        console.log(c.length);//调试用
-        for (var i = 0; i < c.length; i = i + 6) {
-            c[i].className = "ReplyUserName";
+        //用户所有未读的动态消息标记
+        var ResInfo = document.getElementsByClassName("ResInfo");
+        for (var i = 0; i < ResInfo.length; i++) {
+            ResInfo[i].children[1].children[0].className = "ReplyUserName";
+            ResInfo[i].children[2].children[0].className = "str";
+            ResInfo[i].children[3].children[0].className = "WorkType";
+            ResInfo[i].children[4].children[0].className = "WorkName";
+            ResInfo[i].children[5].children[0].className = "Quote";
+            ResInfo[i].children[7].children[0].className = "Time";
         }
-        for (var i = 1; i < c.length; i = i + 6) {
-            c[i].className = "str2";
+    </script>
+    <script>
+        function deleteSysnotifyinfo(value) {
+            var grandfathernode = value.parentElement.parentElement;
+            //获取回复者
+            var ReplyUserName = grandfathernode.children[1].children[0].innerHTML;
+            //获取发送的内容
+            var SystemContent = grandfathernode.children[2].children[0].innerHTML;
+            //获取时间
+            var Time = grandfathernode.children[3].children[0].innerHTML;
+            $.ajax({
+                url: "/NotifyInfo/DeleteNotifyInfo/",
+                method: "post",
+                data: {
+                    ReplyUserName: ReplyUserName,
+                    SystemContent: SystemContent,
+                    Time: Time
+                },
+                success: function (data) {
+                    //删除对应标签
+                    value.parentElement.parentElement.parentElement.removeChild(value.parentElement.parentElement);
+                },
+                error: function (data) {
+                }
+            })
         }
-        for (var i = 2; i < c.length; i = i + 6) {
-            c[i].className = "WorkType";
-        }
-        for (var i = 3; i < c.length; i = i + 6) {
-            c[i].className = "WorkName";
-        }
-        for (var i = 4; i < c.length; i = i + 6) {
-            c[i].className = "Quote";
-        }
-        for (var i = 5; i < c.length; i = i + 6) {
-            c[i].className = "Time2";
+        function deleteResnotifyinfo(value) {
+            var grandfathernode = value.parentElement.parentElement;
+            //获取回复者
+            var ReplyUserName = grandfathernode.children[1].children[0].innerHTML;
+            //获取发送的内容
+            var SystemContent = grandfathernode.children[6].children[0].innerHTML;
+            //获取时间
+            var Time = grandfathernode.children[7].children[0].innerHTML;
+            $.ajax({
+                url: "/NotifyInfo/DeleteNotifyInfo/",
+                method: "post",
+                data: {
+                    ReplyUserName: ReplyUserName,
+                    SystemContent: SystemContent,
+                    Time: Time
+                },
+                success: function (data) {
+                    //删除对应标签
+                    value.parentElement.parentElement.parentElement.removeChild(value.parentElement.parentElement);
+                },
+                error: function (data) {
+                }
+            })
         }
     </script>
 </body>

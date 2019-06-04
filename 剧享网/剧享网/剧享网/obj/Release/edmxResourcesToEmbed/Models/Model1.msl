@@ -52,20 +52,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="T_NotifyInfo">
-      <EntityTypeMapping TypeName="剧享网Model.T_NotifyInfo">
-        <MappingFragment StoreEntitySet="T_NotifyInfo">
-          <ScalarProperty Name="N_ReadStatus" ColumnName="N_ReadStatus" />
-          <ScalarProperty Name="N_SystemContent" ColumnName="N_SystemContent" />
-          <ScalarProperty Name="N_Time" ColumnName="N_Time" />
-          <ScalarProperty Name="N_WorkName" ColumnName="N_WorkName" />
-          <ScalarProperty Name="W_Id" ColumnName="W_Id" />
-          <ScalarProperty Name="N_ReplyObject" ColumnName="N_ReplyObject" />
-          <ScalarProperty Name="N_ReplyUserName" ColumnName="N_ReplyUserName" />
-          <ScalarProperty Name="N_Id" ColumnName="N_Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="T_AgreeDisagree">
       <EntityTypeMapping TypeName="剧享网Model.T_AgreeDisagree">
         <MappingFragment StoreEntitySet="T_AgreeDisagree">
@@ -153,6 +139,20 @@
           <ScalarProperty Name="F_BeFollowerId" ColumnName="F_BeFollowerId" />
           <ScalarProperty Name="F_FollowerId" ColumnName="F_FollowerId" />
           <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_NotifyInfo">
+      <EntityTypeMapping TypeName="剧享网Model.T_NotifyInfo">
+        <MappingFragment StoreEntitySet="T_NotifyInfo">
+          <ScalarProperty Name="N_ReadStatus" ColumnName="N_ReadStatus" />
+          <ScalarProperty Name="N_SystemContent" ColumnName="N_SystemContent" />
+          <ScalarProperty Name="N_Time" ColumnName="N_Time" />
+          <ScalarProperty Name="N_WorkName" ColumnName="N_WorkName" />
+          <ScalarProperty Name="W_Id" ColumnName="W_Id" />
+          <ScalarProperty Name="N_ReplyObject" ColumnName="N_ReplyObject" />
+          <ScalarProperty Name="N_ReplyUserName" ColumnName="N_ReplyUserName" />
+          <ScalarProperty Name="N_Id" ColumnName="N_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

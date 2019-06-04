@@ -116,6 +116,7 @@
     <Property Name="S_WorkName" Type="varchar" MaxLength="255" />
     <Property Name="S_WorkPath" Type="varchar" MaxLength="255" />
     <Property Name="S_WorkSize" Type="int" Nullable="false" />
+    <Property Name="S_WorkViewCount" Type="int" Nullable="false" />
     <Property Name="S_SendTime" Type="varchar" MaxLength="30" />
   </EntityType>
   <EntityType Name="T_User">

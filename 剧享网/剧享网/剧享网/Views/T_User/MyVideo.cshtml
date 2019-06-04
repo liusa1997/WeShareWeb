@@ -68,14 +68,26 @@
                                     string WorkName = ViewBag.WorkName[j];
                                     string WorkTime = ViewBag.WorkTime[j];
                                     string VideoContent = ViewBag.VideoContent[j];
-                                    <div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+                                    <div class="col-md-3 col-sm-6 col-padding text-center animate-box" data-animate-effect="fadeInLeft">
                                         <a name="/VideoOperation/OpenVideo/" class="work image-popup" onclick="VideoGetInfo(this)">
                                             <img src="@ImgPath" class="img-responsive">
                                             <div class="desc">
-                                                <label id="VideoName">@WorkName</label>
-                                                <label id="Author">@Session["UserName"].ToString()</label>
-                                                <label id="SendTime">@WorkTime</label>
-                                                <p>@VideoContent</p>
+                                                <div>
+                                                    <label>视频:</label>
+                                                    <label id="VideoName">@WorkName</label>
+                                                </div>
+                                                <div>
+                                                    <label>时间:</label>
+                                                    <label id="SendTime">@WorkTime</label>
+                                                </div>
+                                                <div>
+                                                    <label>作者:</label>
+                                                    <label id="Author">@Session["UserName"].ToString()</label>
+                                                </div>
+                                                <div>
+                                                    <label>介绍:</label>
+                                                    <label>@VideoContent</label>
+                                                </div>
                                             </div>
                                         </a>
                                     </div>
@@ -85,10 +97,10 @@
                         }
                     <script>
                         function VideoGetInfo(values) {
-                            var Author = values.children[1].children[1].innerHTML;
+                            var Author = values.children[1].children[2].children[1].innerHTML;
                             var W_Id = 2;
-                            var WorkName = values.children[1].children[0].innerHTML;
-                            var WorkTime = values.children[1].children[2].innerHTML;
+                            var WorkName = values.children[1].children[0].children[1].innerHTML;
+                            var WorkTime = values.children[1].children[1].children[1].innerHTML;
                             window.open("/VideoOperation/OpenVideo/?AuthorName=" + Author + "&W_Id=" + W_Id + "&WorkName=" + WorkName + "&WorkTime=" + WorkTime + "", "_blank");
                         }
                     </script>

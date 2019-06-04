@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -164,6 +165,8 @@ namespace 剧享网.Controllers
                         foreach (var getrole in GetRole)
                         {
                             Role = getrole.R_Id;
+                            //将用户ID放入session使用
+                            Session["U_Id"] = getrole.U_Id;
                         }
                         //方法一：(只满足一次HTTP请求，之后会置空)
                         //TempData["Role"] = Role;
@@ -217,7 +220,7 @@ namespace 剧享网.Controllers
                     {
                         Id = getlist.U_Id;
                     }
-                    //获取通过该Id查询的所有相关列
+                    //获取通过该Id查询的相关行
                     var GetFindList = db.T_User.Find(Id);
                     //在该列集合中修改密码
                     GetFindList.U_UserPassWord = NewPWD;
@@ -317,59 +320,8 @@ namespace 剧享网.Controllers
         [HttpPost]
         public void GetClientIPv4Address(string EnTime, string QuitTime)
         {
-            //try
-            //{
-            string ipv4 = String.Empty;
-            foreach (IPAddress ip in Dns.GetHostAddresses(GetClientIP()))
-            {
-                if (ip.AddressFamily.ToString() == "InterNetwork")
-                {
-                    ipv4 = ip.ToString();
-                    break;
-                }
-            }
-            if (ipv4 != String.Empty)
-            {
-                return;
-            }
-            // 利用 Dns.GetHostEntry 方法，由获取的 IPv6 位址反查 DNS 纪录，
-            // 再逐一判断何者为 IPv4 协议，即可转为 IPv4 位址。
-            foreach (IPAddress ip in Dns.GetHostEntry(GetClientIP()).AddressList)
-            {
-                if (ip.AddressFamily.ToString() == "InterNetwork")
-                {
-                    ipv4 = ip.ToString();
-                    break;
-                }
-            }
-            //调用该方法
-            InsertIp(EnTime, QuitTime, ipv4);
-            //}
-            //catch { }
-        }
-        //不是静态的话，当要使用这个方法的话，需要对类实例化然后其对象进行调用，而静态的直接类调用
-        //节省了一定时间，但是在B/S中static是个类似的session的机制见（慎用）：
-        //https://www.cnblogs.com/jianglan/archive/2012/12/06/2804974.html
-        //如果一个类中有static类型的变量,那么这个类所有实例都共享这个变量.
-        public static string GetClientIP()
-        {
-            ////获取代理服务器 IP（就是不是本地服务器）
-            //if (null == System.Web.HttpContext.Current.Request.ServerVariables["HTTP_VIA"])
-            //{
-            //    //发出请求的远程主机的IP地址
-            //    return System.Web.HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
-            //}
-            //else
-            //{
-            //    //用户的真实 IP，经过多个代理服务器时
-            //    return System.Web.HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
-            //}
-            string requestClientIpAddress = System.Web.HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
-            if (string.IsNullOrEmpty(requestClientIpAddress))
-                requestClientIpAddress = System.Web.HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
-            if (string.IsNullOrEmpty(requestClientIpAddress))
-                requestClientIpAddress = System.Web.HttpContext.Current.Request.UserHostAddress;
-            return requestClientIpAddress;
+            //调用该Request.UserHostAddress方法
+            InsertIp(EnTime, QuitTime, Request.UserHostAddress);
         }
         //向IpReport表插入信息
         public void InsertIp(string EnTime, string QuitTime, string ipv4)
@@ -398,9 +350,9 @@ namespace 剧享网.Controllers
                     //获取两时间的跨度
                     TimeSpan ts = NowTime - QTime;
                     //通过totalseconds获取跨度的秒数差，还有totaldays等
-                    double days = Math.Round(ts.TotalSeconds, 0);
-                    //当该Ip距离上次访问间隔7天及以上便可插入当前访问的数据等
-                    if (days >= 3)
+                    double hours = Math.Round(ts.TotalHours, 0);
+                    //当该Ip距离上次访问间隔六小时及以上便可插入当前访问的数据等
+                    if (hours >= 6)
                     {
                         T_IpReport ipReport = new T_IpReport();
                         ipReport.I_Ipv4 = ipv4;
@@ -429,9 +381,9 @@ namespace 剧享网.Controllers
                 using (剧享网Entities db = new 剧享网Entities())
                 {
                     ViewBag.MyHeadImg = GetMyHeadImg();
-                    //string UserName = "liu";
-                    //string PassWord = "123456";
-                    //string Email = "1984713349@qq.com";
+                    //Session["UserName"] = "liu";
+                    //Session["PassWord"] = "123456";
+                    //Session["Email"] = "1984713348@qq.com";
                     string UserName = Session["UserName"].ToString();
                     string PassWord = Session["PassWord"].ToString();
                     string Email = Session["Email"].ToString();
@@ -517,8 +469,10 @@ namespace 剧享网.Controllers
                             {
                                 FileInfo fileInfo = new FileInfo(imgpath);
                                 //记住一定不能是~/MyEassy/，我们要相对路径
-                                ImgPath.Add("/MyEassy/" + eassyimgName + "/" + fileInfo.Name);
+                                ImgPath.Add("/MyEassy/" + eassyimgName + "/" + fileInfo.Name); 
                             }
+                            fsEassy.Close();
+                            readerEassy.Close();
                         }
                         ViewBag.WorkName = WorkName;
                         ViewBag.ImgPath = ImgPath;
@@ -547,27 +501,30 @@ namespace 剧享网.Controllers
                 string Verification_Code = collection["Verification_Code"];
                 string qqEmail = collection["qqEmail"];
                 //返回的图片的字符串以及返回的错误异常
-                string pic = "", error = "", result = "";
+                string picpath = "", error = "", email = "";
+                //传进来的非空值的总数和因为异常只能修改的数，二者不等返回修改失败
+                double NotNullValueCount = 0;
+                double ExceCount = 0;
                 using (剧享网Entities db = new 剧享网Entities())
                 {
-                    string Name = Session["UserName"].ToString();
+                    string OldName = Session["UserName"].ToString();
                     string PWD = Session["PassWord"].ToString();
                     string Email = Session["Email"].ToString();
-                    //string Name = "liu";
+                    //string OldName = "he";
                     //string PWD = "123456";
-                    //string Email = "1984713349@qq.com";
+                    //string Email = "1984713345@qq.com";
                     //选出当前用户
-                    var GetUserInfo = from info in db.T_User where info.U_Email == Email && info.U_UserName == Name && info.U_UserPassWord == PWD select info;
+                    var GetUserInfo = from info in db.T_User where info.U_Email == Email && info.U_UserName == OldName && info.U_UserPassWord == PWD select info;
                     //获取当前用户的头像路径
                     string headimgpath = null;
-                    int id = 0;
+                    //通过session获取当前用户ID
+                    int U_Id = Convert.ToInt32(Session["U_Id"].ToString());
                     foreach (var info in GetUserInfo)
                     {
                         headimgpath = info.U_HeadImgPath;
-                        id = info.U_Id;
                     }
                     //找到当前用户的信息，准备修改
-                    var ModifyInfo = db.T_User.Find(id);
+                    var ModifyInfo = db.T_User.Find(U_Id);
                     //获取前台的文件信息
                     HttpFileCollectionBase files = Request.Files;
                     //获取文件中图片的信息
@@ -576,12 +533,13 @@ namespace 剧享网.Controllers
                     {
                         //获取图片的所有信息
                         string fileInfo = System.IO.Path.GetFileName(file.FileName);
+                        NotNullValueCount++;
                         //只获取名字没有扩展名
                         string fileonlyname = System.IO.Path.GetFileNameWithoutExtension(fileInfo);
                         //获取图片的扩展名
                         string fileExtension = System.IO.Path.GetExtension(fileInfo);
                         //自定义图片名
-                        string fileName = Name + PWD + Email + fileonlyname;
+                        string fileName = OldName + PWD + Email + fileonlyname;
                         //存放图片到指定的文件中
                         string filePhysicalPath = Server.MapPath("~/head_img/" + fileName + fileExtension);
                         //保存存片到指定文件位置
@@ -590,58 +548,165 @@ namespace 剧享网.Controllers
                         ModifyInfo.U_HeadImgPath = fileName + fileExtension;
                         db.SaveChanges();
                         //返回图片名，供前台使用
-                        pic = "/head_img/" + fileName + fileExtension;
+                        picpath = "/head_img/" + fileName + fileExtension;
+                        ExceCount++;
                     }
                     catch (Exception ex)
                     {
                         error = ex.Message;
                     }
 
-                    var GetList = from suit in db.T_User where suit.U_UserName == Name && suit.U_UserPassWord == PWD && suit.U_Email == Email select suit;
-                    int Id = 0;
-                    foreach (var getlist in GetList)
-                    {
-                        Id = getlist.U_Id;
-                    }
                     //获取通过该Id查询的所有相关列
-                    var GetFindList = db.T_User.Find(Id);
-                    //没填写用户名或者电话则不修改
-                    if (UpdateName != null && UpdateName != "")
-                    {
-                        GetFindList.U_UserName = UpdateName;
-                        //更新当前session内容，确保当前用户能使用其余功能
-                        Session["UserName"] = UpdateName;
-                        result = "OK";
-                    }
+                    var GetFindList = db.T_User.Find(U_Id);
+                    //电话修改
                     if (UpdateTel != null && UpdateTel != "")
                     {
+                        NotNullValueCount++;
                         GetFindList.U_UserTelNum = UpdateTel;
-                        result = "OK";
+                        ExceCount++;
                     }
                     //邮箱修改
-                    if (Verification_Code == Session["Digital"].ToString())
+                    if (qqEmail!="")
                     {
-                        GetFindList.U_Email = qqEmail;
-                        Session["Email"] = qqEmail;
-                        result = "OK";
+                        try
+                        {
+                            NotNullValueCount++;
+                            //未点击获取验证码就确认修改获得异常处理
+                            if (Verification_Code == Session["Digital"].ToString())
+                            {
+                                GetFindList.U_Email = qqEmail;
+                                Session["Email"] = qqEmail;
+                                ExceCount++;
+                            }
+                            if (NotNullValueCount != ExceCount)
+                            {
+                                return Json(new
+                                {
+                                    picpath = picpath,
+                                    NotNullValueCount = NotNullValueCount,
+                                    myname = UpdateName,
+                                    ExceCount = ExceCount,
+                                    result = "OK",
+                                    error = error,
+                                });
+                            }
+                        }
+                        catch {
+                        }
                     }
+                    //用户名修改,放最后不然文件名会被影响的
+                    if (UpdateName != null && UpdateName != "")
+                    {
+                        NotNullValueCount++;
+                        GetFindList.U_UserName = UpdateName;
 
-                    //保存即可影响数据库的数据
-                    db.SaveChanges();
+                        //修改名字后，作品表也要修改
+                        var UpdateUserChain = from sendwork in db.T_SendWork where sendwork.U_Id == U_Id select sendwork;
+                        try
+                        {
+                            foreach (var chain in UpdateUserChain)
+                            {
+                                //先找出ID
+                                int S_InfoId = chain.S_InfoId;
+                                string S_WorkPath = chain.S_WorkPath;
+                                //修改目录文件名
+                                string OldDirOrFileName = S_WorkPath.Remove(0, 10);
+                                string OldWorkPath = S_WorkPath;
+
+                                if (System.IO.Directory.Exists(Server.MapPath("~/MyEassy/" + OldDirOrFileName)))
+                                {
+                                    //加入读写锁操作多线程文件
+                                    ReaderWriterLockSlim LogWriteLock = new ReaderWriterLockSlim();
+                                    LogWriteLock.EnterWriteLock();
+                                    //修改数据库用户名，首先移除原来的用户名开头,然后插入新的用户名
+                                    S_WorkPath = S_WorkPath.Remove(10, OldName.Length).Insert(10, UpdateName);
+                                    var modifyData = db.T_SendWork.Find(S_InfoId);
+                                    modifyData.S_WorkPath = S_WorkPath;
+                                    modifyData.U_UserName = UpdateName;
+                                    string NewDirOrFileName = S_WorkPath.Remove(0, 10);
+                                    //路径一样不做修改
+                                    if (System.IO.File.Exists(Server.MapPath("~/MyEassy/" + OldDirOrFileName + '/' + OldDirOrFileName + ".txt")))
+                                    {
+                                        //先修改txt文件名,可能有bug...
+                                        FileInfo fileTXT = new FileInfo(Server.MapPath("~/MyEassy/" + OldDirOrFileName + '/' + OldDirOrFileName + ".txt"));
+                                        fileTXT.MoveTo(Server.MapPath("~/MyEassy/" + OldDirOrFileName + '/' + NewDirOrFileName + ".txt"));
+                                        try
+                                        {
+                                            System.IO.File.Move(Server.MapPath("~/MyEassy/" + OldDirOrFileName + '/' + OldDirOrFileName + ".png"), Server.MapPath("~/MyEassy/" + OldDirOrFileName + '/' + NewDirOrFileName + ".png"));
+                                        }
+                                        catch
+                                        {
+                                            System.IO.File.Move(Server.MapPath("~/MyEassy/" + OldDirOrFileName + '/' + OldDirOrFileName + ".jpg"), Server.MapPath("~/MyEassy/" + OldDirOrFileName + '/' + NewDirOrFileName + ".jpg"));
+                                        }
+                                    }
+                                    //最后修改目录名
+                                    Directory.Move(Server.MapPath("~/MyEassy/" + OldDirOrFileName), Server.MapPath("~/MyEassy/" + NewDirOrFileName));
+                                    LogWriteLock.ExitWriteLock();
+                                }
+                            }
+                            //加一半
+                            ExceCount = ExceCount + 0.5;
+                        }
+                        catch { }
+                        //修改作品表后，评论表也要修改
+                        //只改自己文章的自己的名字
+                        foreach (var chain in UpdateUserChain)
+                        {    
+                            int W_Id = chain.W_Id;
+                            string S_WorkName = chain.S_WorkName;
+                            string S_SendTime = chain.S_SendTime;
+                            //修改评论表
+                            var UpdateComment = from updatecomment in db.T_Comment where updatecomment.W_Id == W_Id && updatecomment.C_WorkName == S_WorkName && updatecomment.C_WorkTime == S_SendTime select updatecomment;
+                            //有对该用户作品评论的信息
+                            if (UpdateComment.Count() > 0)
+                            {
+                                foreach (var info in UpdateComment)
+                                {
+                                    var updateComment = db.T_Comment.Find(info.C_InfoId);
+                                    updateComment.C_UserName = info.C_UserName.Replace(OldName, UpdateName);
+                                }
+                            }
+                        }
+                        //只改不是自己文章的自己评论的名字
+                        var UpdataCommentChain = from comment in db.T_Comment where comment.U_Id == U_Id select comment;
+                        //有对该用户作品评论的信息
+                        if (UpdataCommentChain.Count() > 0)
+                        {
+                            foreach (var info in UpdataCommentChain)
+                            {
+                                var updateComment = db.T_Comment.Find(info.C_InfoId);
+                                updateComment.U_UserName = info.U_UserName.Replace(OldName, UpdateName);
+                            }
+                        }
+                        //再加一半
+                        ExceCount = ExceCount + 0.5;
+                        //更新当前session内容，确保当前用户能使用其余功能
+                        Session["UserName"] = UpdateName;
+                    }
+                    //二者相等保存数据
+                    if (NotNullValueCount == ExceCount && NotNullValueCount!=0)
+                    {
+                        //保存即可影响数据库的数据
+                        db.SaveChanges();
+                    }
                 }
                 return Json(new
                 {
-                    pic = pic,
-                    result = result,
-                    error = error
+                    picpath = picpath,
+                    NotNullValueCount = NotNullValueCount,
+                    myname = UpdateName,
+                    ExceCount =ExceCount,
+                    result = "OK",
+                    error = error,
                 });
             }
             catch
             {
                 return Json(new
                 {
-                    pic = "",
-                    result = "",
+                    picpath = "",
+                    result = "NO",
+                    myname = Session["UserName"].ToString()
                 });
             }
         }
@@ -752,7 +817,7 @@ namespace 剧享网.Controllers
                 }
                 return View();
             }
-            catch { return View("/Shared/Error/"); }
+            catch { return View("/Shared/Error"); }
         }
 
         //关注信息

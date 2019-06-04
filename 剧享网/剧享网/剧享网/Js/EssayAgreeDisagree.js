@@ -9,6 +9,12 @@
     var GetTime = document.getElementById("SendTime").innerHTML;
     //获取父节点信息
     var fatherNode = status.parentElement;
+
+    console.log(judge);
+    console.log(AuthorName);
+    console.log(WorkName);
+    console.log(GetTime);
+
     $.ajax({
         url: "/T_AgreeDisagree/EssayAgreeDisagree/",
         type: "post",
@@ -25,10 +31,10 @@
                 return alert("该功能暂时关闭");
             }
             if (data.split(",")[0] == "agree") {
-                fatherNode.children[4].innerHTML = "[" + data.split(",")[1] + "]";
+                fatherNode.children[7].innerHTML = "[" + data.split(",")[1] + "]";
             }
             else {
-                fatherNode.children[6].innerHTML = "[" + data.split(",")[1] + "]";
+                fatherNode.children[9].innerHTML = "[" + data.split(",")[1] + "]";
             }
         },
         error: function () {
