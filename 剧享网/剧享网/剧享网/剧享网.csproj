@@ -245,6 +245,7 @@
     <Content Include="ALL_IMAGE\Gao_Fu\arrows.png" />
     <Content Include="ALL_IMAGE\Gao_Fu\BackGroundImg.jpg" />
     <Content Include="ALL_IMAGE\Gao_Fu\bvs2.jpg" />
+    <Content Include="ALL_IMAGE\Gao_Fu\cai.png" />
     <Content Include="ALL_IMAGE\Gao_Fu\changeBack.png" />
     <Content Include="ALL_IMAGE\Gao_Fu\chek1.png" />
     <Content Include="ALL_IMAGE\Gao_Fu\DragonBall.gif" />
@@ -259,6 +260,7 @@
     <Content Include="ALL_IMAGE\Gao_Fu\registerBack.jpg" />
     <Content Include="ALL_IMAGE\Gao_Fu\right.png" />
     <Content Include="ALL_IMAGE\Gao_Fu\rui.png" />
+    <Content Include="ALL_IMAGE\Gao_Fu\searchBack.png" />
     <Content Include="ALL_IMAGE\Gao_Fu\slid.png" />
     <Content Include="ALL_IMAGE\Gao_Fu\zhe.png" />
     <Content Include="ALL_IMAGE\Gao_Fu\新日暮里战队.jpg" />
