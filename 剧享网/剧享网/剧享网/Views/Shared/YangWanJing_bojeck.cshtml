@@ -8,9 +8,9 @@
         .CommentBlock {
             border-radius: 4px;
             border: solid #e5e9ef;
-            width: 850px;
-            margin: auto;
-            padding: 15px;
+            width: 900px;
+            margin-left: 0;
+            padding: 0px;
             overflow-y: scroll;
             height: 300px;
         }
@@ -23,10 +23,13 @@
         }
 
         .sub {
-            border: 10px solid #ffffff;
+            border: 0 solid #ffffff;
             height: auto;
-            margin: auto;
-            background: #e5e9ef;
+            margin: 0;
+        }
+
+        .suninfo {
+            margin-left: 2em;
         }
 
         .Tijiao {
@@ -36,10 +39,32 @@
         }
 
         .Comment {
-            width: 850px;
+            width: 900px;
             margin: auto;
             padding: 15px;
             height: 300px;
+        }
+
+        .littleBtn {
+            border-radius: 2em;
+            line-height: 2px;
+            margin-top: 10px;
+            margin-left: 2px;
+            background: #324675;
+            color: #fff;
+            border: 2px solid #324675;
+            height: 20px;
+        }
+
+        .littleBtn2 {
+            border-radius: 1.5em;
+            line-height: 2px;
+            margin-top: 10px;
+            margin-left: 2px;
+            background: #fff;
+            color: black;
+            border: none;
+            height: 25px;
         }
 
         #Article {
@@ -47,8 +72,19 @@
 
         .SelfComment {
             resize: none;
+            width: 300px;
+            height: 50px;
         }
 
+        #Tijiao {
+            height: 30px;
+            width: 150px;
+            background: #333;
+            color: #fff;
+            border: 2px solid #333;
+            margin-bottom: 2em;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -72,13 +108,13 @@
                     <a id="Article">马男波杰克</a>
                     <small id="Author">官方</small>
                     <small id="SendTime">2018/12/16 22:26:50</small>
-                    <input type="button" value="赞成" class="WorkAgree" name="agree" onclick="EssayAgreeDisagree(this)" />
+                    <input type="button" value="赞成" class="WorkAgree littleBtn2" name="agree" onclick="EssayAgreeDisagree(this)" />
                     @foreach (var list in (List<int>)ViewBag.List)
                     {
                         <label id="agreecount">[@list]</label>
                         break;
                     }
-                    <input type="button" value="反对" class="WorkDisAgree" name="disagree" onclick="EssayAgreeDisagree(this)" />
+                    <input type="button" value="反对" class="WorkDisAgree littleBtn2" name="disagree" onclick="EssayAgreeDisagree(this)" />
                     @while (true)
                     {
                         int flag = 0;
@@ -182,7 +218,7 @@
     </div>
 
     <div>
-        <h4>評論区</h4>
+        <h2>評論区</h2>
         <div class="CommentBlock">
             @foreach (var fatherinfo in (List<剧享网.Models.T_Comment>)ViewBag.FatherNode)
             {
@@ -190,23 +226,24 @@
                 int C_Id = fatherinfo.C_Id;
                 int C_InfoId = fatherinfo.C_InfoId;
                 <div class="father">
-                    <label>@fatherinfo.U_UserName</label>
+                    <label style="color: #263f7a">@fatherinfo.U_UserName</label>
                     <label>：</label>
                     <label>@fatherinfo.C_Info</label>
-                    <button onclick="Response(this)">回复</button>
-                    <div style="display:none">
+                    <button onclick="Response(this)" class="littleBtn">回复</button>
+                    <div style="display:none; margin-left: 2em">
                         <input type="text" />
-                        <input type="button" value="提交" onclick="SubmitComment(this)" />
+                        <input class="littleBtn" type="button" value="提交" onclick="SubmitComment(this)" />
                     </div>
-                    <label>@fatherinfo.C_CommentTime</label>
-
+                    <small>@fatherinfo.C_CommentTime</small>
                     @{
                         List<剧享网.Models.T_AgreeDisagree> Count = new 剧享网.Comment_cs.AgreeDisCount().CountInfo(U_Id, C_Id, C_InfoId);
                         foreach (var countinfo in Count)
                         {
-                            <button name="agree" onclick="CommentaryAgreeorDisagree(this)">赞成</button>
+                            <button name="agree" onclick="CommentaryAgreeorDisagree(this)" class="littleBtn">❤</button>
                             <label>[@countinfo.A_AgreeCount]</label>
-                            <button name="disagree" onclick="CommentaryAgreeorDisagree(this)">反对</button>
+                            <button name="disagree" onclick="CommentaryAgreeorDisagree(this)" class="littleBtn">
+                                <img style="width:12px;height:12px;" src="~/ALL_IMAGE/Gao_Fu/cai.png" />
+                            </button>
                             <label>[@countinfo.A_DisAgreeCount]</label>
                         }
                     }
@@ -215,7 +252,7 @@
                         foreach (var childreninfo in children)
                         {
                             <div class="sub">
-                                <label class="suninfo">@childreninfo.U_UserName：@childreninfo.C_Info</label>
+                                <label class="suninfo"><lable style="color: #263f7a">@childreninfo.U_UserName</lable>：@childreninfo.C_Info</label>
                             </div>
                         }
                     }
@@ -223,10 +260,12 @@
 
             }
             <div class="Comment" id="selfcomment">
-                <textarea class="SelfComment" name="SelfComment" placeholder="说出你的愿望!"></textarea>
-                <input id="Tijiao" type="submit" value="提交" onclick="SelfComment()" />
+                <textarea class="SelfComment" name="SelfComment" placeholder="  尽情吐槽吧!"></textarea>
+
             </div>
+
         </div>
+        <input id="Tijiao" type="submit" value="发  送" onclick="SelfComment()" />
     </div>
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Js/Response.js"></script>

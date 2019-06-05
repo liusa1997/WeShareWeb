@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link href="~/Content/Gao_Fu/NotifyIndex.css" type="text/css" rel="stylesheet" />
+    <title>我的消息</title>
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script>
         window.onload = function () {
@@ -65,7 +66,7 @@
                                 <li><a class="Syscontent" onclick="LeapAndKillSmall(this)">@SysArray[j]</a></li>
                             }
                         }
-                        <li class="DeleteNotifyInfo"><button onclick="deleteSysnotifyinfo(this)">删除</button></li>
+                        <li class="DeleteNotifyInfo"><button class="delete_btn" onclick="deleteSysnotifyinfo(this)">删除</button></li>
                     </ul>
                 }
             }
@@ -104,7 +105,7 @@
                                 <li><a class="Rescontent"onclick="LeapAndKillSmall(this)">@ResArray[j]</a></li>
                             }
                         }
-                        <li class="DeleteNotifyInfo"><button onclick="deleteResnotifyinfo(this)">删除</button></li>
+                        <li class="DeleteNotifyInfo"><button class="delete_btn" onclick="deleteResnotifyinfo(this)">删除</button></li>
                     </ul>
                 }
             }
@@ -147,7 +148,7 @@
                                 <li><a class="SysReadcontent" onclick="LeapAndKillSmall(this)">@SysReadArray[j]</a></li>
                             }
                         }
-                        <li class="DeleteNotifyInfo"><button onclick="deleteSysnotifyinfo(this)">删除</button></li>
+                        <li class="DeleteNotifyInfo"><button class="delete_btn" onclick="deleteSysnotifyinfo(this)">删除</button></li>
                     </ul>
                 }
             }
@@ -185,7 +186,7 @@
                                 <li><a class="ResReadcontent"onclick="LeapAndKillSmall(this)">@ResReadArray[j]</a></li>
                             }
                         }
-                        <li class="DeleteNotifyInfo"><button onclick="deleteResnotifyinfo(this)">删除</button></li>
+                        <li class="DeleteNotifyInfo"><button class="delete_btn" onclick="deleteResnotifyinfo(this)">删除</button></li>
                     </ul>
                 }
             }

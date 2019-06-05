@@ -26,19 +26,21 @@
                 <ul>
                     <li>
                         <img class="my_headimg" name="imgs" src="@ViewBag.MyHeadImg" style="border-radius:70%;height:70px;width:70px;" />
+                    </li>
+                    <li>
                         <label>@Session["UserName"].ToString()</label>
                     </li>
                     <li><a href="/T_User/MyInfo">个人信息</a></li>
                     <li><a href="/T_User/MyEassy">我的文章</a></li>
                     <li><a href="/T_User/MyVideo">我的视频</a></li>
                     <li><a href="/T_User/FollowInfo">关注信息</a></li>
-                    <li class="fh5co-active"><a href="/T_User/UserCenter">用户中心</a></li>
+                    <li><a href="/T_User/UserCenter">用户中心</a></li>
                     <li><a href="/T_User/Index">返回主页</a></li>
                 </ul>
             </nav>
             <!--版权声明-->
             <div class="fh5co-footer">
-                <p><small><span>&copy; 2018 剧享网</span></small></p>
+                <p><small><span>&copy; 2019 剧享网</span></small></p>
             </div>
 
         </aside>
@@ -49,7 +51,7 @@
 
                 <!--我的视频-->
                 <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">我的视频</h2>
-                <a href="/VideoOperation/SendVideo/" target="_blank">发布视频</a>
+                <a href="/VideoOperation/SendVideo/">发布视频</a>
                 <br />
                 <label>你还能使用的空间大小：@ViewBag.VideoSize MB</label>
                 <div class="row row-bottom-padded-md">
@@ -71,7 +73,7 @@
                                     <div class="col-md-3 col-sm-6 col-padding text-center animate-box" data-animate-effect="fadeInLeft">
                                         <a name="/VideoOperation/OpenVideo/" class="work image-popup" onclick="VideoGetInfo(this)">
                                             <img src="@ImgPath" class="img-responsive">
-                                            <div class="desc">
+                                            <div class="desc" style="display:block;background:#f5f5f5;color:gray;height: 100%;">
                                                 <div>
                                                     <label>视频:</label>
                                                     <label id="VideoName">@WorkName</label>
@@ -91,10 +93,10 @@
                                             </div>
                                         </a>
                                     </div>
-                                    }
                                 }
                             }
                         }
+                    }
                     <script>
                         function VideoGetInfo(values) {
                             var Author = values.children[1].children[2].children[1].innerHTML;
@@ -104,15 +106,15 @@
                             window.open("/VideoOperation/OpenVideo/?AuthorName=" + Author + "&W_Id=" + W_Id + "&WorkName=" + WorkName + "&WorkTime=" + WorkTime + "", "_blank");
                         }
                     </script>
-                        @*<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-                <a href="/Shared/YangWanJing_BVS" target="_blank" class="work image-popup" style="background: url(../../ALL_IMAGE/YangWanJing/bvs2.jpg);background-size:100%;background-repeat:no-repeat">
-                    <div class="desc">
-                        <h3>正义黎明</h3>
-                        <span>蝙蝠侠大战超人</span>
-                    </div>
-                </a>
-            </div>*@
-                    </div>
+                    @*<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+                            <a href="/Shared/YangWanJing_BVS" target="_blank" class="work image-popup" style="background: url(../../ALL_IMAGE/YangWanJing/bvs2.jpg);background-size:100%;background-repeat:no-repeat">
+                                <div class="desc">
+                                    <h3>正义黎明</h3>
+                                    <span>蝙蝠侠大战超人</span>
+                                </div>
+                            </a>
+                        </div>*@
+                </div>
             </div>
         </div>
     </div>

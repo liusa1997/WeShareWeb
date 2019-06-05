@@ -29,19 +29,21 @@
                 <ul>
                     <li>
                         <img class="my_headimg" name="imgs" src="@ViewBag.MyHeadImg" style="border-radius:70%;height:70px;width:70px;" />
-                        <label id="MyName">@Session["UserName"]</label>
+                    </li>
+                    <li>
+                        <label>@Session["UserName"].ToString()</label>
                     </li>
                     <li><a href="/T_User/MyInfo">个人信息</a></li>
                     <li><a href="/T_User/MyEassy">我的文章</a></li>
                     <li><a href="/T_User/MyVideo">我的视频</a></li>
                     <li><a href="/T_User/FollowInfo">关注信息</a></li>
-                    <li class="fh5co-active"><a href="/T_User/UserCenter">用户中心</a></li>
+                    <li><a href="/T_User/UserCenter">用户中心</a></li>
                     <li><a href="/T_User/Index">返回主页</a></li>
                 </ul>
             </nav>
             <!--版权声明-->
             <div class="fh5co-footer">
-                <p><small><span>&copy; 2018 剧享网</span></small></p>
+                <p><small><span>&copy; 2019 剧享网</span></small></p>
             </div>
 
         </aside>
@@ -125,43 +127,23 @@
     </script>
     <script type="text/javascript">
         $(function () {
-            $("#btn_show").click(function () {  
+            $("#btn_show").click(function () {
                 var options = {
                     success: function (responseText) {
-                        var picPath = responseText.picpath;
-                        var myname = responseText.myname;
-                        var NotNullValueCount = responseText.NotNullValueCount;
-                        var ExceCount = responseText.ExceCount;
-                        var error = responseText.error;
+                        var picPath = responseText.pic;
                         var Result = responseText.result;
                         console.log(picPath);
-                        console.log(Result);
-                        console.log(myname);
-                        console.log(NotNullValueCount);
-                        console.log(ExceCount);
-                        console.log(error);
-
-                        if (Result == "OK") {
-                            if (NotNullValueCount == ExceCount && NotNullValueCount != 0) {
-                                if (picPath != "") {
-                                    $(".my_headimg").attr("src", picPath).show();
-                                    console.log(picPath);
-                                }
-                                if (myname != "") {
-                                    document.getElementById("MyName").innerHTML = myname;
-                                }
-                                alert("修改成功");
-                            }
-                            else {
-                                alert("修改失败，修改邮箱之前请确认验证码是否正确、修改的用户名是否一样、信息是否都为空");
-                            }
+                        if (picPath != "" || Result != "") {
+                            $(".my_img").attr("src", picPath).show();
+                            alert("修改成功");
                         }
                         else {
-                            document.getElementById("MyName").innerHTML = myname;
-                            alert("服务器出现异常，信息修改失败");
+                            alert("信息修改无效");
                         }
                     },
-                    error: function () {
+                    error: function (textStatus, errorThrown) {
+                        console.log(textStatus);
+                        console.log(errorThrown);
                     }
                 };
                 $("#form_upload").ajaxForm(options);

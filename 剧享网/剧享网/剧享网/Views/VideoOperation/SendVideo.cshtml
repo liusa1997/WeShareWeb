@@ -5,90 +5,142 @@
     @*需要兼容模式才能打开视频*@
     @*<meta name="renderer" content="ie-comp" />*@
     <meta http-equiv="X-UA-Compatible" content="IE=8" />
-    <title></title>
+    <title>编辑视频</title>
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Js/jQuery.Form.js"></script>
     <script src="~/plupload/plupload.full.min.js"></script>
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="~/Content/Gao_Fu/animate.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="~/Content/Gao_Fu/bootstrap.css">
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="~/Content/Gao_Fu/flexslider.css">
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="~/Content/Gao_Fu/style.css">
+
+    <style>
+        .send {
+            width: 200px;
+            height: 40px;
+            line-height: 20px;
+            margin-top: 1em;
+        }
+    </style>
+
 </head>
 <body>
-    <form id="submitvideoinfo" enctype="multipart/form-data" method="post" >
-        <div>
-            <input type="text" placeholder="视频名" name="VideoName" id="VideoName" style="width:300px;" />
-        </div>
-        <div>
-            <textarea id="VideoIntroduction" placeholder="给您的视频一个简单的介绍吧" name="VideoIntroduction" style="width:300px;height:30px;"></textarea>
-        </div>
-        <div>
-            <div id="MyVideoDisplay">
-                <label>选择你的视频：</label>
-                <input id="PreVideo" type="file" name="video"  />
+    <div id="fh5co-page">
+        <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
+
+            <h1 id="fh5co-logo"><a href="/T_User/UserCenter">剧享网</a></h1>
+            <nav id="fh5co-main-menu" role="navigation">
+                <ul>
+                    @*<li>
+                            <img class="my_headimg" name="imgs" src="@ViewBag.MyHeadImg" style="border-radius:70%;height:70px;width:70px;" />
+                        </li>
+                        <li>
+                            <label>@Session["UserName"].ToString()</label>
+                        </li>*@
+                    <li><a href="/T_User/MyInfo">个人信息</a></li>
+                    <li><a href="/T_User/MyEassy">我的文章</a></li>
+                    <li><a href="/T_User/MyVideo">我的视频</a></li>
+                    <li><a href="/T_User/FollowInfo">关注信息</a></li>
+                    <li><a href="/T_User/UserCenter">用户中心</a></li>
+                    <li><a href="/T_User/Index">返回主页</a></li>
+                </ul>
+            </nav>
+            <!--版权声明-->
+            <div class="fh5co-footer">
+                <p><small><span>&copy; 2019 剧享网</span></small></p>
             </div>
-            <div id="MyVideoImg">
-                <label>为视频选上封面：</label><input type="file" name="img" onchange="showPreImg(this)" />
-                <img id="PreImg" style="width:238px;height:134px;"/>
-                <script>
-                    function showPreImg(values) {
-                        var fileImg = values.files[0];
-                        var Reg = /^image/;
-                        var reader = null;
-                        if (!Reg.test(fileImg.type)) {
-                            alert("请选择图片类型");
-                            return false;
-                        }
-                        if (window.FileReader) {
-                            reader = new FileReader();
-                        }
-                        else {
-                            alert("浏览器版本过低，请升级或更换浏览器");
-                            return false;
-                        }
-                        reader.onload = function () {
-                            $("#PreImg").attr("src", this.result);
-                        }
-                        reader.readAsDataURL(fileImg);
-                    }
-                </script>
+
+        </aside>
+
+
+        <div id="fh5co-main">
+            <div class="fh5co-narrow-content">
+                <form id="submitvideoinfo" enctype="multipart/form-data" method="post">
+                    <div>
+                        <input type="text" placeholder="视频名" name="VideoName" id="VideoName" style="width:500px;" />
+                    </div>
+                    <div style="margin-top:10px;">
+                        <textarea id="VideoIntroduction" placeholder="给您的视频一个简单的介绍吧" name="VideoIntroduction" style="width:500px;height:150px;"></textarea>
+                    </div>
+                    <div>
+                        <div id="MyVideoDisplay">
+                            <label>选择你的视频：</label>
+                            <input id="PreVideo" type="file" name="video" />
+                        </div>
+                        <div id="MyVideoImg">
+                            <label>为视频选上封面：</label><input type="file" name="img" onchange="showPreImg(this)" />
+                            <img id="PreImg" style="width:238px;height:134px;margin-top:20px;" />
+                            <script>
+                                function showPreImg(values) {
+                                    var fileImg = values.files[0];
+                                    var Reg = /^image/;
+                                    var reader = null;
+                                    if (!Reg.test(fileImg.type)) {
+                                        alert("请选择图片类型");
+                                        return false;
+                                    }
+                                    if (window.FileReader) {
+                                        reader = new FileReader();
+                                    }
+                                    else {
+                                        alert("浏览器版本过低，请升级或更换浏览器");
+                                        return false;
+                                    }
+                                    reader.onload = function () {
+                                        $("#PreImg").attr("src", this.result);
+                                    }
+                                    reader.readAsDataURL(fileImg);
+                                }
+                            </script>
+                        </div>
+                    </div>
+                    <button id="SendVideo" class="btn btn-primary btn-md send">发&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;布</button>
+                    <script>
+                        $(function () {
+                            $("#SendVideo").click(function () {
+                                if (document.getElementById("VideoName").value == "" || document.getElementById("VideoName").value == null || document.getElementById("VideoIntroduction").value == "" || document.getElementById("VideoIntroduction").value == null) {
+                                    alert("视频名、视频介绍不能为空");
+                                    return false;
+                                }
+                                if (document.getElementById("PreVideo").value == "") {
+                                    alert("你还未选择上传的视频呢~");
+                                    return false;
+                                }
+                                if (document.getElementById("PreImg").src == "") {
+                                    alert("为你的视频选出最合心意的封面吧！");
+                                    return false;
+                                }
+                                var OperationAjaxForm = {
+                                    success: function (data) {
+                                        if (data == "30M") {
+                                            alert("上传的视频及图片总大小请勿超过30M");
+                                        }
+                                        else if (data == "Close") {
+                                            alert("该功能被禁用，无法发送文章");
+                                        }
+                                        else if (data == "Fail") {
+                                            alert("空间不足，发送失败");
+                                        }
+                                        else if (data == "OK") {
+                                            window.location.href = "/T_User/MyVideo/";
+                                        }
+                                    },
+                                    error: function () {
+                                        alert("上传失败");
+                                    }
+                                }
+                                $("#submitvideoinfo").ajaxForm(OperationAjaxForm);
+                            })
+                        });
+                    </script>
+                </form>
             </div>
         </div>
-        <button id="SendVideo">发布</button>
-        <script>
-            $(function () {
-                $("#SendVideo").click(function () {
-                    if (document.getElementById("VideoName").value == "" || document.getElementById("VideoName").value == null || document.getElementById("VideoIntroduction").value == "" || document.getElementById("VideoIntroduction").value == null) {
-                        alert("视频名、视频介绍不能为空");
-                        return false;
-                    }
-                    if (document.getElementById("PreVideo").value == "") {
-                        alert("你还未选择上传的视频呢~");
-                        return false;
-                    }
-                    if (document.getElementById("PreImg").src == "") {
-                        alert("为你的视频选出最合心意的封面吧！");
-                        return false;
-                    }
-                    var OperationAjaxForm = {
-                        success: function (data) {
-                            if (data == "30M") {
-                                alert("上传的视频及图片总大小请勿超过30M");
-                            }
-                            else if (data == "Close") {
-                                alert("该功能被禁用，无法发送文章");
-                            }
-                            else if (data == "Fail") {
-                                alert("空间不足，发送失败");
-                            }
-                            else if (data == "OK") {
-                                window.location.href = "/T_User/MyVideo/";
-                            }
-                        },
-                        error: function () {
-                            alert("上传失败");
-                        }
-                    }
-                    $("#submitvideoinfo").ajaxForm(OperationAjaxForm);
-                })
-            });
-        </script>
-    </form>
+    </div>
 </body>
 </html>

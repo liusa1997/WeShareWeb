@@ -20,62 +20,63 @@
 </head>
 <body>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-            <li><a href="/EassyOperation/EassyZone">文章区<span class="sr-only">(current)</span></a></li>
-            <li><a href="#">视频区</a></li>
-            <li><a href="/SearchInfo/Index/">去搜索</a></li>
-        </ul>
-        <div class="UserBar">
+        @*<ul class="nav navbar-nav">
+                <li><a href="/EassyOperation/EassyZone">文章区<span class="sr-only">(current)</span></a></li>
+                <li><a href="#">视频区</a></li>
+                <li><a href="/SearchInfo/Index/">去搜索</a></li>
+            </ul>*@
+        <div style="float:left;"><a href="/T_User/Index" style="font-size:20px;">返回主页</a></div>
+        @*<div class="UserBar">
 
-        </div>
-        <div class="HotEassyZone">
-            <h3>----热门文章----</h3>
-            <div id="fh5co-main">
-                <div class="fh5co-narrow-content">
-                    <div class="row row-bottom-padded-md">
-                        @{
-                            for (int i = 0; i < ViewBag.InfoContentCount; i=i+4)
-                            {
-                                    <div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-                                        <div class="blog-entry">
-                                            <div>
-                                                <a name="/EassyOperation/OpenMyEassy" class="blog-img">
-                                                    @{
-                                                        string imgpath = ViewBag.InfoContent[i];
-                                                        <img src="@imgpath" class="img-responsive" onclick="MyEassyGetInfoByImg(this)">
-                                                    }
-                                                </a>
-                                            </div>
-                                            <div class="desc">
-                                                @{
-                                                    string username = ViewBag.InfoContent[i+1];
-                                                    string workname = ViewBag.InfoContent[i+2];
-                                                    string worktime = ViewBag.InfoContent[i+3];
-                                                    <div>
-                                                        <label>文章:</label>
-                                                        <a name="/EassyOperation/OpenMyEassy" onclick="MyEassyGetInfoByText(this)">@workname</a>
-                                                    </div>
-                                                    <div>
-                                                        <label>时间:</label>
-                                                        <small>@worktime</small>
-                                                    </div>
-                                                    <div>
-                                                        <label>作者:</label>
-                                                        <label>@username</label>
-                                                    </div>
-                                                }
-                                            </div>
-                                        </div>
+            </div>
+            <div class="HotEassyZone">
+                <h3>----热门文章----</h3>*@
+        <div id="fh5co-main">
+            <div class="fh5co-narrow-content">
+                <div class="row row-bottom-padded-md">
+                    @{
+                        for (int i = 0; i < ViewBag.InfoContentCount; i = i + 4)
+                        {
+                            <div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+                                <div class="blog-entry">
+                                    <div>
+                                        <a name="/EassyOperation/OpenMyEassy" class="blog-img">
+                                            @{
+                                                string imgpath = ViewBag.InfoContent[i];
+                                                <img src="@imgpath" class="img-responsive" onclick="MyEassyGetInfoByImg(this)">
+                                            }
+                                        </a>
                                     </div>
-                                }
-                            }
-                    </div>
+                                    <div class="desc">
+                                        @{
+                                            string username = ViewBag.InfoContent[i + 1];
+                                            string workname = ViewBag.InfoContent[i + 2];
+                                            string worktime = ViewBag.InfoContent[i + 3];
+                                            <div>
+                                                <label>文章:</label>
+                                                <a name="/EassyOperation/OpenMyEassy" onclick="MyEassyGetInfoByText(this)">@workname</a>
+                                            </div>
+                                            <div>
+                                                <label>时间:</label>
+                                                <small>@worktime</small>
+                                            </div>
+                                            <div>
+                                                <label>作者:</label>
+                                                <label>@username</label>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
                 </div>
             </div>
         </div>
-        <div class="LatestEassyZone">
-
-        </div>
     </div>
+    @*<div class="LatestEassyZone">
+
+            </div>
+        </div>*@
 </body>
 </html>

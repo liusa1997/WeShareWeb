@@ -5,16 +5,55 @@
     <title>搜索</title>
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Js/FollowAndShowInfo.js"></script>
+    <script src="~/Js/jquery.min.js"></script>
+    <style>
+        .UserInfo {
+            margin-top: 5em;
+            text-align: center;
+        }
+
+        .SearchBtn {
+            background: #ffc600;
+            color: black;
+            border: none;
+            margin-left: 20px;
+            padding: 6px 40px;
+            font-size: 18px;
+        }
+
+        .logo {
+            float: left;
+        }
+
+            .logo img {
+                width: 60%;
+                height: 60%;
+            }
+
+        .FollowOK {
+            background: #ffc600;
+            color: black;
+            border: none;
+            margin-left: 10px;
+            /*padding: 6px 20px;*/
+            /*font-size: 18px;*/
+        }
+    </style>
+
 </head>
-<body>
-    <div id="SearchUsers">
-        <p>搜索用户</p>
-        <div class="Search">
+<body style="background-image: url(/ALL_IMAGE/Gao_Fu/searchBack.png); background-size: 100%; background-attachment: fixed;  ">
+    <div class="logo">
+        <a href="/T_User/Index"><img src="~/ALL_IMAGE/Gao_Fu/logo.png" alt="" /></a>
+    </div>
+    <div id="SearchUsers" style="color:aliceblue">
+
+        <h1 style="font-size: 45px; margin-left: 43%">搜 索 用 户</h1>
+        <div class="Search" style="text-align: center;">
             <div id="FuzzySearch">
-                <p>模糊搜索</p>
-                <label class="UserName">用户名：</label>
-                <input type="text" placeholder="在此为搜索的用户名" class="UserNameText" />
-                <button class="SearchBtn" onclick="FuzzySearchUserName(this)">搜索</button>
+                <small>&nbsp;</small>
+                <label class="UserName" style="color:aliceblue; font-size: 24px">用户名：</label>
+                <input type="text" placeholder="在此为搜索的用户名" class="UserNameText" style="width: 200px; padding: 6px 0; font-size: 16px; border: none;" />
+                <button class="SearchBtn" onclick="FuzzySearchUserName(this)">G O</button>
                 <script>
                     function FuzzySearchUserName(value) {
                         var FatherNode = value.parentElement;
@@ -36,7 +75,7 @@
                                     //FBIWARNING!!：这里必须将长度赋值给一个变量，不然循环只会执行一次，劳资也不晓得为什么！
                                     var Length = document.getElementsByClassName("UserInfo").length;
                                     if (document.getElementsByClassName("UserInfo").length != 0) {
-                                        for (var i = 11; i < (Length+11); ++i) {
+                                        for (var i = 11; i < (Length + 11); ++i) {
                                             Fuzzy.removeChild(Fuzzy.childNodes[11]);
                                         }
                                     }
@@ -97,11 +136,11 @@
                                         var BtnFollowOK = document.createElement("button");
                                         BtnFollowOK.className = "FollowOK";
                                         BtnFollowOK.innerHTML = "关注";
-                                        var BtnFollowOver = document.createElement("button");
-                                        BtnFollowOver.className = "FollowOver";
-                                        BtnFollowOver.innerHTML = "取消关注";
+                                        //var BtnFollowOver = document.createElement("button");
+                                        //BtnFollowOver.className = "FollowOver";
+                                        //BtnFollowOver.innerHTML = "取消关注";
                                         div.appendChild(BtnFollowOK);
-                                        div.appendChild(BtnFollowOver);
+                                        //div.appendChild(BtnFollowOver);
                                         //在模糊搜索里面加入该div
                                         Fuzzy.appendChild(div);
                                     }
@@ -117,17 +156,19 @@
                     }
                 </script>
             </div>
-            <div class="AccurateSearch">
-                <p>精确搜索</p>
-            </div>
+            @*<div class="AccurateSearch">
+                    <p>精确搜索</p>
+                </div>*@
         </div>
     </div>
-    <div id="SearchEassy">
-        <p>搜索文章</p>
-    </div>
-    <div id="SearchVideo">
-        <p>搜索视频</p>
-    </div>
+    @*<div id="SearchEassy">
+            <p>搜索文章</p>
+
+        </div>
+        <div id="SearchVideo">
+            <p>搜索视频</p>
+
+        </div>*@
 </body>
 </html>
 

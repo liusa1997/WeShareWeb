@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -16,6 +17,14 @@
     <!-- Theme style  -->
     <link rel="stylesheet" href="~/Content/Gao_Fu/style.css">
 
+    <style>
+        .fan_btn {
+            background: #228896;
+            color: #fff;
+            border: 2px solid #228896;
+        }
+    </style>
+
 </head>
 <body>
     <div id="fh5co-page">
@@ -27,246 +36,246 @@
                 <ul>
                     <li>
                         <img class="my_headimg" name="imgs" src="@ViewBag.MyHeadImg" style="border-radius:70%;height:70px;width:70px;" />
-                        @*<label>@Session["UserName"].ToString()</label>*@
+                    </li>
+                    <li>
+                        <label>@Session["UserName"].ToString()</label>
                     </li>
                     <li><a href="/T_User/MyInfo">个人信息</a></li>
                     <li><a href="/T_User/MyEassy">我的文章</a></li>
                     <li><a href="/T_User/MyVideo">我的视频</a></li>
                     <li><a href="/T_User/FollowInfo">关注信息</a></li>
-                    <li class="fh5co-active"><a href="/T_User/UserCenter">用户中心</a></li>
+                    <li><a href="/T_User/UserCenter">用户中心</a></li>
                     <li><a href="/T_User/Index">返回主页</a></li>
                 </ul>
             </nav>
             <!--版权声明-->
             <div class="fh5co-footer">
-                <p><small><span>&copy; 2018 剧享网</span></small></p>
+                <p><small><span>&copy; 2019 剧享网</span></small></p>
             </div>
 
         </aside>
 
         <div id="fh5co-main">
-            <aside id="fh5co-hero" class="js-fullheight">
+            <div class="fh5co-narrow-content">
                 <div class="flexslider js-fullheight">
-                    <div id="MyFans">
-                        <button style="background-color:white;border-color:white" id="ShowMyFans">我的粉丝</button><small id="FansCount">(@ViewBag.FansCount)</small>
-                        <div id="FansInfo">
-                        </div>
+                    <div id="MyFans ">
+                        <button class="fan fan_btn" id="ShowMyFans">我的粉丝<small id="FansCount">(@ViewBag.FansCount)</small></button>
+                        <div id="FansInfo" class="fan fh5co-narrow-content"></div>
                     </div>
                     <div id="MyFollowers">
-                        <button style="background-color:white;border-color:white" id="ShowMyFollowers">我的关注</button><small id="FollowersCount">(@ViewBag.FollowersCount)</small>
-                        <div id="FollowersInfo">
-                        </div>
+                        <button class="fan fan_btn" id="ShowMyFollowers">我的关注<small id="FollowersCount">(@ViewBag.FollowersCount)</small></button>
+                        <div id="FollowersInfo" class="fan fh5co-narrow-content"></div>
                     </div>
                 </div>
-            </aside>
+            </div>
         </div>
-    </div>
 
-    @*<!-- jQuery -->
-    <script src="~/Js/jquery.min.js"></script>
-    <!-- jQuery Easing -->
-    <script src="~/Js/jquery.easing.1.3.js"></script>
-    <!-- Bootstrap -->
-    <script src="~/Js/bootstrap.min.js"></script>
-    <!-- Waypoints -->
-    <script src="~/Js/jquery.waypoints.min.js"></script>
-    <!-- Flexslider -->
-    <script src="~/Js/jquery.flexslider-min.js"></script>*@
+        @*<!-- jQuery -->
+            <script src="~/Js/jquery.min.js"></script>
+            <!-- jQuery Easing -->
+            <script src="~/Js/jquery.easing.1.3.js"></script>
+            <!-- Bootstrap -->
+            <script src="~/Js/bootstrap.min.js"></script>
+            <!-- Waypoints -->
+            <script src="~/Js/jquery.waypoints.min.js"></script>
+            <!-- Flexslider -->
+            <script src="~/Js/jquery.flexslider-min.js"></script>*@
 
 
-    <!-- MAIN JS -->
-    @*<script src="~/Js/main.js"></script>*@
-    <script>
-        $("#ShowMyFans").click(function () {
-            $.ajax({
-                url: "/T_User/FollowInfo/",
-                method: "post",
-                data: {
-                    ShowStatus: "ShowMyFans"
-                },
-                success: function (data) {
-                    var FansInfo = document.getElementById("FansInfo");
-                    //FBIWARNING!!：这里必须将长度赋值给一个变量，不然循环只会执行一次，劳资也不晓得为什么！
-                    var Length = document.getElementsByClassName("FansInfo").length;
-                    if (document.getElementsByClassName("FansInfo").length != 0) {
-                        for (var i = 0; i < Length; ++i) {
-                            FansInfo.removeChild(FansInfo.childNodes[1]);
+        <!-- MAIN JS -->
+        @*<script src="~/Js/main.js"></script>*@
+        <script>
+            $("#ShowMyFans").click(function () {
+                $.ajax({
+                    url: "/T_User/FollowInfo/",
+                    method: "post",
+                    data: {
+                        ShowStatus: "ShowMyFans"
+                    },
+                    success: function (data) {
+                        var FansInfo = document.getElementById("FansInfo");
+                        //FBIWARNING!!：这里必须将长度赋值给一个变量，不然循环只会执行一次，劳资也不晓得为什么！
+                        var Length = document.getElementsByClassName("FansInfo").length;
+                        if (document.getElementsByClassName("FansInfo").length != 0) {
+                            for (var i = 0; i < Length; ++i) {
+                                FansInfo.removeChild(FansInfo.childNodes[1]);
+                            }
                         }
-                    }
-                    if (data != "None") {
-                        var Deserialized = JSON.parse(data);
-                        for (var i = 0; i < Deserialized.length; ++i) {
+                        if (data != "None") {
+                            var Deserialized = JSON.parse(data);
+                            for (var i = 0; i < Deserialized.length; ++i) {
+                                //一个包含本条用户所有信息的div
+                                var div = document.createElement("div");
+                                div.className = "FansInfo";
+                                //一个头像img
+                                var img = document.createElement("img");
+                                img.className = "UserHeadImg";
+                                img.width = "50";
+                                img.height = "50";
+                                img.style.borderRadius = "70%";
+                                // img.onclick = test(this);
+                                img.src = "/head_img/" + Deserialized[i];
+                                //img是div的
+                                div.appendChild(img);
+                                //取下一个信息
+                                ++i;
+                                //一个用户名的label
+                                var label = document.createElement("label");
+                                label.className = "SearchUserName";
+                                label.innerHTML = Deserialized[i];
+                                //该label是div
+                                div.appendChild(label);
+                                ++i;
+                                //一个子div，当鼠标移到名字或是图片时这个信息显示出来
+                                var subdiv = document.createElement("div");
+                                subdiv.className = "SubUserInfo";
+                                subdiv.style.display = "none";
+                                //信息里面有用户角色
+                                var labelRole = document.createElement("label");
+                                labelRole.className = "Role";
+                                if (Deserialized[i] == "R1") {
+                                    labelRole.innerHTML = "等级：普通用户";
+                                }
+                                else if (Deserialized[i] == "R2") {
+                                    labelRole.innerHTML = "等级：VIP用户";
+                                }
+                                else {
+                                    labelRole.innerHTML = "等级：管理员";
+                                }
+                                //该label放在子div
+                                subdiv.appendChild(labelRole);
+                                ++i;
+                                //信息里面有邮箱地址
+                                var labelEmail = document.createElement("label");
+                                labelEmail.className = "Email";
+                                labelEmail.innerHTML = Deserialized[i];
+                                var labelEmailTxt = document.createElement("label");
+                                labelEmailTxt.innerHTML = "邮箱：";
+                                //该label放在子div
+                                subdiv.appendChild(labelEmailTxt);
+                                subdiv.appendChild(labelEmail);
+                                //子div放进div里面
+                                div.appendChild(subdiv);
+                                //关注按钮
+                                var BtnFollowOK = document.createElement("button");
+                                BtnFollowOK.className = "FollowOK";
+                                BtnFollowOK.innerHTML = "关注";
+                                div.appendChild(BtnFollowOK);
+                                //在模糊搜索里面加入该div
+                                FansInfo.appendChild(div);
+                            }
+                        }
+                        else {
                             //一个包含本条用户所有信息的div
                             var div = document.createElement("div");
                             div.className = "FansInfo";
-                            //一个头像img
-                            var img = document.createElement("img");
-                            img.className = "UserHeadImg";
-                            img.width = "50";
-                            img.height = "50";
-                            img.style.borderRadius = "70%";
-                            // img.onclick = test(this);
-                            img.src = "/head_img/" + Deserialized[i];
-                            //img是div的
-                            div.appendChild(img);
-                            //取下一个信息
-                            ++i;
-                            //一个用户名的label
                             var label = document.createElement("label");
-                            label.className = "SearchUserName";
-                            label.innerHTML = Deserialized[i];
-                            //该label是div
+                            label.id = "NoneWarning";
+                            label.innerHTML = "您目前没有任何粉丝";
                             div.appendChild(label);
-                            ++i;
-                            //一个子div，当鼠标移到名字或是图片时这个信息显示出来
-                            var subdiv = document.createElement("div");
-                            subdiv.className = "SubUserInfo";
-                            subdiv.style.display = "none";
-                            //信息里面有用户角色
-                            var labelRole = document.createElement("label");
-                            labelRole.className = "Role";
-                            if (Deserialized[i] == "R1") {
-                                labelRole.innerHTML = "等级：普通用户";
-                            }
-                            else if (Deserialized[i] == "R2") {
-                                labelRole.innerHTML = "等级：VIP用户";
-                            }
-                            else {
-                                labelRole.innerHTML = "等级：管理员";
-                            }
-                            //该label放在子div
-                            subdiv.appendChild(labelRole);
-                            ++i;
-                            //信息里面有邮箱地址
-                            var labelEmail = document.createElement("label");
-                            labelEmail.className = "Email";
-                            labelEmail.innerHTML = Deserialized[i];
-                            var labelEmailTxt = document.createElement("label");
-                            labelEmailTxt.innerHTML = "邮箱：";
-                            //该label放在子div
-                            subdiv.appendChild(labelEmailTxt);
-                            subdiv.appendChild(labelEmail);
-                            //子div放进div里面
-                            div.appendChild(subdiv);
-                            //关注按钮
-                            var BtnFollowOK = document.createElement("button");
-                            BtnFollowOK.className = "FollowOK";
-                            BtnFollowOK.innerHTML = "关注";
-                            div.appendChild(BtnFollowOK);
-                            //在模糊搜索里面加入该div
                             FansInfo.appendChild(div);
                         }
-                    }
-                    else {
-                        //一个包含本条用户所有信息的div
-                        var div = document.createElement("div");
-                        div.className = "FansInfo";
-                        var label = document.createElement("label");
-                        label.id = "NoneWarning";
-                        label.innerHTML = "您目前没有任何粉丝";
-                        div.appendChild(label);
-                        FansInfo.appendChild(div);
-                    }
-                },
+                    },
+                })
             })
-        })
 
-        $("#ShowMyFollowers").click(function () {
-            $.ajax({
-                url: "/T_User/FollowInfo/",
-                method: "post",
-                data: {
-                    ShowStatus: "ShowMyFollowers"
-                },
-                success: function (data) {
-                    var FollowersInfo = document.getElementById("FollowersInfo");
-                    //FBIWARNING!!：这里必须将长度赋值给一个变量，不然循环只会执行一次，劳资也不晓得为什么！
-                    var Length = document.getElementsByClassName("FollowersInfo").length;
-                    if (document.getElementsByClassName("FollowersInfo").length != 0) {
-                        for (var i = 0; i < Length; ++i) {
-                            FollowersInfo.removeChild(FollowersInfo.childNodes[1]);
+            $("#ShowMyFollowers").click(function () {
+                $.ajax({
+                    url: "/T_User/FollowInfo/",
+                    method: "post",
+                    data: {
+                        ShowStatus: "ShowMyFollowers"
+                    },
+                    success: function (data) {
+                        var FollowersInfo = document.getElementById("FollowersInfo");
+                        //FBIWARNING!!：这里必须将长度赋值给一个变量，不然循环只会执行一次，劳资也不晓得为什么！
+                        var Length = document.getElementsByClassName("FollowersInfo").length;
+                        if (document.getElementsByClassName("FollowersInfo").length != 0) {
+                            for (var i = 0; i < Length; ++i) {
+                                FollowersInfo.removeChild(FollowersInfo.childNodes[1]);
+                            }
                         }
-                    }
-                    if (data != "None") {
-                        var Deserialized = JSON.parse(data);
-                        for (var i = 0; i < Deserialized.length; ++i) {
+                        if (data != "None") {
+                            var Deserialized = JSON.parse(data);
+                            for (var i = 0; i < Deserialized.length; ++i) {
+                                //一个包含本条用户所有信息的div
+                                var div = document.createElement("div");
+                                div.className = "FollowersInfo";
+                                //一个头像img
+                                var img = document.createElement("img");
+                                img.className = "UserHeadImg";
+                                img.width = "50";
+                                img.height = "50";
+                                img.style.borderRadius = "70%";
+                                // img.onclick = test(this);
+                                img.src = "/head_img/" + Deserialized[i];
+                                //img是div的
+                                div.appendChild(img);
+                                //取下一个信息
+                                ++i;
+                                //一个用户名的label
+                                var label = document.createElement("label");
+                                label.className = "SearchUserName";
+                                label.innerHTML = Deserialized[i];
+                                //该label是div
+                                div.appendChild(label);
+                                ++i;
+                                //一个子div，当鼠标移到名字或是图片时这个信息显示出来
+                                var subdiv = document.createElement("div");
+                                subdiv.className = "SubUserInfo";
+                                subdiv.style.display = "none";
+                                //信息里面有用户角色
+                                var labelRole = document.createElement("label");
+                                labelRole.className = "Role";
+                                if (Deserialized[i] == "R1") {
+                                    labelRole.innerHTML = "等级：普通用户";
+                                }
+                                else if (Deserialized[i] == "R2") {
+                                    labelRole.innerHTML = "等级：VIP用户";
+                                }
+                                else {
+                                    labelRole.innerHTML = "等级：管理员";
+                                }
+                                //该label放在子div
+                                subdiv.appendChild(labelRole);
+                                ++i;
+                                //信息里面有邮箱地址
+                                var labelEmail = document.createElement("label");
+                                labelEmail.className = "Email";
+                                labelEmail.innerHTML = Deserialized[i];
+                                var labelEmailTxt = document.createElement("label");
+                                labelEmailTxt.innerHTML = "邮箱：";
+                                //该label放在子div
+                                subdiv.appendChild(labelEmailTxt);
+                                subdiv.appendChild(labelEmail);
+                                //子div放进div里面
+                                div.appendChild(subdiv);
+                                //关注按钮
+                                var BtnFollowOver = document.createElement("button");
+                                BtnFollowOver.className = "FollowOver";
+                                BtnFollowOver.innerHTML = "取消关注";
+                                div.appendChild(BtnFollowOver);
+                                //在父标签里面加入该div
+                                FollowersInfo.appendChild(div);
+                            }
+                        }
+                        else {
                             //一个包含本条用户所有信息的div
                             var div = document.createElement("div");
                             div.className = "FollowersInfo";
-                            //一个头像img
-                            var img = document.createElement("img");
-                            img.className = "UserHeadImg";
-                            img.width = "50";
-                            img.height = "50";
-                            img.style.borderRadius = "70%";
-                            // img.onclick = test(this);
-                            img.src = "/head_img/" + Deserialized[i];
-                            //img是div的
-                            div.appendChild(img);
-                            //取下一个信息
-                            ++i;
-                            //一个用户名的label
                             var label = document.createElement("label");
-                            label.className = "SearchUserName";
-                            label.innerHTML = Deserialized[i];
-                            //该label是div
+                            label.id = "NoneWarning";
+                            label.innerHTML = "您目前没有关注任何用户";
                             div.appendChild(label);
-                            ++i;
-                            //一个子div，当鼠标移到名字或是图片时这个信息显示出来
-                            var subdiv = document.createElement("div");
-                            subdiv.className = "SubUserInfo";
-                            subdiv.style.display = "none";
-                            //信息里面有用户角色
-                            var labelRole = document.createElement("label");
-                            labelRole.className = "Role";
-                            if (Deserialized[i] == "R1") {
-                                labelRole.innerHTML = "等级：普通用户";
-                            }
-                            else if (Deserialized[i] == "R2") {
-                                labelRole.innerHTML = "等级：VIP用户";
-                            }
-                            else {
-                                labelRole.innerHTML = "等级：管理员";
-                            }
-                            //该label放在子div
-                            subdiv.appendChild(labelRole);
-                            ++i;
-                            //信息里面有邮箱地址
-                            var labelEmail = document.createElement("label");
-                            labelEmail.className = "Email";
-                            labelEmail.innerHTML = Deserialized[i];
-                            var labelEmailTxt = document.createElement("label");
-                            labelEmailTxt.innerHTML = "邮箱：";
-                            //该label放在子div
-                            subdiv.appendChild(labelEmailTxt);
-                            subdiv.appendChild(labelEmail);
-                            //子div放进div里面
-                            div.appendChild(subdiv);
-                            //关注按钮
-                            var BtnFollowOver = document.createElement("button");
-                            BtnFollowOver.className = "FollowOver";
-                            BtnFollowOver.innerHTML = "取消关注";
-                            div.appendChild(BtnFollowOver);
-                            //在父标签里面加入该div
                             FollowersInfo.appendChild(div);
                         }
+                    },
+                    error: function (data) {
+                        alert("错误");
                     }
-                    else {
-                        //一个包含本条用户所有信息的div
-                        var div = document.createElement("div");
-                        div.className = "FollowersInfo";
-                        var label = document.createElement("label");
-                        label.id = "NoneWarning";
-                        label.innerHTML = "您目前没有关注任何用户";
-                        div.appendChild(label);
-                        FollowersInfo.appendChild(div);
-                    }
-                },
-                error: function (data) {
-                    alert("错误");
-                }
+                })
             })
-        })
-    </script>
+        </script>
 </body>
 </html>
+
